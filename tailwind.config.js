@@ -15,11 +15,11 @@ module.exports = {
   theme: {
     colors: {
       brands: {
-        primary: colors.cyan[500],
+        primary: colors.teal[400],
         secondary: colors.gray[200],
-        info: colors.teal[500],
+        info: colors.blue[400],
         success: colors.lime[500],
-        warning: colors.amber[500],
+        warning: colors.yellow[400],
         danger: colors.rose[500],
       },
       ...colors,
