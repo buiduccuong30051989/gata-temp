@@ -71,7 +71,7 @@ export const Navigation = () => {
             </svg>
             <span>Servers</span>
           </a>
-          <span className="relative relative z-30 ml-5">
+          <span className="relative z-30 ml-5">
             <Popover className="relative">
               {({ open }) => (
                 <>

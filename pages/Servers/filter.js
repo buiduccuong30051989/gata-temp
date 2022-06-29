@@ -1,5 +1,6 @@
 import { Fragment, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
+import { VIEW_TYPE } from "../../constant/common";
 
 const people = [
   { name: "All Servers" },
@@ -7,8 +8,9 @@ const people = [
   { name: "Untagged Servers" },
 ];
 
-export const Filter = () => {
+export const Filter = ({ setType, type }) => {
   const [selected, setSelected] = useState(people[0]);
+
   return (
     <div className="flex justify-between mt-3 w-full">
       <div className="flex">
@@ -113,8 +115,7 @@ export const Filter = () => {
       </div>
       <div className="flex items-center">
         <div className="flex items-center mr-8">
-          {/* <button className="inline-flex items-center justify-center px-3 py-2 text-gray-900 text-sm font-semibold rounded-lg bg-gray-200"> */}
-          <button className="button bg-gray-200 border-0 px-6">
+          <button onClick={() => setType('grid')} className={`button border-0 px-6 ${type === VIEW_TYPE.GRID ? 'bg-gray-200' : 'bg-transparent'}`}>
             <span className="icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -132,8 +133,7 @@ export const Filter = () => {
               </svg>
             </span>
           </button>
-          {/* <button className="inline-flex items-center justify-center ml-0.5 px-3 py-2 text-gray-900 text-sm font-semibold rounded-lg"> */}
-          <button className="button border-0 bg-transparent px-6">
+          <button onClick={() => setType('list')} className={`button border-0 px-6 ${type === VIEW_TYPE.LIST ? 'bg-gray-200' : 'bg-transparent'}`}>
             <span className="icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -178,36 +178,3 @@ export const Filter = () => {
     </div>
   );
 };
-
-{
-  /* <div className="forge-dropdown w-52" style={{ display: "none" }}>
-            <span className="forge-dropdown-item text-gray-900">
-              All Servers
-            </span>
-            <span className="forge-dropdown-item text-gray-900">
-              Owned Servers
-            </span>
-            <span className="forge-dropdown-item text-gray-900">
-              Untagged Servers
-            </span>
-            <div className="mb-3 pb-2 border-b" />
-            <span className="forge-dropdown-item text-gray-900">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 32 32"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                strokeLinejoin="round"
-                className="flex-shrink-0 mr-2 w-3.5 h-3.5"
-              >
-                <path d="M16 21a5 5 0 0 0 5-5 5 5 0 0 0-5-5 5 5 0 0 0-5 5 5 5 0 0 0 5 5h0zm0 3c-4.922 0-7.887 2.492-9.477 4.502C5.648 29.608 6.525 31 7.935 31h16.13c1.41 0 2.287-1.392 1.412-2.498C23.887 26.492 20.922 24 16 24z" />
-                <path
-                  d="M28.02 24.975c1.939-2.59 2.985-5.74 2.98-8.975 0-8.284-6.716-15-15-15S1 7.716 1 16c0 3.419 1.074 6.477 3 9"
-                  strokeLinecap="round"
-                />
-              </svg>
-              <span>Test</span>
-            </span>
-          </div> */
-}

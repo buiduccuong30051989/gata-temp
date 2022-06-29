@@ -34,3 +34,14 @@
 .forge-h2 {
   @apply font-medium text-3xl;
 }
+
+.custom-tooltip.tippy-box {
+  @apply rounded-lg text-xs;
+}
+
+.custom-tooltip {
+  &.tippy-box[data-placement^="top"] > .tippy-arrow:before {
+    bottom: -5px;
+    border-width: 6px 6px 0;
+  }
+}
