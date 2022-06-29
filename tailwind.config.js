@@ -23,10 +23,15 @@ module.exports = {
         danger: colors.rose[500],
       },
       ...colors,
+      teal: {
+        50: "#e8f8f5",
+        400: "#18b69b",
+      },
     },
     extend: {
       fontFamily: {
         git: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+        rupik: '"Rubik", "sans-serif"',
       },
     },
   },

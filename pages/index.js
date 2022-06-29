@@ -2,7 +2,6 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import STYLEGUIDES from "../constant/styleguides.json";
-import { Navigation } from "../components/Navigation";
 
 export default function Home() {
   const SCHEMAS = [
@@ -23,11 +22,10 @@ export default function Home() {
 
   return (
     <div className="p-styleguides py-16">
-      <Navigation />
       <div
         className="fixed inset-0 -z-0 dark:hidden"
         style={{
-          background: `url("https://beyondco.de/img/monotone_open_source.png") calc(100% + 0px) -140px / 100% 400px no-repeat;`,
+          background: `url("https://beyondco.de/img/monotone_open_source.png") calc(100% + 0px) -140px / 100% 400px no-repeat`
         }}
       ></div>
       <div className="b-styleguides-sidebar">
