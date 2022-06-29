@@ -126,7 +126,7 @@ export default function Servers() {
                 </button>
               </div>
               <div>
-                <button type="button" className="forge-btn-secondary px-4">
+                <button type="button" className="button is-white border border-gray-200 rounded-lg">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"

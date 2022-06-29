@@ -48,7 +48,7 @@ export const Navigation = () => {
         </div>
         <div className="flex col-span-4 col-end-7 col-start-3 items-center justify-center w-full">
           <a
-            className="flex items-center justify-center px-3 h-10 text-gray-800 hover:text-teal-400 text-sm font-bold rounded-lg bg-teal-50"
+            className="flex items-center justify-center px-3 h-10 text-gray-800 hover:text-teal-400 text-sm font-normal rounded-lg bg-teal-50"
             href="/servers"
           >
             <svg
@@ -69,7 +69,7 @@ export const Navigation = () => {
           </a>
           <span className="relative relative z-30 ml-5">
             <button className="rounded-lg">
-              <span className="flex items-center justify-center px-3 h-10 text-gray-800 hover:text-teal-400 text-sm font-bold rounded-lg cursor-pointer select-none">
+              <span className="flex items-center justify-center px-3 h-10 text-gray-800 hover:text-teal-400 text-sm font-normal rounded-lg cursor-pointer select-none">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -118,7 +118,7 @@ export const Navigation = () => {
             </div>
           </span>
           <a
-            className="flex items-center justify-center ml-5 px-3 h-10 text-gray-800 hover:text-teal-400 text-sm font-bold rounded-lg"
+            className="flex items-center justify-center ml-5 px-3 h-10 text-gray-800 hover:text-teal-400 text-sm font-normal rounded-lg"
             href="/circles"
           >
             <svg
@@ -139,7 +139,7 @@ export const Navigation = () => {
             <span>Circles</span>
           </a>
           <a
-            className="flex items-center justify-center ml-5 px-3 h-10 text-gray-800 hover:text-teal-400 text-sm font-bold rounded-lg"
+            className="flex items-center justify-center ml-5 px-3 h-10 text-gray-800 hover:text-teal-400 text-sm font-normal rounded-lg"
             href="/recipes"
           >
             <svg
@@ -160,7 +160,7 @@ export const Navigation = () => {
           </a>
           <a
             href="/docs"
-            className="flex items-center justify-center ml-5 px-3 h-10 text-gray-800 hover:text-teal-400 text-sm font-bold rounded-lg"
+            className="flex items-center justify-center ml-5 px-3 h-10 text-gray-800 hover:text-teal-400 text-sm font-normal rounded-lg"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -189,7 +189,7 @@ export const Navigation = () => {
                 className="mr-2 rounded-full"
                 alt="Test Forge's profile picture"
               />
-              <span className="text-left text-gray-800 text-sm font-bold">
+              <span className="text-left text-gray-800 text-sm font-normal">
                 Test Forge
               </span>
               <span>
