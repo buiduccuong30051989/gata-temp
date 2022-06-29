@@ -6,7 +6,7 @@ $button-border-color: $border !default;
 $button-border-width: $control-border-width !default;
 
 $button-padding-vertical: calc(0.5em - #{$button-border-width}) !default;
-$button-padding-horizontal: 1em !default;
+$button-padding-horizontal: 17px !default;
 
 $button-hover-color: $link-hover !default;
 $button-hover-border-color: $link-hover-border !default;
@@ -153,7 +153,7 @@ $button-responsive-sizes: (
     color: $button-focus-color;
 
     &:not(:active) {
-      box-shadow: $button-focus-box-shadow-size $button-focus-box-shadow-color;
+      // box-shadow: $button-focus-box-shadow-size $button-focus-box-shadow-color;
     }
   }
 

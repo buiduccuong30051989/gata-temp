@@ -1,3 +1,7 @@
+import { Popover, Transition, Menu } from "@headlessui/react";
+import { Fragment } from "react";
+import Image from 'next/image'
+
 export const Navigation = () => {
   return (
     <nav className="flex justify-center w-full min-w-screen-xl h-20 bg-white">
@@ -68,54 +72,73 @@ export const Navigation = () => {
             <span>Servers</span>
           </a>
           <span className="relative relative z-30 ml-5">
-            <button className="rounded-lg">
-              <span className="flex items-center justify-center px-3 h-10 text-gray-800 hover:text-teal-400 text-sm font-normal rounded-lg cursor-pointer select-none">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  className="pr-2 h-5 text-gray-500"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
-                  />
-                </svg>
-                <span>Sites</span>
-              </span>
-            </button>
-            <div
-              className="forge-dropdown right-0 min-w-64 origin-top-right"
-              style={{ display: "none" }}
-            >
-              <input
-                type="text"
-                className="forge-input mx-1 h-8"
-                placeholder="Filter.."
-              />
-              <div className="pt-3">
-                <div className="mb-3 pb-2 border-b last:border-b-0">
-                  <span className="mb-3 px-3 text-gray-700 whitespace-nowrap text-xs font-extrabold uppercase">
-                    TESTSERVER (2)
-                  </span>
-                  <a
-                    className="forge-dropdown-item whitespace-nowrap"
-                    href="/servers/570738/sites/1682253"
+            <Popover className="relative">
+              {({ open }) => (
+                <>
+                  <Popover.Button
+                    className={`rounded-lg ${open && "bg-teal-50"}`}
                   >
-                    default
-                  </a>
-                  <a
-                    className="forge-dropdown-item whitespace-nowrap"
-                    href="/servers/570738/sites/1682256"
+                    <span className="flex items-center justify-center px-3 h-10 text-gray-800 hover:text-teal-400 text-sm font-normal rounded-lg cursor-pointer select-none">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        className={`pr-2 h-5 ${open && "text-teal-400"}`}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+                        />
+                      </svg>
+                      <span>Sites</span>
+                    </span>
+                  </Popover.Button>
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-200"
+                    enterFrom="opacity-0 translate-y-1"
+                    enterTo="opacity-100 translate-y-0"
+                    leave="transition ease-in duration-150"
+                    leaveFrom="opacity-100 translate-y-0"
+                    leaveTo="opacity-0 translate-y-1"
                   >
-                    test.com
-                  </a>
-                </div>
-              </div>
-            </div>
+                    <Popover.Panel className="forge-dropdown right-0 min-w-64 origin-top-right">
+                      <div>
+                        <input
+                          type="text"
+                          className="h-8  px-3 w-full text-gray-900 text-sm bg-white border border-gray-200 focus:border-teal-400 rounded-lg focus:outline-none appearance-none focus:ring-0"
+                          autoComplete="off"
+                          autoCorrect="off"
+                          placeholder="Filter.."
+                        />
+                        <div className="pt-3">
+                          <div>
+                            <span className="mb-2 block px-3 text-gray-700 whitespace-nowrap text-xs font-medium uppercase">
+                              TESTSERVER (2)
+                            </span>
+                            <a
+                              className="forge-dropdown-item whitespace-nowrap"
+                              href="/servers/570738/sites/1682253"
+                            >
+                              default
+                            </a>
+                            <a
+                              className="forge-dropdown-item whitespace-nowrap"
+                              href="/servers/570738/sites/1682256"
+                            >
+                              test.com
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </Popover.Panel>
+                  </Transition>
+                </>
+              )}
+            </Popover>
           </span>
           <a
             className="flex items-center justify-center ml-5 px-3 h-10 text-gray-800 hover:text-teal-400 text-sm font-normal rounded-lg"
@@ -180,73 +203,90 @@ export const Navigation = () => {
           </a>
         </div>
         <div className="relative z-30 flex flex-grow col-span-2 items-center justify-end justify-self-end w-full h-10">
-          <span>
-            <button className="flex items-center -mr-3 px-3 h-12 text-white rounded-lg cursor-pointer select-none">
-              <img
-                src="https://unavatar.io/xmannv@thcsphuongthien.edu.vn?fallback=https%3A%2F%2Feu.ui-avatars.com%2Fapi%2F%3Fname%3DT+F%26color%3D7F9CF4%26background%3DEBF4FF"
-                height={30}
-                width={30}
-                className="mr-2 rounded-full"
-                alt="Test Forge's profile picture"
-              />
-              <span className="text-left text-gray-800 text-sm font-normal">
-                Test Forge
-              </span>
-              <span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  className="ml-2 w-4 w-5 h-4 h-5 text-gray-400 group-hover:text-gray-500 transform duration-300 rotate-90"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M7.293 14.707a1 1 0 0 1 0-1.414L10.586 10 7.293 6.707a1 1 0 0 1 .012-1.402 1 1 0 0 1 1.402-.012l4 4a1 1 0 0 1 0 1.414l-4 4a1 1 0 0 1-1.414 0z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </span>
-            </button>
-            <div
-              className="forge-dropdown right-0 w-40 origin-top-right"
-              style={{ display: "none" }}
-            >
-              <a
-                className="forge-dropdown-item"
-                href="/user-profile/authentication"
-              >
-                Account
-              </a>
-              <a className="forge-dropdown-item" href="/billing">
-                Billing
-              </a>
-              <a className="forge-dropdown-item mb-0" href="/circles">
-                Circles
-              </a>
-              <hr className="mx-3 my-1" />
-              <a className="forge-dropdown-item" href="/docs">
-                Documentation
-              </a>
-              <a
-                className="forge-dropdown-item"
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://laracasts.com/series/learn-laravel-forge-2022-edition/"
-              >
-                Video Tutorials
-              </a>
-              <a
-                className="forge-dropdown-item mb-0"
-                href="https://blog.laravel.com/forge"
-              >
-                Blog
-              </a>
-              <hr className="mx-3 my-1" />
-              <button className="forge-dropdown-item mb-0" type="button">
-                Logout
-              </button>
+          <Menu as="div" className="relative inline-block text-left">
+            <div>
+              <Menu.Button className="flex items-center -mr-3 px-3 h-12 text-white rounded-lg cursor-pointer select-none">
+                <Image
+                  src="https://unavatar.io/xmannv@thcsphuongthien.edu.vn?fallback=https%3A%2F%2Feu.ui-avatars.com%2Fapi%2F%3Fname%3DT+F%26color%3D7F9CF4%26background%3DEBF4FF"
+                  height={30}
+                  width={30}
+                  className="mr-2 rounded-full"
+                  alt="Test Forge's profile picture"
+                />
+                <span className="text-left text-gray-800 text-sm font-normal">
+                  Test Forge
+                </span>
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    className="ml-2 w-4 w-5 h-4 h-5 text-gray-400 group-hover:text-gray-500 transform duration-300 rotate-90"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M7.293 14.707a1 1 0 0 1 0-1.414L10.586 10 7.293 6.707a1 1 0 0 1 .012-1.402 1 1 0 0 1 1.402-.012l4 4a1 1 0 0 1 0 1.414l-4 4a1 1 0 0 1-1.414 0z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </Menu.Button>
             </div>
-          </span>
+            <Transition
+              as={Fragment}
+              enter="transition ease-out duration-200"
+              enterFrom="opacity-0 translate-y-1"
+              enterTo="opacity-100 translate-y-0"
+              leave="transition ease-in duration-150"
+              leaveFrom="opacity-100 translate-y-0"
+              leaveTo="opacity-0 translate-y-1"
+            >
+              <Menu.Items className="forge-dropdown right-0 w-40 origin-top-right p-0">
+                <div className="px-1 py-1 ">
+                  <Menu.Item>
+                    <a
+                      className="forge-dropdown-item"
+                      href="/user-profile/authentication"
+                    >
+                      Account
+                    </a>
+                  </Menu.Item>
+                  <Menu.Item>
+                    <a className="forge-dropdown-item" href="/billing">
+                      Billing
+                    </a>
+                  </Menu.Item>
+                  <Menu.Item>
+                    <a className="forge-dropdown-item" href="/billing">
+                      Circles
+                    </a>
+                  </Menu.Item>
+                  <hr className="mx-3 my-1" />
+                  <Menu.Item>
+                    <a className="forge-dropdown-item" href="/billing">
+                      Documentation
+                    </a>
+                  </Menu.Item>
+                  <Menu.Item>
+                    <a className="forge-dropdown-item" href="/billing">
+                      Video Tutorials
+                    </a>
+                  </Menu.Item>
+                  <Menu.Item>
+                    <a className="forge-dropdown-item" href="/billing">
+                      Blog
+                    </a>
+                  </Menu.Item>
+                  <hr className="mx-3 my-1" />
+                  <Menu.Item>
+                    <a className="forge-dropdown-item" href="/billing">
+                      Logout
+                    </a>
+                  </Menu.Item>
+                </div>
+              </Menu.Items>
+            </Transition>
+          </Menu>
         </div>
       </div>
     </nav>

@@ -9,3 +9,28 @@
 .max-w-screen-xl {
   max-width: 1280px;
 }
+
+.forge-dropdown {
+  @apply bg-white shadow-lg flex flex-col absolute origin-top rounded-lg px-2 py-2 border border-gray-50;
+  margin-top: 0.25rem;
+}
+
+.forge-dropdown-item {
+  @apply px-3 py-2 text-xs flex items-center rounded-lg;
+
+  &:hover {
+    @apply bg-gray-100;
+  }
+}
+
+.min-w-64 {
+  min-width: 16rem;
+}
+
+:focus-visible {
+  outline: none;
+}
+
+.forge-h2 {
+  @apply font-medium text-3xl;
+}
