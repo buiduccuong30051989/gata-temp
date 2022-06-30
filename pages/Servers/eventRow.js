@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Link from 'next/link'
 
 export const EventRow = () => {
   const [loading, setLoading] = useState(false);
@@ -6,9 +7,9 @@ export const EventRow = () => {
   return (
     <tr className="h-12 border-t border-gray-100">
       <td className="pr-4">
-        <a className="text-teal-400" href="/servers/570738">
+        <Link className="text-teal-400" href="/servers/570738">
           TESTSERVER
-        </a>
+        </Link>
       </td>
       <td className="pr-4">
         Running Recipe (Update CA certificates (fix 'curl returned with 60')).

@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { AuthLayout } from "../components/Layout";
-import { Filter } from "./Servers/filter";
-import { ServerList } from "./Servers/serverList";
-import { VIEW_TYPE } from "../constant/common";
-import { RecentEvents } from "./Servers/recentEvents";
+import { AuthLayout } from "../../components/Layout";
+import { Filter } from "./filter";
+import { ServerList } from "./serverList";
+import { VIEW_TYPE } from "../../constant/common";
+import { RecentEvents } from "./recentEvents";
 
 export default function Servers() {
   const [type, setType] = useState(VIEW_TYPE.GRID);
