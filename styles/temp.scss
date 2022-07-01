@@ -58,6 +58,10 @@
   padding-top: 0.5rem;
   color: rgba(55, 65, 81, 1);
 
+  svg {
+    @apply mr-4 w-4 h-4 text-gray-400;
+  }
+
   &:hover {
     color: rgba(24, 182, 155, 1);
     background-color: rgba(249, 250, 251, 1);
