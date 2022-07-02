@@ -2,6 +2,8 @@ import {
   HiOutlineGlobeAlt,
   HiOutlineDatabase,
   HiOutlineKey,
+  HiOutlineTerminal,
+  HiOutlineShieldCheck,
   HiOutlineDesktopComputer,
   HiOutlineCube,
   HiOutlineTruck,
@@ -13,7 +15,11 @@ import {
   HiOutlineCollection,
   HiOutlineTag,
   HiOutlinePuzzle,
+  HiOutlineLockClosed,
+  HiOutlineCog,
 } from "react-icons/hi";
+import { BsFillTreeFill } from "react-icons/bs";
+import { BiDirections } from "react-icons/bi";
 import { IconPhp } from "components/icons";
 
 export const navServer = [
@@ -85,6 +91,59 @@ export const navServer = [
   {
     title: "Integrations",
     icon: <HiOutlinePuzzle />,
+    path: "sites",
+  },
+  {
+    title: "Meta",
+    icon: <HiOutlineTag />,
+    path: "sites",
+  },
+];
+
+export const sitesServer = [
+  {
+    title: "App",
+    icon: <HiOutlineTemplate />,
+    path: "app",
+  },
+  {
+    title: "Commands",
+    icon: <HiOutlineTerminal />,
+    path: "database",
+  },
+  {
+    title: "Packages",
+    icon: <HiOutlineTruck />,
+    path: "keys",
+  },
+  {
+    title: "Environment",
+    icon: <BsFillTreeFill />,
+    path: "sites",
+  },
+  {
+    title: "Queue",
+    icon: <HiOutlineCog />,
+    path: "sites",
+  },
+  {
+    title: "SSL",
+    icon: <HiOutlineLockClosed />,
+    path: "sites",
+  },
+  {
+    title: "Security",
+    icon: <HiOutlineShieldCheck />,
+    path: "sites",
+  },
+  {
+    title: "Redirects",
+    icon: <BiDirections />,
+    path: "sites",
+  },
+  {
+    title: "Logs",
+    icon: <HiOutlineClipboardList />,
     path: "sites",
   },
   {

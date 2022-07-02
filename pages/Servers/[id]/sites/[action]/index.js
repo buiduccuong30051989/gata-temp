@@ -1,28 +1,11 @@
-import { useRouter } from 'next/router'
-import Link from 'next/link'
+import { LeftSidebarLayout } from "components/Layout";
+import { sitesServer } from "router";
+import { SubHeader } from "./subHeader";
 
-const Post = () => {
-  const router = useRouter()
-  console.log(router.query)
-  const { id, action } = router.query
-
+export default function SitesDetail({ children }) {
   return (
-    <>
-      <h1>Sites ID: {action}</h1>
-      <ul>
-        <li>
-          <Link href="/servers/[id]/sites" as={`/servers/${id}/sites/${action}`}>
-            <a>First comment</a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/post/[id]/[comment]" as={`/post/${id}/second-comment`}>
-            <a>Second comment</a>
-          </Link>
-        </li>
-      </ul>
-    </>
-  )
+    <LeftSidebarLayout SubHeader={SubHeader} nav={sitesServer}>
+      {children}
+    </LeftSidebarLayout>
+  );
 }
-
-export default Post

@@ -9,7 +9,7 @@ export const LeftSidebarLayout = ({
   SubHeader,
 }) => {
   const router = useRouter();
-  const { id } = router.query;
+  const { asPath } = router;
 
   return (
     <AuthLayout>
@@ -19,7 +19,7 @@ export const LeftSidebarLayout = ({
         <div className="flex mt-12">
           <nav className="pr-2 w-1/6 space-y-2">
             {nav.map((item) => (
-              <Link key={item.title} href={`/servers/${id}/${item.path}`}>
+              <Link key={item.title} href={`${asPath}/${item.path}`}>
                 <a className="forge-tab-item">
                   {item.icon}
                   {item.title}
