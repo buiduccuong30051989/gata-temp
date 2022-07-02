@@ -141,7 +141,8 @@ textarea {
   background-color: #fff;
 }
 
-.forge-checkbox {
+.forge-checkbox,
+.forge-radio {
   border-color: rgba(209, 213, 219, 1);
   border-radius: 0.25rem;
   height: 1rem;
@@ -163,6 +164,14 @@ textarea {
   vertical-align: middle;
 }
 
+[type="radio"] {
+  border-radius: 100%;
+}
+
+[type="radio"]:checked {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 16 16' fill='%23fff' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' r='3'/%3E%3C/svg%3E");
+}
+
 [type="checkbox"]:checked {
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 16 16' fill='%23fff' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.207 4.793a1 1 0 0 1 0 1.414l-5 5a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L6.5 9.086l4.293-4.293a1 1 0 0 1 1.414 0z'/%3E%3C/svg%3E");
 }
@@ -174,4 +183,12 @@ textarea {
   background-repeat: no-repeat;
   background-size: 100% 100%;
   border-color: transparent;
+}
+
+select {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236B7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3E%3C/svg%3E");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
 }
