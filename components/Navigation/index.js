@@ -1,6 +1,13 @@
 import { Popover, Transition, Menu } from "@headlessui/react";
 import { Fragment } from "react";
-import Image from 'next/image'
+import Image from "next/image";
+import {
+  HiOutlineServer,
+  HiOutlineGlobeAlt,
+  HiOutlineUserCircle,
+  HiOutlineClipboardList,
+  HiOutlineClipboard,
+} from "react-icons/hi";
 
 export const Navigation = () => {
   return (
@@ -55,20 +62,7 @@ export const Navigation = () => {
             className="flex items-center justify-center px-3 h-10 text-gray-800 hover:text-teal-400 text-sm font-normal rounded-lg bg-teal-50"
             href="/servers"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              className="pr-2 h-5 text-teal-400"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
-              />
-            </svg>
+            <HiOutlineServer className="pr-2 h-5 w-auto text-teal-400" />
             <span>Servers</span>
           </a>
           <span className="relative z-30 ml-5">
@@ -79,20 +73,9 @@ export const Navigation = () => {
                     className={`rounded-lg ${open && "bg-teal-50"}`}
                   >
                     <span className="flex items-center justify-center px-3 h-10 text-gray-800 hover:text-teal-400 text-sm font-normal rounded-lg cursor-pointer select-none">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        className={`pr-2 h-5 ${open && "text-teal-400"}`}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
-                        />
-                      </svg>
+                      <HiOutlineGlobeAlt
+                        className={`pr-2 w-auto text-gray-500 h-5 ${open && "text-teal-400"}`}
+                      />
                       <span>Sites</span>
                     </span>
                   </Popover.Button>
@@ -144,61 +127,21 @@ export const Navigation = () => {
             className="flex items-center justify-center ml-5 px-3 h-10 text-gray-800 hover:text-teal-400 text-sm font-normal rounded-lg"
             href="/circles"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 32 32"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={2}
-              strokeLinejoin="round"
-              className="pr-2 h-5 text-gray-500"
-            >
-              <path d="M16 21a5 5 0 0 0 5-5 5 5 0 0 0-5-5 5 5 0 0 0-5 5 5 5 0 0 0 5 5h0zm0 3c-4.922 0-7.887 2.492-9.477 4.502C5.648 29.608 6.525 31 7.935 31h16.13c1.41 0 2.287-1.392 1.412-2.498C23.887 26.492 20.922 24 16 24z" />
-              <path
-                d="M28.02 24.975c1.939-2.59 2.985-5.74 2.98-8.975 0-8.284-6.716-15-15-15S1 7.716 1 16c0 3.419 1.074 6.477 3 9"
-                strokeLinecap="round"
-              />
-            </svg>
+            <HiOutlineUserCircle className="pr-2 h-5 w-auto text-gray-500" />
             <span>Circles</span>
           </a>
           <a
             className="flex items-center justify-center ml-5 px-3 h-10 text-gray-800 hover:text-teal-400 text-sm font-normal rounded-lg"
             href="/recipes"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              className="pr-2 h-5 text-gray-500"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
-              />
-            </svg>
+            <HiOutlineClipboardList className="pr-2 h-5 w-auto text-gray-500" />
             <span>Recipes</span>
           </a>
           <a
             href="/docs"
             className="flex items-center justify-center ml-5 px-3 h-10 text-gray-800 hover:text-teal-400 text-sm font-normal rounded-lg"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              className="pr-2 h-5 text-gray-500"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-              />
-            </svg>
+            <HiOutlineClipboard className="pr-2 h-5 w-auto text-gray-500" />
             <span>Docs</span>
           </a>
         </div>

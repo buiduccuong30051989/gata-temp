@@ -80,7 +80,7 @@
   border-radius: 0.5rem;
   display: inline-flex;
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 400;
   justify-content: center;
   line-height: 1.25rem;
   padding: 0.5rem 0.875rem;
@@ -99,4 +99,79 @@
     rgba(229, 231, 235, 0)
   );
   color: rgba(17, 24, 39, 1);
+}
+
+.forge-btn-primary {
+  background-color: rgba(24, 182, 155, 1);
+  color: rgba(255, 255, 255, 1);
+}
+
+.card {
+  @apply px-6 py-4 text-sm bg-white rounded-lg;
+}
+
+.forge-input {
+  color: rgba(31, 41, 55, 1);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding: 0.5rem 2rem 0.5rem 0.75rem;
+  border-color: rgba(229, 231, 235, 1);
+  border-radius: 0.5rem;
+  border-width: 1px;
+
+  &:focus {
+    border-color: rgba(24, 182, 155, 1);
+  }
+}
+
+[multiple],
+[type="date"],
+[type="email"],
+[type="month"],
+[type="number"],
+[type="password"],
+[type="search"],
+[type="text"],
+[type="time"],
+[type="url"],
+[type="week"],
+select,
+textarea {
+  appearance: none;
+  background-color: #fff;
+}
+
+.forge-checkbox {
+  border-color: rgba(209, 213, 219, 1);
+  border-radius: 0.25rem;
+  height: 1rem;
+  margin-top: -0.125rem;
+  width: 1rem;
+  border-width: 1px;
+}
+
+[type="checkbox"],
+[type="radio"] {
+  appearance: none;
+  background-color: #fff;
+  background-origin: border-box;
+  color: #2563eb;
+  display: inline-block;
+  flex-shrink: 0;
+  padding: 0;
+  user-select: none;
+  vertical-align: middle;
+}
+
+[type="checkbox"]:checked {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 16 16' fill='%23fff' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.207 4.793a1 1 0 0 1 0 1.414l-5 5a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L6.5 9.086l4.293-4.293a1 1 0 0 1 1.414 0z'/%3E%3C/svg%3E");
+}
+
+[type="checkbox"]:checked,
+[type="radio"]:checked {
+  background-color: currentColor;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border-color: transparent;
 }
