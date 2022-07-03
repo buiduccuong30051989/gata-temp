@@ -1,13 +1,113 @@
-import { Popover, Transition, Menu } from "@headlessui/react";
-import { Fragment } from "react";
+import Link from "next/link";
+import { Menu } from "@headlessui/react";
 import Image from "next/image";
-import {
-  HiOutlineServer,
-  HiOutlineGlobeAlt,
-  HiOutlineUserCircle,
-  HiOutlineClipboardList,
-  HiOutlineClipboard,
-} from "react-icons/hi";
+import { navMain } from "router";
+import { HiOutlineSearch, HiOutlineChartSquareBar } from "react-icons/hi";
+import { Dropdown } from "components/Dropdown";
+
+const accountNav = [
+  {
+    title: "Profile",
+    path: "/profile",
+  },
+  {
+    title: "Plans",
+    path: "/plans",
+  },
+  {
+    title: "Payment Card",
+    path: "/card",
+  },
+  {
+    title: "Invoices",
+    path: "/invoices",
+  },
+  {
+    title: "API Tokens",
+    path: "/api",
+  },
+  {
+    title: "Notifications",
+    path: "/notifications",
+  },
+];
+
+const MY_PLAN_MOCK_DATA = [
+  {
+    title: "Disk Usage",
+    count: "108.92/5000",
+    percent: "2",
+  },
+  {
+    title: "Sites",
+    count: "1/15",
+    percent: "7",
+  },
+  {
+    title: "Restore Quota",
+    count: "1/10",
+    percent: "10",
+  },
+  {
+    title: "Template Sites",
+    count: "0/10",
+    percent: "0",
+  },
+  {
+    title: "Git Operation Quota",
+    count: "0/500",
+    percent: "0",
+  },
+];
+
+const MyPlan = () => (
+  <div>
+    <div className=" flex justify-between p-2 text-base text-gray-900 ">
+      <div className="leading-none">
+        <a className=" text-right text-blue-600 text-sm leading-none " href="#">
+          My Plan
+        </a>
+      </div>
+    </div>
+    <div>
+      {MY_PLAN_MOCK_DATA.map((item) => (
+        <div
+          key={item.title}
+          className=" block p-2 text-sm leading-5 text-gray-700 "
+        >
+          <span>{item.title}</span>
+          <span className="float-right">{item.count}</span>
+          <div className="relative pt-1">
+            <div className=" overflow-hidden h-2 mb-1 text-xs flex rounded bg-gray-200 ">
+              <div
+                className="bg-brands-primary shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center"
+                style={{ width: `${item.percent}%` }}
+              />
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+const MyAccount = () => {
+  return (
+    <>
+      {accountNav.map((item) => (
+        <Menu.Item key={item.title}>
+          <Link href={item.path}>
+            <a className="forge-dropdown-item">{item.title}</a>
+          </Link>
+        </Menu.Item>
+      ))}
+      <hr className="mx-3 my-1"></hr>
+      <button className="forge-dropdown-item mb-0 w-full" type="button">
+        Logout
+      </button>
+    </>
+  );
+};
 
 export const Navigation = () => {
   return (
@@ -30,17 +130,7 @@ export const Navigation = () => {
             <div className="relative">
               <div className="relative flex items-center text-gray-400 focus-within:text-gray-500">
                 <span className="absolute inset-0 flex items-center pointer-events-none select-none">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 16 16"
-                    fill="currentColor"
-                    className="ml-4 h-4"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M6 2a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4zM0 6a6 6 0 0 1 2.46-4.845A6 6 0 0 1 7.824.283a6 6 0 0 1 3.867 3.818 6 6 0 0 1-.802 5.375l4.817 4.817a1 1 0 0 1-.012 1.402 1 1 0 0 1-1.402.012l-4.816-4.816a6 6 0 0 1-6.229.442A6 6 0 0 1 0 6z"
-                    />
-                  </svg>
+                  <HiOutlineSearch className="ml-4 h-4" />
                 </span>
                 <input
                   type="text"
@@ -53,183 +143,45 @@ export const Navigation = () => {
                   <span className="mr-4">/</span>
                 </div>
               </div>
-              {/**/}
             </div>
           </div>
         </div>
         <div className="flex col-span-4 col-end-7 col-start-3 items-center justify-center w-full">
-          <a
-            className="flex items-center justify-center px-3 h-10 text-gray-800 hover:text-teal-400 text-sm font-normal rounded-lg bg-teal-50"
-            href="/servers"
-          >
-            <HiOutlineServer className="pr-2 h-5 w-auto text-teal-400" />
-            <span>Servers</span>
-          </a>
-          <span className="relative z-30 ml-5">
-            <Popover className="relative">
-              {({ open }) => (
-                <>
-                  <Popover.Button
-                    className={`rounded-lg ${open && "bg-teal-50"}`}
-                  >
-                    <span className="flex items-center justify-center px-3 h-10 text-gray-800 hover:text-teal-400 text-sm font-normal rounded-lg cursor-pointer select-none">
-                      <HiOutlineGlobeAlt
-                        className={`pr-2 w-auto text-gray-500 h-5 ${open && "text-teal-400"}`}
-                      />
-                      <span>Sites</span>
-                    </span>
-                  </Popover.Button>
-                  <Transition
-                    as={Fragment}
-                    enter="transition ease-out duration-200"
-                    enterFrom="opacity-0 translate-y-1"
-                    enterTo="opacity-100 translate-y-0"
-                    leave="transition ease-in duration-150"
-                    leaveFrom="opacity-100 translate-y-0"
-                    leaveTo="opacity-0 translate-y-1"
-                  >
-                    <Popover.Panel className="forge-dropdown right-0 min-w-64 origin-top-right">
-                      <div>
-                        <input
-                          type="text"
-                          className="h-8  px-3 w-full text-gray-900 text-sm bg-white border border-gray-200 focus:border-teal-400 rounded-lg focus:outline-none appearance-none focus:ring-0"
-                          autoComplete="off"
-                          autoCorrect="off"
-                          placeholder="Filter.."
-                        />
-                        <div className="pt-3">
-                          <div>
-                            <span className="mb-2 block px-3 text-gray-700 whitespace-nowrap text-xs font-medium uppercase">
-                              TESTSERVER (2)
-                            </span>
-                            <a
-                              className="forge-dropdown-item whitespace-nowrap"
-                              href="/servers/570738/sites/1682253"
-                            >
-                              default
-                            </a>
-                            <a
-                              className="forge-dropdown-item whitespace-nowrap"
-                              href="/servers/570738/sites/1682256"
-                            >
-                              test.com
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </Popover.Panel>
-                  </Transition>
-                </>
-              )}
-            </Popover>
-          </span>
-          <a
-            className="flex items-center justify-center ml-5 px-3 h-10 text-gray-800 hover:text-teal-400 text-sm font-normal rounded-lg"
-            href="/circles"
-          >
-            <HiOutlineUserCircle className="pr-2 h-5 w-auto text-gray-500" />
-            <span>Circles</span>
-          </a>
-          <a
-            className="flex items-center justify-center ml-5 px-3 h-10 text-gray-800 hover:text-teal-400 text-sm font-normal rounded-lg"
-            href="/recipes"
-          >
-            <HiOutlineClipboardList className="pr-2 h-5 w-auto text-gray-500" />
-            <span>Recipes</span>
-          </a>
-          <a
-            href="/docs"
-            className="flex items-center justify-center ml-5 px-3 h-10 text-gray-800 hover:text-teal-400 text-sm font-normal rounded-lg"
-          >
-            <HiOutlineClipboard className="pr-2 h-5 w-auto text-gray-500" />
-            <span>Docs</span>
-          </a>
+          {navMain.map((item) => (
+            <Link key={item.title} href={item.path}>
+              <a className="flex items-center justify-center ml-5 px-3 h-10 text-gray-800 hover:text-teal-400 text-sm font-normal rounded-lg">
+                {item.icon}
+                <span>{item.title}</span>
+              </a>
+            </Link>
+          ))}
         </div>
         <div className="relative z-30 flex flex-grow col-span-2 items-center justify-end justify-self-end w-full h-10">
-          <Menu as="div" className="relative inline-block text-left">
-            <div>
-              <Menu.Button className="flex items-center -mr-3 px-3 h-12 text-white rounded-lg cursor-pointer select-none">
+          <Dropdown
+            btnChildren={
+              <HiOutlineChartSquareBar className="w-5 text-gray-800 h-5" />
+            }
+            dropdownChildren={<MyPlan />}
+          />
+
+          <Dropdown
+            btnChildren={
+              <>
                 <Image
                   src="https://unavatar.io/xmannv@thcsphuongthien.edu.vn?fallback=https%3A%2F%2Feu.ui-avatars.com%2Fapi%2F%3Fname%3DT+F%26color%3D7F9CF4%26background%3DEBF4FF"
                   height={30}
                   width={30}
-                  className="mr-2 rounded-full"
+                  className="rounded-full"
                   alt="Test Forge's profile picture"
                 />
-                <span className="text-left text-gray-800 text-sm font-normal">
+                <span className="pl-2 text-left text-gray-800 text-sm font-normal">
                   Test Forge
                 </span>
-                <span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    className="ml-2 w-4 w-5 h-4 h-5 text-gray-400 group-hover:text-gray-500 transform duration-300 rotate-90"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M7.293 14.707a1 1 0 0 1 0-1.414L10.586 10 7.293 6.707a1 1 0 0 1 .012-1.402 1 1 0 0 1 1.402-.012l4 4a1 1 0 0 1 0 1.414l-4 4a1 1 0 0 1-1.414 0z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                </span>
-              </Menu.Button>
-            </div>
-            <Transition
-              as={Fragment}
-              enter="transition ease-out duration-200"
-              enterFrom="opacity-0 translate-y-1"
-              enterTo="opacity-100 translate-y-0"
-              leave="transition ease-in duration-150"
-              leaveFrom="opacity-100 translate-y-0"
-              leaveTo="opacity-0 translate-y-1"
-            >
-              <Menu.Items className="forge-dropdown right-0 w-40 origin-top-right p-0">
-                <div className="px-1 py-1 ">
-                  <Menu.Item>
-                    <a
-                      className="forge-dropdown-item"
-                      href="/user-profile/authentication"
-                    >
-                      Account
-                    </a>
-                  </Menu.Item>
-                  <Menu.Item>
-                    <a className="forge-dropdown-item" href="/billing">
-                      Billing
-                    </a>
-                  </Menu.Item>
-                  <Menu.Item>
-                    <a className="forge-dropdown-item" href="/billing">
-                      Circles
-                    </a>
-                  </Menu.Item>
-                  <hr className="mx-3 my-1" />
-                  <Menu.Item>
-                    <a className="forge-dropdown-item" href="/billing">
-                      Documentation
-                    </a>
-                  </Menu.Item>
-                  <Menu.Item>
-                    <a className="forge-dropdown-item" href="/billing">
-                      Video Tutorials
-                    </a>
-                  </Menu.Item>
-                  <Menu.Item>
-                    <a className="forge-dropdown-item" href="/billing">
-                      Blog
-                    </a>
-                  </Menu.Item>
-                  <hr className="mx-3 my-1" />
-                  <Menu.Item>
-                    <a className="forge-dropdown-item" href="/billing">
-                      Logout
-                    </a>
-                  </Menu.Item>
-                </div>
-              </Menu.Items>
-            </Transition>
-          </Menu>
+              </>
+            }
+            dropdownClass="w-40 right-0 origin-top-right"
+            dropdownChildren={<MyAccount />}
+          />
         </div>
       </div>
     </nav>
