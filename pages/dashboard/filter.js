@@ -90,73 +90,10 @@ export const Filter = ({ setType, type }) => {
             </div>
           </Listbox>
         </span>
-        <label className="relative flex items-center text-gray-400 focus-within:text-gray-500">
-          <span className="absolute inset-0 flex items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 16 16"
-              fill="currentColor"
-              className="ml-4 h-3"
-            >
-              <path
-                fillRule="evenodd"
-                d="M6 2a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4zM0 6a6 6 0 0 1 2.46-4.845A6 6 0 0 1 7.824.283a6 6 0 0 1 3.867 3.818 6 6 0 0 1-.802 5.375l4.817 4.817a1 1 0 0 1-.012 1.402 1 1 0 0 1-1.402.012l-4.816-4.816a6 6 0 0 1-6.229.442A6 6 0 0 1 0 6z"
-              />
-            </svg>
-          </span>
-          <input
-            type="text"
-            placeholder="Search"
-            className="h-full pl-10 pr-3 w-full text-gray-900 text-sm bg-white border border-gray-200 focus:border-teal-400 rounded-lg focus:outline-none appearance-none focus:ring-0"
-            autoComplete="off"
-            autoCorrect="off"
-          />
-        </label>
       </div>
       <div className="flex items-center">
-        <div className="flex items-center mr-8">
-          <button onClick={() => setType('grid')} className={`button border-0 px-6 ${type === VIEW_TYPE.GRID ? 'bg-gray-200' : 'bg-transparent'}`}>
-            <span className="icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                className="w-5 h-5 text-gray-600"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
-                />
-              </svg>
-            </span>
-          </button>
-          <button onClick={() => setType('list')} className={`button border-0 px-6 ${type === VIEW_TYPE.LIST ? 'bg-gray-200' : 'bg-transparent'}`}>
-            <span className="icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                className="w-5 h-5 text-gray-600"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 10h16M4 14h16M4 18h16"
-                />
-              </svg>
-            </span>
-          </button>
-        </div>
         <div>
-          <button
-            type="button"
-            className="button is-white border border-gray-200 rounded-lg"
-          >
+          <button type="button" className="forge-btn-secondary">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -171,7 +108,7 @@ export const Filter = ({ setType, type }) => {
                 d="M21 10a2 2 0 00-2-2H5a2 2 0 00-2 2m16 4H5m14 0a2 2 0 002-2V9.702a2 2 0 00-.438-1.25L17.6 4.751A2 2 0 0016.04 4H7.96a2 2 0 00-1.561.75L3.438 8.453A2 2 0 003 9.702V12a2 2 0 002 2m14 0a2 2 0 012 2v2a2 2 0 01-2 2h-8m-6-6a2 2 0 00-2 2v1m14-6h.01M17 17h.01M14 11h.01M14 17h.01M4 20h4m-2-2v4"
               />
             </svg>
-            Create Server
+            Add News
           </button>
         </div>
       </div>

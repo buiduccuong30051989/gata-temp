@@ -4,6 +4,15 @@ const nextConfig = {
   images: {
     domains: ['unavatar.io'],
   },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/dashboard',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 module.exports = nextConfig

@@ -1,20 +1,78 @@
 import { useState } from "react";
-import Link from 'next/link'
+import {
+  HiOutlineExternalLink,
+  HiOutlineClock,
+  HiOutlinePlusCircle,
+  HiOutlineX,
+} from "react-icons/hi";
+import Link from "next/link";
 
 export const EventRow = () => {
   const [loading, setLoading] = useState(false);
+  const [showMore, setShowMore] = useState(false);
 
   return (
     <tr className="h-12 border-t border-gray-100">
-      <td className="pr-4">
-        <Link className="text-teal-400" href="/servers/570738">
-          TESTSERVER
-        </Link>
+      <td>
+        <input type="checkbox" className="forge-checkbox" />
       </td>
       <td className="pr-4">
-        Running Recipe (Update CA certificates (fix 'curl returned with 60')).
+        <span className="flex items-center text-gray-500">
+          www.google.com.vn
+          <a href="#">
+            <HiOutlineExternalLink className="w-4 h-4 ml-2 text-brands-info" />
+          </a>
+        </span>
       </td>
-      <td className="pr-4 text-gray-500 text-xs">Jun 28, 2022, 5:02 PM</td>
+      <td className="pr-4">
+        <span className="flex items-center">
+          <HiOutlineClock className="icon w-4 h-4 mr-2 text-gray-500" />6 day,
+          23 hours, 59 mins
+        </span>
+      </td>
+      <td className="pr-4 text-gray-500 text-xs">108.93 MB</td>
+      <td className="pr-4">
+        <div className="flex items-center gap-2">
+          <div className="grid grid-cols-1 py-2 gap-2">
+            <div className="grid grid-cols-2 gap-2">
+              <div className="ct-tag pl-4 pr-2 is-warning">
+                Tag 02
+                <button>
+                  <HiOutlineX className="w-3 h-3 ml-1 icon" />
+                </button>
+              </div>
+              <div className="ct-tag pl-4 pr-2 is-dark">
+                Tag 03
+                <button>
+                  <HiOutlineX className="w-3 h-3 ml-1 icon" />
+                </button>
+              </div>
+            </div>
+            {Boolean(showMore) && (
+              <div className="grid grid-cols-2 gap-2">
+                <div className="ct-tag pl-4 pr-2 is-warning">
+                  Tag 02
+                  <button>
+                    <HiOutlineX className="w-3 h-3 ml-1 icon" />
+                  </button>
+                </div>
+                <div className="ct-tag pl-4 pr-2 is-dark">
+                  Tag 03
+                  <button>
+                    <HiOutlineX className="w-3 h-3 ml-1 icon" />
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+          <button  onClick={() => setShowMore(prev => !prev)} className="ct-tag is-light w-[84px]">
+            {showMore ? "Show less" : "+4 more"}
+          </button>
+          <button>
+            <HiOutlinePlusCircle className="icon w-4 h-4 text-gray-500" />
+          </button>
+        </div>
+      </td>
       <td className="w-12">
         <div className="flex items-center justify-end h-10">
           <div>

@@ -10,7 +10,7 @@ export const navMain = [
   {
     title: "Sites",
     icon: <HiOutlineServer className="pr-2 h-5 w-auto text-gray-500" />,
-    path: "/sites",
+    path: "/dashboard",
   },
   {
     title: "Templates",

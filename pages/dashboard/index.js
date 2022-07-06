@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { AuthLayout } from "../../components/Layout";
 import { Filter } from "./filter";
-import { ServerList } from "./serverList";
 import { VIEW_TYPE } from "../../constant/common";
 import { RecentEvents } from "./recentEvents";
 
-export default function Servers() {
+export default function Dashboard() {
   const [type, setType] = useState(VIEW_TYPE.GRID);
 
   return (
@@ -13,12 +12,10 @@ export default function Servers() {
       <div>
         <div>
           <div className="flex justify-between w-full">
-            <h2 className="forge-h2">Servers</h2>
+            <h2 className="forge-h2">Sites</h2>
           </div>
 
           <Filter type={type} setType={setType} />
-
-          <ServerList type={type} />
 
           <RecentEvents />
         </div>

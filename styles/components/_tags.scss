@@ -1,0 +1,52 @@
+.ct-tag {
+  @apply inline-flex items-center px-2.5 py-1 text-sm rounded-full bg-brands-primary  text-gray-900;
+
+  @each $name, $pair in $button-colors {
+    $color: nth($pair, 1);
+    $color-invert: nth($pair, 2);
+
+    &.is-#{$name} {
+      background-color: $color;
+      border-color: transparent;
+      color: $color-invert;
+
+      &.is-inverted {
+        background-color: $color-invert;
+        color: $color;
+      }
+
+      &.is-outlined {
+        background-color: transparent;
+        border-color: $color;
+        color: $color;
+      }
+
+      &.is-inverted.is-outlined {
+        background-color: transparent;
+        border-color: $color-invert;
+        color: $color-invert;
+      }
+
+      // If light and dark colors are provided
+      @if length($pair) >= 4 {
+        $color-light: nth($pair, 3);
+        $color-dark: nth($pair, 4);
+
+        &.is-light {
+          background-color: $color-light;
+          color: $color-dark;
+        }
+      }
+    }
+  }
+
+  .icon {
+    @apply opacity-0 transition;
+  }
+
+  &:hover {
+    .icon {
+      @apply opacity-90;
+    }
+  }
+}
