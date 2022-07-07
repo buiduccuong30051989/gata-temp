@@ -6,7 +6,7 @@ export const Dropdown = ({
   btnClass = "flex items-center -mr-3 px-3 h-12 text-white rounded-lg cursor-pointer select-none",
   menuClass = "relative inline-block text-left",
   btnChildren,
-  dropdownClass = "right-0 origin-top-right w-56 top-full",
+  dropdownClass = "right-0 origin-top-right w-56 top-full z-[1]",
   dropdownChildren,
   arrow = true,
 }) => {

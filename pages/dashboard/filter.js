@@ -2,14 +2,15 @@ import { Fragment, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { VIEW_TYPE } from "../../constant/common";
 
-const people = [
-  { name: "All Servers" },
-  { name: "Owned Servers" },
-  { name: "Untagged Servers" },
+const filterOptions = [
+  { name: "All" },
+  { name: "Actived" },
+  { name: "Expried" },
+  { name: "Reserved" },
 ];
 
 export const Filter = ({ setType, type }) => {
-  const [selected, setSelected] = useState(people[0]);
+  const [selected, setSelected] = useState(filterOptions[0]);
 
   return (
     <div className="flex justify-between mt-3 w-full">
@@ -17,7 +18,7 @@ export const Filter = ({ setType, type }) => {
         <span className="z-20 mr-4">
           <Listbox value={selected} onChange={setSelected}>
             <div className="relative">
-              <Listbox.Button className="flex items-center justify-between px-3 py-2 w-52 text-gray-900 text-sm bg-white border border-gray-200 rounded-lg">
+              <Listbox.Button className="flex items-center justify-between px-3 py-2 w-40 text-gray-900 text-sm bg-white border border-gray-200 rounded-lg">
                 <span className="flex items-center truncate">
                   <span className="truncate">{selected.name}</span>
                 </span>
@@ -46,8 +47,8 @@ export const Filter = ({ setType, type }) => {
                 leaveFrom="opacity-100 translate-y-0"
                 leaveTo="opacity-0 translate-y-1"
               >
-                <Listbox.Options className="forge-dropdown w-52">
-                  {people.map((person, personIdx) => (
+                <Listbox.Options className="forge-dropdown w-40">
+                  {filterOptions.map((person, personIdx) => (
                     <Listbox.Option
                       key={personIdx}
                       className={({ active }) =>

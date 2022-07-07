@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Menu } from "@headlessui/react";
 import Image from "next/image";
 import { navMain } from "router";
-import { HiOutlineSearch, HiOutlineChartSquareBar } from "react-icons/hi";
+import { HiOutlineSearch, HiOutlineChartSquareBar, HiOutlineSpeakerphone } from "react-icons/hi";
 import { Dropdown } from "components/Dropdown";
 
 const accountNav = [
@@ -160,6 +160,14 @@ export const Navigation = () => {
           <Dropdown
             btnChildren={
               <HiOutlineChartSquareBar className="w-5 text-gray-800 h-5" />
+            }
+            dropdownChildren={<MyPlan />}
+          />
+
+          <Dropdown
+            arrow={false}
+            btnChildren={
+              <HiOutlineSpeakerphone className="w-5 text-gray-800 h-5" />
             }
             dropdownChildren={<MyPlan />}
           />
