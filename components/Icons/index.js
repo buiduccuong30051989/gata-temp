@@ -11,3 +11,27 @@ export const IconPhp = ({ className }) => (
     />
   </svg>
 );
+
+export const IconLoading = ({ className = "animate-spin mr-2 w-4" }) => (
+  <svg
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 28 28"
+    fill="none"
+    strokeWidth={3}
+  >
+    <circle
+      cx={14}
+      cy={14}
+      r={12}
+      stroke="currentColor"
+      className="opacity-25"
+    />
+    <path
+      d="M26 14c0-6.627-5.373-12-12-12"
+      strokeLinecap="round"
+      stroke="currentColor"
+      className="opacity-75"
+    />
+  </svg>
+);

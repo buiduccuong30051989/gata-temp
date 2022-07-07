@@ -4,13 +4,14 @@ import { Fragment } from "react";
 
 export const Dropdown = ({
   btnClass = "flex items-center -mr-3 px-3 h-12 text-white rounded-lg cursor-pointer select-none",
+  menuClass = "relative inline-block text-left",
   btnChildren,
-  dropdownClass = "right-0 origin-top-right w-56",
+  dropdownClass = "right-0 origin-top-right w-56 top-full",
   dropdownChildren,
   arrow = true,
 }) => {
   return (
-    <Menu as="div" className="relative inline-block text-left">
+    <Menu as="div" className={menuClass}>
       <Menu.Button className={btnClass}>
         {btnChildren}
         {Boolean(arrow) && (

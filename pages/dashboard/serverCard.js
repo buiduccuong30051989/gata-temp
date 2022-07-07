@@ -1,7 +1,7 @@
 import { Transition, Menu } from "@headlessui/react";
 import { Fragment, useState } from "react";
-import { Tooltip } from "../../components/Tooltip";
-import { VIEW_TYPE } from "../../constant/common";
+import { Tooltip } from "components/Tooltip";
+import { VIEW_TYPE } from "constant/common";
 
 export const ServerCard = ({ type = VIEW_TYPE.GRID }) => {
   const [loading, setLoading] = useState(false);
