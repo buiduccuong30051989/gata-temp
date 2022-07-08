@@ -1,8 +1,14 @@
 import { Fragment, useState } from "react";
-import { Listbox, Transition, Tab } from "@headlessui/react";
+import { Listbox, Transition, Tab, RadioGroup } from "@headlessui/react";
 import { IconAddServer } from "components/Icons";
 import { Modal } from "components/Modal";
-import { HiOutlineCollection, HiOutlineTemplate } from "react-icons/hi";
+import {
+  HiOutlineCollection,
+  HiOutlineTemplate,
+  HiOutlineFlag,
+  HiOutlineClock,
+  HiOutlineCheck,
+} from "react-icons/hi";
 import randomWords from "random-words";
 
 const filterOptions = [
@@ -27,10 +33,25 @@ const mockDataScratchOptions = [
   "Symfony &gt;= 4.0",
 ];
 
+const planOptions = [
+  {
+    title: "Temporary Site",
+    value: "temporary",
+    desc: "Expires in 7 days",
+  },
+  {
+    title: "Reserved Site",
+    value: "reserved",
+    desc: "Does not expire",
+  },
+];
+
 export const Filter = ({ setType, type }) => {
   const [selected, setSelected] = useState(filterOptions[0]);
   const [isOpen, setIsOpen] = useState(true);
   const [generateWord, setGenerateWord] = useState("");
+  const [plan, setPlan] = useState("temporary");
+  const [template, setTemplate] = useState(null);
 
   function closeModal() {
     setIsOpen(false);
@@ -44,7 +65,8 @@ export const Filter = ({ setType, type }) => {
     return classes.filter(Boolean).join(" ");
   }
 
-  const handleGenerateWord = () => {
+  const handleGenerateWord = (e) => {
+    e.preventDefault();
     const word = randomWords();
     setGenerateWord(word);
   };
@@ -161,12 +183,10 @@ export const Filter = ({ setType, type }) => {
             <Tab.Panel>
               <div className="px-4 py-3">
                 <h3 className="text-lg leading-6 font-medium text-gray-900">
-                  {" "}
-                  Setup your new site{" "}
+                  Setup your new site
                 </h3>
                 <h6 className="pt-2 launch_text">
-                  {" "}
-                  ⚡ Use default settings for blazing fast launch{" "}
+                  ⚡ Use default settings for blazing fast launch
                 </h6>
                 <form>
                   <div className="mt-8">
@@ -214,114 +234,163 @@ export const Filter = ({ setType, type }) => {
                         </button>
                       </div>
                     </div>
-                    <div id="headlessui-radiogroup-62" role="radiogroup">
-                      <div
-                        className="flex w-full items-center justify-between mt-7 mb-3"
-                        role="none"
-                      >
-                        <div
-                          className="border-transparent bg-white text-insta-primary text-sm border rounded-lg w-full items-center relative text-sm shadow-sm px-5 py-2 mr-0.5 flex cursor-pointer focus:outline-none"
-                          id="headlessui-radiogroup-option-63"
-                          role="radio"
-                          aria-checked="true"
-                          tabIndex={0}
-                          style={{ border: "transparent" }}
-                        >
-                          <div>
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width={24}
-                              height={24}
-                              style={{
-                                fill: "rgba(21, 184, 129, 1)",
-                                transform: "",
-                                msfilter: "",
-                              }}
-                            >
-                              {" "}
-                              <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z" />{" "}
-                              <path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z" />{" "}
-                            </svg>
-                          </div>
-                          <div className="text-left pl-3">
-                            <span className="block my-0.5 text-sm font-medium">
-                              Temporary Site
-                            </span>
-                            <div>
-                              <span className="block text-gray-500 text-xs font-regular">
-                                {" "}
-                                Expires in 7 days{" "}
-                              </span>
-                            </div>
-                          </div>
-                          <span
-                            className="border bg-v2-border-insta-primary absolute -inset-px rounded-lg pointer-events-none"
-                            aria-hidden="true"
-                          />
-                        </div>
-                        <div
-                          className="border-gray-300 cust-bg-gray text-gray-700 text-sm w-full items-center relative text-sm shadow-sm px-5 py-2 mr-0.5 flex cursor-pointer focus:outline-none"
-                          id="headlessui-radiogroup-option-64"
-                          role="radio"
-                          aria-checked="false"
-                          tabIndex={-1}
-                          style={{ border: "transparent" }}
-                        >
-                          <div>
-                            <svg
-                              width={20}
-                              height={20}
-                              viewBox="0 0 20 20"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M10 1.5V7M1 19V15V19ZM1 15V3C1 2.46957 1.21071 1.96086 1.58579 1.58579C1.96086 1.21071 2.46957 1 3 1H9.5L10.5 2H19L16 8L19 14H10.5L9.5 13H3C2.46957 13 1.96086 13.2107 1.58579 13.5858C1.21071 13.9609 1 14.4696 1 15V15Z"
-                                stroke="#4B5563"
-                                strokeWidth={2}
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              />
-                            </svg>{" "}
-                          </div>
-                          <div className="text-left pl-3">
-                            <span className="block my-0.5 text-sm font-medium">
-                              Reserved Site
-                            </span>
-                            <div>
-                              <button type="button">
-                                <span className="block text-gray-500 text-xs font-regular">
-                                  {" "}
-                                  Does not expire{" "}
-                                </span>
-                              </button>
-                            </div>
-                          </div>
-                          <span
-                            className="border border-transparent absolute -inset-px rounded-lg pointer-events-none"
-                            aria-hidden="true"
-                          />
-                        </div>
+
+                    <RadioGroup value={plan} onChange={setPlan}>
+                      <RadioGroup.Label>Plan</RadioGroup.Label>
+                      <div className="flex w-full items-center justify-between mb-3 space-x-4 mt-2">
+                        {planOptions.map((item) => (
+                          <RadioGroup.Option
+                            value={item.value}
+                            key={item.value}
+                            className="w-full"
+                          >
+                            {({ checked }) => (
+                              <div
+                                className={`text-sm rounded-lg w-full items-center relative shadow-sm px-5 py-2 flex cursor-pointer ${
+                                  checked ? "bg-teal-50" : "bg-gray-100"
+                                }`}
+                              >
+                                <div>
+                                  {Boolean(
+                                    item.value === planOptions[0].value
+                                  ) && (
+                                    <HiOutlineClock
+                                      className={`w-5 h-5 ${
+                                        checked ? "text-teal-400" : ""
+                                      }`}
+                                    />
+                                  )}
+
+                                  {Boolean(
+                                    item.value === planOptions[1].value
+                                  ) && (
+                                    <HiOutlineFlag
+                                      className={`w-5 h-5 ${
+                                        checked ? "text-teal-400" : ""
+                                      }`}
+                                    />
+                                  )}
+                                </div>
+                                <div className="text-left pl-3">
+                                  <span
+                                    className={`block my-0.5 text-sm font-normal ${
+                                      checked ? "text-teal-400" : ""
+                                    }`}
+                                  >
+                                    {item.title}
+                                  </span>
+                                  <div>
+                                    <span className="block text-gray-500 text-xs font-normal">
+                                      {item.desc}
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+                          </RadioGroup.Option>
+                        ))}
                       </div>
-                    </div>
+                    </RadioGroup>
                   </div>
-                  <div className="px-5 py-4 flex">
+                  <div className="py-4 flex space-x-4">
                     <button
                       type="button"
-                      className=" mr-2 mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:col-start-1 sm:text-sm "
+                      className="forge-btn-secondary bg-gray-100 w-full"
                     >
-                      {" "}
-                      Cancel{" "}
+                      Cancel
                     </button>
-                    <button
-                      type="submit"
-                      className=" ml-2 disabled:opacity-50 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-insta-primary text-base font-medium text-white hover:bg-insta-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:col-start-2 sm:text-sm "
-                    >
-                      {" "}
-                      Create Site{" "}
+                    <button type="submit" className="forge-btn-primary w-full">
+                      Create Site
                     </button>
                   </div>
                 </form>
+              </div>
+            </Tab.Panel>
+            <Tab.Panel>
+              <div className=" py-3">
+                <div className="customized-scrollbar h-[255px] overflow-y-auto">
+                  <RadioGroup value={template} onChange={setTemplate}>
+                    {"cuongbeodepzaihocgioi".split("").map((item, index) => (
+                      <RadioGroup.Option
+                        value={`${item}-${index}`}
+                        key={`${item}-${index}`}
+                      >
+                        {({ checked }) => (
+                          <div
+                            className={`flex items-center py-2 px-4 cursor-pointer  ${
+                              checked ? "bg-teal-50" : "hover:bg-gray-100"
+                            }`}
+                          >
+                            <div className="flex items-center justify-center rounded-full">
+                              <label
+                                className={`inline-flex flex-shirk-0 w-12 h-12 justify-center text-lg font-normal rounded-full items-center text-white uppercase ${
+                                  checked ? "bg-teal-400" : "bg-gray-500/50"
+                                }`}
+                              >
+                                {Boolean(checked) ? (
+                                  <HiOutlineCheck
+                                    className={`w-6 h-6 text-white`}
+                                  />
+                                ) : (
+                                  <span>{item}</span>
+                                )}
+                              </label>
+                            </div>
+                            <div className="inline-block pl-3 pr-20">
+                              <h4
+                                className={`font-normal ${
+                                  checked ? "text-teal-400" : "text-gray-700"
+                                }`}
+                              >
+                                duc
+                              </h4>
+                              <p className="text-sm text-gray-500 mb-0">
+                                abc xyz 123445
+                              </p>
+                            </div>
+                          </div>
+                        )}
+                      </RadioGroup.Option>
+                    ))}
+                  </RadioGroup>
+                </div>
+
+                <div className="mb-3 mt-4 px-4">
+                  <label
+                    htmlFor="site_name"
+                    className="block text-sm font-light text-gray-900"
+                  >
+                    Site Name
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      id="site_name"
+                      placeholder="Keep blank for instant random site."
+                      autoComplete="site-name"
+                      className="forge-input mt-1 block w-full pr-20"
+                      value={generateWord}
+                    />
+                    <button
+                      onClick={handleGenerateWord}
+                      className="absolute right-0 top-0 h-full px-4"
+                    >
+                      Generate
+                    </button>
+                  </div>
+                </div>
+                <div className="py-4 px-4 flex space-x-4">
+                  <button
+                    type="button"
+                    className="forge-btn-secondary bg-gray-100 w-full"
+                    onClick={closeModal}
+                  >
+                    Cancel
+                  </button>
+                  <button type="submit" className="forge-btn-primary w-full">
+                    Create Site
+                  </button>
+                </div>
               </div>
             </Tab.Panel>
           </Tab.Panels>

@@ -15,7 +15,7 @@ module.exports = {
   theme: {
     colors: {
       brands: {
-        primary: colors.teal[400],
+        primary: '#18b69b',
         secondary: colors.gray[200],
         info: colors.blue[400],
         success: colors.lime[500],
