@@ -1,6 +1,9 @@
 import { Fragment, useState } from "react";
-import { Listbox, Transition } from "@headlessui/react";
-import { VIEW_TYPE } from "../../constant/common";
+import { Listbox, Transition, Tab } from "@headlessui/react";
+import { IconAddServer } from "components/Icons";
+import { Modal } from "components/Modal";
+import { HiOutlineCollection, HiOutlineTemplate } from "react-icons/hi";
+import randomWords from "random-words";
 
 const filterOptions = [
   { name: "All" },
@@ -9,8 +12,42 @@ const filterOptions = [
   { name: "Reserved" },
 ];
 
+const mockDataScratchField = [
+  "Choose WP version",
+  "Choose PHP version",
+  "Choose Configuration",
+];
+
+const mockDataScratchOptions = [
+  "General PHP / Laravel",
+  "Laravel Octane",
+  "Static HTML",
+  "Symfony &lt; 4.0",
+  "Symfony (Dev) &lt; 4.0",
+  "Symfony &gt;= 4.0",
+];
+
 export const Filter = ({ setType, type }) => {
   const [selected, setSelected] = useState(filterOptions[0]);
+  const [isOpen, setIsOpen] = useState(true);
+  const [generateWord, setGenerateWord] = useState("");
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function classNames(...classes) {
+    return classes.filter(Boolean).join(" ");
+  }
+
+  const handleGenerateWord = () => {
+    const word = randomWords();
+    setGenerateWord(word);
+  };
 
   return (
     <div className="flex justify-between mt-3 w-full">
@@ -48,44 +85,25 @@ export const Filter = ({ setType, type }) => {
                 leaveTo="opacity-0 translate-y-1"
               >
                 <Listbox.Options className="forge-dropdown w-40">
-                  {filterOptions.map((person, personIdx) => (
+                  {filterOptions.map((option, optionIdx) => (
                     <Listbox.Option
-                      key={personIdx}
+                      key={optionIdx}
                       className={({ active }) =>
                         `forge-dropdown-item text-gray-900 ${
                           active && "bg-gray-100"
                         }`
                       }
-                      value={person}
+                      value={option}
                     >
                       {({ selected }) => (
                         <>
                           <span className={`${selected ? "bg-gray-100" : ""}`}>
-                            {person.name}
+                            {option.name}
                           </span>
                         </>
                       )}
                     </Listbox.Option>
                   ))}
-                  <div className="mb-3 pb-2 border-b"></div>
-                  <span className="forge-dropdown-item text-gray-900">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 32 32"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                      strokeLinejoin="round"
-                      className="flex-shrink-0 mr-2 w-3.5 h-3.5"
-                    >
-                      <path d="M16 21a5 5 0 0 0 5-5 5 5 0 0 0-5-5 5 5 0 0 0-5 5 5 5 0 0 0 5 5h0zm0 3c-4.922 0-7.887 2.492-9.477 4.502C5.648 29.608 6.525 31 7.935 31h16.13c1.41 0 2.287-1.392 1.412-2.498C23.887 26.492 20.922 24 16 24z" />
-                      <path
-                        d="M28.02 24.975c1.939-2.59 2.985-5.74 2.98-8.975 0-8.284-6.716-15-15-15S1 7.716 1 16c0 3.419 1.074 6.477 3 9"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                    <span>Test</span>
-                  </span>
                 </Listbox.Options>
               </Transition>
             </div>
@@ -94,25 +112,221 @@ export const Filter = ({ setType, type }) => {
       </div>
       <div className="flex items-center">
         <div>
-          <button type="button" className="forge-btn-secondary">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              className="mr-2 w-5 h-5 text-gray-600"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M21 10a2 2 0 00-2-2H5a2 2 0 00-2 2m16 4H5m14 0a2 2 0 002-2V9.702a2 2 0 00-.438-1.25L17.6 4.751A2 2 0 0016.04 4H7.96a2 2 0 00-1.561.75L3.438 8.453A2 2 0 003 9.702V12a2 2 0 002 2m14 0a2 2 0 012 2v2a2 2 0 01-2 2h-8m-6-6a2 2 0 00-2 2v1m14-6h.01M17 17h.01M14 11h.01M14 17h.01M4 20h4m-2-2v4"
-              />
-            </svg>
+          <button
+            type="button"
+            className="forge-btn-secondary"
+            onClick={openModal}
+          >
+            <IconAddServer className="mr-2 w-5 h-5 text-gray-600" />
             Add News
           </button>
         </div>
       </div>
+
+      <Modal
+        isOpen={isOpen}
+        closeModal={closeModal}
+        panelClassName="w-full max-w-md transform overflow-hidden bg-white rounded-2xl  text-left align-middle shadow-xl transition-all"
+      >
+        <Tab.Group>
+          <Tab.List className="flex space-x-1 rounded-xl bg-gray-100 p-1">
+            <Tab
+              className={({ selected }) =>
+                classNames(
+                  "w-full rounded-lg py-2.5 text-sm leading-5 font-normal text-gray-700 flex items-center justify-center",
+                  selected
+                    ? "bg-active-link shadow text-teal-400"
+                    : "hover:bg-white/[0.35]"
+                )
+              }
+            >
+              <HiOutlineCollection className="w-4 h-4 mr-2" />
+              From Scratch
+            </Tab>
+            <Tab
+              className={({ selected }) =>
+                classNames(
+                  "w-full rounded-lg py-2.5 text-sm leading-5 font-normal text-gray-700 flex items-center justify-center",
+                  selected
+                    ? "bg-active-link shadow text-teal-400"
+                    : "hover:bg-white/[0.35]"
+                )
+              }
+            >
+              <HiOutlineTemplate className="w-4 h-4 mr-2" />
+              From Template
+            </Tab>
+          </Tab.List>
+          <Tab.Panels>
+            <Tab.Panel>
+              <div className="px-4 py-3">
+                <h3 className="text-lg leading-6 font-medium text-gray-900">
+                  {" "}
+                  Setup your new site{" "}
+                </h3>
+                <h6 className="pt-2 launch_text">
+                  {" "}
+                  ⚡ Use default settings for blazing fast launch{" "}
+                </h6>
+                <form>
+                  <div className="mt-8">
+                    {mockDataScratchField.map((item) => (
+                      <div className="mt-4" key={item}>
+                        <label
+                          htmlFor={item}
+                          className="block text-sm font-light text-gray-900"
+                        >
+                          {item}
+                        </label>
+                        <select
+                          className="forge-input mt-1 block w-full"
+                          name={item}
+                        >
+                          {mockDataScratchOptions.map((item) => (
+                            <option key={item} value={item}>
+                              {item}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    ))}
+                    <div className="mb-4 mt-4">
+                      <label
+                        htmlFor="site_name"
+                        className="block text-sm font-light text-gray-900"
+                      >
+                        Site Name
+                      </label>
+                      <div className="relative">
+                        <input
+                          type="text"
+                          id="site_name"
+                          placeholder="Keep blank for instant random site."
+                          autoComplete="site-name"
+                          className="forge-input mt-1 block w-full pr-20"
+                          value={generateWord}
+                        />
+                        <button
+                          onClick={handleGenerateWord}
+                          className="absolute right-0 top-0 h-full px-4"
+                        >
+                          Generate
+                        </button>
+                      </div>
+                    </div>
+                    <div id="headlessui-radiogroup-62" role="radiogroup">
+                      <div
+                        className="flex w-full items-center justify-between mt-7 mb-3"
+                        role="none"
+                      >
+                        <div
+                          className="border-transparent bg-white text-insta-primary text-sm border rounded-lg w-full items-center relative text-sm shadow-sm px-5 py-2 mr-0.5 flex cursor-pointer focus:outline-none"
+                          id="headlessui-radiogroup-option-63"
+                          role="radio"
+                          aria-checked="true"
+                          tabIndex={0}
+                          style={{ border: "transparent" }}
+                        >
+                          <div>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width={24}
+                              height={24}
+                              style={{
+                                fill: "rgba(21, 184, 129, 1)",
+                                transform: "",
+                                msfilter: "",
+                              }}
+                            >
+                              {" "}
+                              <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z" />{" "}
+                              <path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z" />{" "}
+                            </svg>
+                          </div>
+                          <div className="text-left pl-3">
+                            <span className="block my-0.5 text-sm font-medium">
+                              Temporary Site
+                            </span>
+                            <div>
+                              <span className="block text-gray-500 text-xs font-regular">
+                                {" "}
+                                Expires in 7 days{" "}
+                              </span>
+                            </div>
+                          </div>
+                          <span
+                            className="border bg-v2-border-insta-primary absolute -inset-px rounded-lg pointer-events-none"
+                            aria-hidden="true"
+                          />
+                        </div>
+                        <div
+                          className="border-gray-300 cust-bg-gray text-gray-700 text-sm w-full items-center relative text-sm shadow-sm px-5 py-2 mr-0.5 flex cursor-pointer focus:outline-none"
+                          id="headlessui-radiogroup-option-64"
+                          role="radio"
+                          aria-checked="false"
+                          tabIndex={-1}
+                          style={{ border: "transparent" }}
+                        >
+                          <div>
+                            <svg
+                              width={20}
+                              height={20}
+                              viewBox="0 0 20 20"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M10 1.5V7M1 19V15V19ZM1 15V3C1 2.46957 1.21071 1.96086 1.58579 1.58579C1.96086 1.21071 2.46957 1 3 1H9.5L10.5 2H19L16 8L19 14H10.5L9.5 13H3C2.46957 13 1.96086 13.2107 1.58579 13.5858C1.21071 13.9609 1 14.4696 1 15V15Z"
+                                stroke="#4B5563"
+                                strokeWidth={2}
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>{" "}
+                          </div>
+                          <div className="text-left pl-3">
+                            <span className="block my-0.5 text-sm font-medium">
+                              Reserved Site
+                            </span>
+                            <div>
+                              <button type="button">
+                                <span className="block text-gray-500 text-xs font-regular">
+                                  {" "}
+                                  Does not expire{" "}
+                                </span>
+                              </button>
+                            </div>
+                          </div>
+                          <span
+                            className="border border-transparent absolute -inset-px rounded-lg pointer-events-none"
+                            aria-hidden="true"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="px-5 py-4 flex">
+                    <button
+                      type="button"
+                      className=" mr-2 mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:col-start-1 sm:text-sm "
+                    >
+                      {" "}
+                      Cancel{" "}
+                    </button>
+                    <button
+                      type="submit"
+                      className=" ml-2 disabled:opacity-50 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-insta-primary text-base font-medium text-white hover:bg-insta-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:col-start-2 sm:text-sm "
+                    >
+                      {" "}
+                      Create Site{" "}
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </Tab.Panel>
+          </Tab.Panels>
+        </Tab.Group>
+      </Modal>
     </div>
   );
 };

@@ -16,7 +16,7 @@ export default function Dashboard() {
           </div>
 
           <Filter type={type} setType={setType} />
-
+        
           <RecentEvents />
         </div>
       </div>

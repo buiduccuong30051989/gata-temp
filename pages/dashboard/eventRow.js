@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, Fragment } from "react";
 import {
   HiOutlineExternalLink,
   HiOutlineClock,
@@ -8,13 +8,21 @@ import {
   HiOutlineFlag,
   HiOutlineTemplate,
   HiOutlineDotsVertical,
+  HiOutlineCheck,
+  HiOutlineSelector,
 } from "react-icons/hi";
-import { IconLoading } from "components/Icons";
 import { Tooltip } from "components/Tooltip";
 import Link from "next/link";
 import { Dropdown } from "components/Dropdown";
 import { Menu } from "@headlessui/react";
 
+const people = [
+  { id: 1, name: "Durward Reynolds" },
+  { id: 2, name: "Kenton Towne" },
+  { id: 3, name: "Therese Wunsch" },
+  { id: 4, name: "Benedict Kessler" },
+  { id: 5, name: "Katelyn Rohan" },
+];
 const MORE_ACTIONS = [
   { title: "View Creds", path: "/" },
   { title: "Migrate", path: "/" },
