@@ -9,7 +9,7 @@ import {
   HiOutlineCheck,
 } from "react-icons/hi";
 import randomWords from "random-words";
-import { classNames } from "utils/helper";
+
 const mockDataScratchField = [
   "Choose WP version",
   "Choose PHP version",
@@ -42,6 +42,10 @@ export const ModalAddNews = ({ isOpen, closeModal }) => {
   const [generateWord, setGenerateWord] = useState("");
   const [plan, setPlan] = useState("temporary");
   const [template, setTemplate] = useState(null);
+
+  function classNames(...classes) {
+    return classes.filter(Boolean).join(" ");
+  }
 
   const handleGenerateWord = (e) => {
     e.preventDefault();
