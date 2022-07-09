@@ -206,3 +206,23 @@ select {
 .bg-active-link {
   background-color: rgba(249, 250, 251, 1);
 }
+
+.filter-option {
+  @apply pr-8 relative;
+
+  .icon {
+    @apply hidden;
+  }
+
+  &[aria-selected="true"] {
+    @apply bg-teal-50;
+
+    .icon {
+      @apply block;
+    }
+  }
+}
+
+.overlay-showmore {
+  @apply inset-x-0 bottom-0 flex justify-center bg-gradient-to-t from-white pt-32 pb-8 pointer-events-none  absolute;
+}

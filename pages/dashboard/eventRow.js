@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, Fragment } from "react";
 import {
   HiOutlineExternalLink,
   HiOutlineClock,
@@ -8,11 +8,13 @@ import {
   HiOutlineFlag,
   HiOutlineTemplate,
   HiOutlineDotsVertical,
+  HiOutlineSearch,
+  HiOutlineCheck,
 } from "react-icons/hi";
 import { Tooltip } from "components/Tooltip";
 import Link from "next/link";
 import { Dropdown } from "components/Dropdown";
-import { Menu } from "@headlessui/react";
+import { Menu, Popover, Transition, Combobox } from "@headlessui/react";
 
 const MORE_ACTIONS = [
   { title: "View Creds", path: "/" },
@@ -23,6 +25,19 @@ const MORE_ACTIONS = [
   { title: "Access FTP/SSH", path: "/" },
   { title: "Map Domain", path: "/" },
   { title: "Unreserve Site", path: "/" },
+];
+
+const people = [
+  { id: 1, name: "Durward Reynolds" },
+  { id: 2, name: "Kenton Towne" },
+  { id: 3, name: "Therese Wunsch" },
+  { id: 4, name: "Benedict Kessler" },
+  { id: 5, name: "fKatelyn Rohan" },
+  { id: 6, name: "sDurward Reynolds" },
+  { id: 7, name: "gKenton Towne" },
+  { id: 8, name: "gTherese Wunsch" },
+  { id: 9, name: "zBenedict Kessler" },
+  { id: 10, name: "wKatelyn Rohan" },
 ];
 
 const MoreActions = () => (
@@ -39,6 +54,16 @@ const MoreActions = () => (
 
 export const EventRow = () => {
   const [showMore, setShowMore] = useState(false);
+
+  const [selectedPerson, setSelectedPerson] = useState([]);
+  const [query, setQuery] = useState("");
+
+  const filteredPeople =
+    query === ""
+      ? people
+      : people.filter((person) => {
+          return person.name.toLowerCase().includes(query.toLowerCase());
+        });
 
   return (
     <tr className="h-12 border-t border-gray-100">
@@ -100,9 +125,61 @@ export const EventRow = () => {
           >
             {showMore ? "Show less" : "+4 more"}
           </button>
-          <button>
-            <HiOutlinePlusCircle className="icon w-4 h-4 text-gray-500" />
-          </button>
+          <Popover className="relative">
+            <Popover.Button>
+              <HiOutlinePlusCircle className="icon w-4 h-4 text-gray-500" />
+            </Popover.Button>
+            <Transition
+              as={Fragment}
+              enter="transition ease-out duration-200"
+              enterFrom="opacity-0 translate-y-1"
+              enterTo="opacity-100 translate-y-0"
+              leave="transition ease-in duration-150"
+              leaveFrom="opacity-100 translate-y-0"
+              leaveTo="opacity-0 translate-y-1"
+            >
+              <Popover.Panel className="forge-dropdown right-0 origin-top-right w-56 top-full z-[1]">
+                <Combobox
+                  multiple
+                  value={selectedPerson}
+                  onChange={setSelectedPerson}
+                >
+                  <div className="relative">
+                    <div className="relative flex items-center text-gray-400 focus-within:text-gray-500">
+                      <span className="absolute inset-0 flex items-center pointer-events-none select-none">
+                        <HiOutlineSearch className="ml-4 h-4" />
+                      </span>
+                      <Combobox.Input
+                        onChange={(event) => setQuery(event.target.value)}
+                        type="text"
+                        placeholder="Search"
+                        className="pl-10 pr-12 w-full h-10 focus:text-black text-sm bg-gray-100 focus:bg-gray-50 border border-gray-100 focus:border-teal-400 rounded-lg focus:outline-none appearance-none focus:ring-0"
+                      />
+                      <div className="absolute right-0 flex items-center pointer-events-none select-none">
+                        <span className="mr-4">/</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="customized-scrollbar h-[200px] overflow-y-auto py-2 ">
+                    <Combobox.Options static>
+                      {filteredPeople.map((person) => (
+                        <Combobox.Option
+                          className="forge-dropdown-item filter-option"
+                          key={person.id}
+                          value={person.name}
+                        >
+                          {person.name}
+                          <HiOutlineCheck className="icon w-4 h-4 absolute right-2" />
+                        </Combobox.Option>
+                      ))}
+                    </Combobox.Options>
+                  </div>
+                </Combobox>
+                <div className="overlay-showmore pt-20"></div>
+              </Popover.Panel>
+            </Transition>
+          </Popover>
         </div>
       </td>
       <td className="pl-4">
