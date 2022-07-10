@@ -5,8 +5,6 @@ import { VIEW_TYPE } from "../../constant/common";
 import { RecentEvents } from "./recentEvents";
 
 export default function Dashboard() {
-  const [type, setType] = useState(VIEW_TYPE.GRID);
-
   return (
     <AuthLayout>
       <div>
@@ -15,7 +13,7 @@ export default function Dashboard() {
             <h2 className="forge-h2">Sites</h2>
           </div>
 
-          <Filter type={type} setType={setType} />
+          <Filter />
 
           <RecentEvents />
         </div>
