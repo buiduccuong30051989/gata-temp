@@ -1,6 +1,6 @@
 import { PrivateRow } from "./privateRows";
 
-export const PrivateTab = () => {
+export const PrivateTab = ({ openEdit }) => {
   return (
     <div className="px-6 py-4 text-sm bg-white rounded-lg mt-8">
       <div className="flex items-center justify-between">
@@ -18,7 +18,7 @@ export const PrivateTab = () => {
           </thead>
           <tbody>
             {[1, 2, 3, 4, 5].map((item) => (
-              <PrivateRow key={item} />
+              <PrivateRow openEdit={openEdit} key={item} />
             ))}
           </tbody>
         </table>

@@ -44,7 +44,7 @@ const MoreActions = () => (
   </div>
 );
 
-export const PrivateRow = () => {
+export const PrivateRow = ({ openEdit }) => {
   return (
     <tr className="h-12 border-t border-gray-100">
       <td className="w-5/12 pr-4">
@@ -85,7 +85,10 @@ export const PrivateRow = () => {
           <Tooltip content="Edit">
             <button className="forge-btn-secondary rounded-none rounded-l-lg">
               <span className="icon is-small">
-                <HiOutlinePencilAlt className="w-5 h-5 text-gray-500" />
+                <HiOutlinePencilAlt
+                  onClick={() => openEdit(true)}
+                  className="w-5 h-5 text-gray-500"
+                />
               </span>
             </button>
           </Tooltip>

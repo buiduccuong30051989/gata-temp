@@ -1,14 +1,26 @@
-import { useState } from "react";
+import { useState, Fragment } from "react";
 import { AuthLayout } from "components/Layout";
-import { Tab } from "@headlessui/react";
+import { Tab, Transition } from "@headlessui/react";
+import { Switch } from "components/Switch";
 import { Modal } from "components/Modal";
-import { HiOutlineTemplate, HiOutlineLockClosed, HiOutlineShare } from "react-icons/hi";
+import {
+  HiOutlineTemplate,
+  HiOutlineLockClosed,
+  HiOutlineShare,
+  HiOutlineX,
+  HiOutlineCode,
+  HiOutlineLink,
+  HiOutlineDocumentText,
+} from "react-icons/hi";
 import { classNames } from "utils/helper";
 import { PrivateTab } from "./privateTab";
 import { ModalAddTempate } from "./modalAddTemplate";
+import { OffCanvas } from "./offcanvas";
 
 export default function Templates() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isShow, setIsShow] = useState(false);
+  const [enabled, setEnabled] = useState(false);
 
   const closeModal = () => {
     setIsOpen(false);
@@ -32,7 +44,7 @@ export default function Templates() {
                 <Tab
                   className={({ selected }) =>
                     classNames(
-                      "w-full rounded-lg py-2.5 text-sm leading-5 font-normal text-gray-700 flex items-center justify-center",
+                      "w-full rounded-lg py-2.5 text-sm leading-5 font-light text-gray-700 flex items-center justify-center",
                       selected
                         ? "bg-active-link shadow text-teal-400"
                         : "hover:bg-white/[0.35]"
@@ -45,7 +57,7 @@ export default function Templates() {
                 <Tab
                   className={({ selected }) =>
                     classNames(
-                      "w-full rounded-lg py-2.5 text-sm leading-5 font-normal text-gray-700 flex items-center justify-center",
+                      "w-full rounded-lg py-2.5 text-sm leading-5 font-light text-gray-700 flex items-center justify-center",
                       selected
                         ? "bg-active-link shadow text-teal-400"
                         : "hover:bg-white/[0.35]"
@@ -67,7 +79,7 @@ export default function Templates() {
             </Tab.List>
             <Tab.Panels>
               <Tab.Panel>
-                <PrivateTab />
+                <PrivateTab openEdit={setIsShow} />
               </Tab.Panel>
               <Tab.Panel></Tab.Panel>
             </Tab.Panels>
@@ -76,6 +88,469 @@ export default function Templates() {
           <ModalAddTempate isOpen={isOpen} closeModal={closeModal} />
         </div>
       </div>
+      <Transition
+        show={isShow}
+        className="fixed pl-16 max-w-full top-0 right-0 flex h-screen z-30"
+      >
+        <Transition.Child
+          enter="transition-opacity ease-linear duration-300"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="transition-opacity ease-linear duration-300"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <div
+            className="fixed inset-0 bg-black/30"
+            aria-hidden="true"
+            onClick={() => setIsShow(false)}
+          />
+        </Transition.Child>
+
+        <Transition.Child
+          enter="transition ease-in-out duration-300 transform"
+          enterFrom="translate-x-full"
+          enterTo="translate-x-0"
+          leave="transition ease-in-out duration-300 transform"
+          leaveFrom="translate-x-0"
+          leaveTo="translate-x-full"
+        >
+          <div className=" bg-white shadow-xl">
+            <form className="w-screen h-screen max-w-md divide-y divide-gray-200 flex flex-col">
+              <div className="py-6 px-4 bg-teal-400 flex-shrink-0">
+                <div className="flex items-center justify-between">
+                  <h2 className="text-lg font-light text-white">
+                    Edit Template
+                  </h2>
+                  <div className="ml-3 h-7 flex items-center">
+                    <button type="button" onClick={() => setIsShow(false)}>
+                      <HiOutlineX className="w-5 h-5 text-white" />
+                    </button>
+                  </div>
+                </div>
+                <div className="mt-1"></div>
+              </div>
+              <div className="flex-1 overflow-y-auto  customized-scrollbar">
+                <div className="flex-1 flex flex-col justify-between">
+                  <div className="px-4 divide-y divide-gray-200">
+                    <div className="space-y-4 pt-6 pb-5">
+                      <div>
+                        <label
+                          htmlFor="template-name"
+                          className="block text-sm font-light text-gray-700"
+                        >
+                          Template Name
+                        </label>
+                        <div className="mt-1">
+                          <div className="flex">
+                            <input
+                              type="text"
+                              autoComplete="off"
+                              id="template-name"
+                              className="forge-input w-full"
+                            />
+                          </div>
+                        </div>
+                        <div className="my-1 cfull-w mt-3">
+                          <div className="flex justify-between">
+                            <label
+                              htmlFor="description"
+                              className="block text-sm font-light text-gray-700"
+                            >
+                              Description
+                            </label>
+                          </div>
+                          <div className="mt-1">
+                            <textarea
+                              className="forge-input w-full"
+                              rows={3}
+                              cols={100}
+                              id="description"
+                              placeholder
+                              defaultValue={""}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <div className="flex justify-between">
+                          <span id="headlessui-label-268" className>
+                            <span className="text-sm font-light text-gray-700">
+                              Enable Sharing
+                            </span>
+                          </span>
+                          <Switch
+                            enabled={enabled}
+                            setEnabled={setEnabled}
+                            title="Enable Sharing"
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <input
+                          type="text"
+                          readOnly
+                          className="forge-input w-full"
+                        />
+                        <div className="flex justify-center  text-sm pt-2">
+                          <button
+                            type="button"
+                            className="pr-7 group inline-flex items-center font-light text-indigo-600 hover:text-indigo-900"
+                          >
+                            <span className="flex w-full justify-center items-center">
+                              <HiOutlineLink className="h-4 w-4 mr-2" />
+                              Copy Link
+                            </span>
+                          </button>
+                          <button
+                            type="button"
+                            className="pr-3 group inline-flex items-center font-light text-indigo-600 hover:text-indigo-900"
+                          >
+                            <span className="flex w-full justify-center items-center">
+                              <HiOutlineCode className="w-4 h-4 mr-2" />
+                              Copy Embed
+                            </span>
+                          </button>
+                        </div>
+                        <div className="mt-3 text-center">
+                          <span className="inline-block px-2.5 py-0.5 rounded-md text-xs font-light bg-gray-100 text-gray-800">
+                            15 template sites can be created under your plan
+                          </span>
+                        </div>
+                      </div>
+                      <div>
+                        <div className="flex justify-between items-center  text-sm pt-2">
+                          <label className="block text-sm font-light text-gray-700">
+                            Advance Options
+                          </label>
+                          <a
+                            className="font-light text-xs text-gray-700 text-left pb-1 flex float-right"
+                            href="https://app.instawp.io/subscription/plans"
+                          >
+                            <span>Upgrade to unlock</span>
+                            <HiOutlineLockClosed className="h-4 w-4 ml-1 text-gray-500" />
+                          </a>
+                        </div>
+                        <div className="flex justify-between items-center text-sm mt-2">
+                          <label
+                            className="text-xs font-light text-gray-700"
+                            htmlFor="site_life_time"
+                          >
+                            Site Lifetime
+                          </label>
+                          <select
+                            disabled
+                            id="site_life_time"
+                            name="site_life_time"
+                            className="mt-1 pl-3 pr-10 py-2 forge-input"
+                          >
+                            <option value={4}>4 Hours</option>
+                          </select>
+                        </div>
+                        <div className="flex justify-between items-center text-sm mt-2">
+                          <span id="headlessui-label-284" className>
+                            <span className="text-xs font-light text-gray-700">
+                              Disallow File Modifications
+                            </span>
+                          </span>
+                          <Switch
+                            enabled={enabled}
+                            setEnabled={setEnabled}
+                            title="Disallow File Modifications"
+                          />
+                        </div>
+
+                        <div className=" mt-4">
+                          <label className="block text-sm font-light text-gray-700 ">
+                            Landing Page Flow
+                          </label>
+
+                          <div className="divide-y divide-dashed">
+                            <div className="flow-steps px-2 mt-3">
+                              <label className="block text-sm font-light text-gray-700 mb-2">
+                                Step 1
+                              </label>
+                              <div className="flex justify-between items-center text-sm">
+                                <span id="headlessui-label-272" className>
+                                  <span className="text-xs font-light text-gray-700">
+                                    Collect Email
+                                  </span>
+                                </span>
+                                <Switch
+                                  enabled={enabled}
+                                  setEnabled={setEnabled}
+                                  title="Collect Email"
+                                />
+                              </div>
+                              <div className="flex justify-between items-center text-sm mt-2">
+                                <span id="headlessui-label-274" className>
+                                  <span className="text-xs font-light text-gray-700">
+                                    Email Required
+                                  </span>
+                                </span>
+                                <Switch
+                                  enabled={enabled}
+                                  setEnabled={setEnabled}
+                                  title="Email Required"
+                                />
+                              </div>
+                              <div className="flex justify-between items-center text-sm mt-2">
+                                <span id="headlessui-label-276" className>
+                                  <span className="text-xs font-light text-gray-700">
+                                    Send Credentials to Email
+                                  </span>
+                                </span>
+                                <Switch
+                                  enabled={enabled}
+                                  setEnabled={setEnabled}
+                                  title="Send Credentials to Email"
+                                />
+                              </div>
+                              <div className="flex justify-between items-center text-sm mt-2">
+                                <span id="headlessui-label-278" className>
+                                  <span className="text-xs font-light text-gray-700">
+                                    Hide Privacy Checkbox
+                                  </span>
+                                </span>
+                                <Switch
+                                  enabled={enabled}
+                                  setEnabled={setEnabled}
+                                  title="Hide Privacy Checkbox"
+                                />
+                              </div>
+                            </div>
+
+                            <div className="flow-steps px-2 mt-3">
+                              <label className="block text-sm font-light text-gray-700 my-2">
+                                Step 2
+                              </label>
+                              <div className="flex justify-between items-center text-sm">
+                                <span id="headlessui-label-280" className>
+                                  <span className="text-xs font-light text-gray-700">
+                                    Auto Login to wp-admin
+                                  </span>
+                                </span>
+                                <Switch
+                                  enabled={enabled}
+                                  setEnabled={setEnabled}
+                                  title="Auto Login to wp-admin"
+                                />
+                              </div>
+                              <div className="flex justify-between items-center text-sm mt-2">
+                                <span id="headlessui-label-282" className>
+                                  <span className="text-xs font-light text-gray-700">
+                                    Enable Site Cloning
+                                  </span>
+                                </span>
+                                <Switch
+                                  enabled={enabled}
+                                  setEnabled={setEnabled}
+                                  title="Enable Site Cloning"
+                                />
+                              </div>
+                            </div>
+
+                            <div className="flow-steps px-2 mt-3">
+                              <label className="block text-sm font-light text-gray-700 my-2">
+                                Step 3
+                              </label>
+                              <div className="text-sm">
+                                <label
+                                  className="text-xs font-light text-gray-700"
+                                  htmlFor="redirect_url"
+                                >
+                                  Redirect URL
+                                </label>
+                                <div className="flex items-center">
+                                  <span className="text-xs mr-1">
+                                    https://sitename.instawp.xyz
+                                  </span>
+                                  <input
+                                    disabled
+                                    placeholder="/wp-admin/"
+                                    type="text"
+                                    id="redirect_url"
+                                    name="redirect_url"
+                                    className="w-full mt-1 forge-input"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="text-sm mt-2">
+                          <label className="block text-sm font-light text-gray-700 ">
+                            Webhook
+                          </label>
+                          <div className="flow-steps px-2 mt-3">
+                            <div className="text-sm">
+                              <label
+                                className="text-xs font-light text-gray-700"
+                                htmlFor="zapier_webhook_url"
+                              >
+                                URL
+                              </label>
+                              <a
+                                className="items-center text-indigo-600 hover:text-indigo-900 flex float-right"
+                                target="_blank"
+                                href="/webhook-integration/"
+                              >
+                                <HiOutlineDocumentText className="h-4 w-4 mr-2" />
+                                Doc
+                              </a>
+                              <div className="flex items-center">
+                                <input
+                                  disabled
+                                  placeholder="Enter your webhook URL"
+                                  type="text"
+                                  id="zapier_webhook_url"
+                                  name="zapier_webhook_url"
+                                  className="w-full mt-1 forge-input"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <div className="flex justify-between items-center  text-sm pt-2">
+                          <label className="block text-sm font-light text-gray-700">
+                            Branding
+                          </label>
+                        </div>
+                        <div>
+                          <label
+                            htmlFor="logo"
+                            className="block text-xs mt-4 pb-2 font-light text-gray-700"
+                          >
+                            Logo (128 x 128, png, svg, jpg)
+                          </label>
+                          <input
+                            id="logo"
+                            className="cbutton-file shadow-none focus:ring-indigo-500 focus:border-indigo-500"
+                            type="file"
+                            accept="image/*"
+                          />
+                        </div>
+                        <div className="flex justify-between items-center text-sm">
+                          <label className="block text-xs mt-4 pb-2 font-light text-gray-700">
+                            Customize Email
+                          </label>
+                          <button
+                            type="button"
+                            className="text-indigo-500 flex cursor-pointer text-xs"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="h-4 w-4 mr-1"
+                              viewBox="0 0 20 20"
+                              fill="currentColor"
+                            >
+                              <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
+                              <path
+                                fillRule="evenodd"
+                                d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
+                            <span>Edit Content</span>
+                          </button>
+                        </div>
+
+                        <div className="flex justify-between items-center text-sm">
+                          <label className="block text-xs mt-4 pb-2 font-light text-gray-700">
+                            Customize Privacy Policy
+                          </label>
+                          <button
+                            type="button"
+                            className="text-indigo-500 flex cursor-pointer text-xs"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="h-4 w-4 mr-1"
+                              viewBox="0 0 20 20"
+                              fill="currentColor"
+                            >
+                              <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
+                              <path
+                                fillRule="evenodd"
+                                d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
+                            <span>Edit Text</span>
+                          </button>
+                        </div>
+                      </div>
+                      <div>
+                        <div className="flex justify-end">
+                          <a
+                            className="font-light text-xs text-gray-700 text-left pb-1 flex float-right"
+                            href="https://app.instawp.io/subscription/plans"
+                          >
+                            <span>Upgrade to unlock</span>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 20 20"
+                              fill="currentColor"
+                              className="h-4 w-4 ml-1 text-gray-700"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
+                          </a>
+                        </div>
+                        <div className="flex justify-between items-center text-sm mt-2">
+                          <span id="headlessui-label-270" className>
+                            <span className="text-sm font-light text-gray-700">
+                              Instant Template
+                            </span>
+                          </span>
+                          <button
+                            modelvalue="false"
+                            id="headlessui-switch-271"
+                            role="switch"
+                            type="button"
+                            tabIndex={0}
+                            aria-checked="false"
+                            disabled
+                            className="bg-gray-200 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none"
+                            aria-labelledby="headlessui-label-270"
+                          >
+                            <span
+                              aria-hidden="true"
+                              className="translate-x-0 pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"
+                            />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="flex-shrink-0 px-4 py-4 flex justify-end">
+                <button
+                  type="button"
+                  className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-light text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  Cancel
+                </button>
+
+                <button
+                  type="button"
+                  className="ml-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-light rounded-md text-white bg-insta-primary hover:bg-insta-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-60"
+                >
+                  Update
+                </button>
+              </div>
+            </form>
+          </div>
+        </Transition.Child>
+      </Transition>
     </AuthLayout>
   );
 }
