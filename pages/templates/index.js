@@ -11,6 +11,7 @@ import {
   HiOutlineCode,
   HiOutlineLink,
   HiOutlineDocumentText,
+  HiOutlinePencilAlt,
 } from "react-icons/hi";
 import { classNames } from "utils/helper";
 import { PrivateTab } from "./privateTab";
@@ -225,48 +226,49 @@ export default function Templates() {
                           </label>
                           <a
                             className="font-light text-xs text-gray-700 text-left pb-1 flex float-right"
-                            href="https://app.instawp.io/subscription/plans"
+                            href="subscription/plans"
                           >
                             <span>Upgrade to unlock</span>
                             <HiOutlineLockClosed className="h-4 w-4 ml-1 text-gray-500" />
                           </a>
                         </div>
-                        <div className="flex justify-between items-center text-sm mt-2">
-                          <label
-                            className="text-xs font-light text-gray-700"
-                            htmlFor="site_life_time"
-                          >
-                            Site Lifetime
-                          </label>
-                          <select
-                            disabled
-                            id="site_life_time"
-                            name="site_life_time"
-                            className="mt-1 pl-3 pr-10 py-2 forge-input"
-                          >
-                            <option value={4}>4 Hours</option>
-                          </select>
-                        </div>
-                        <div className="flex justify-between items-center text-sm mt-2">
-                          <span id="headlessui-label-284" className>
-                            <span className="text-xs font-light text-gray-700">
-                              Disallow File Modifications
+                        <div className="px-2 mt-3">
+                          <div className="flex justify-between items-center text-sm mt-2">
+                            <label
+                              className="text-xs font-light text-gray-700"
+                              htmlFor="site_life_time"
+                            >
+                              Site Lifetime
+                            </label>
+                            <select
+                              disabled
+                              id="site_life_time"
+                              name="site_life_time"
+                              className="mt-1 pl-3 pr-10 py-2 forge-input"
+                            >
+                              <option value={4}>4 Hours</option>
+                            </select>
+                          </div>
+                          <div className="flex justify-between items-center text-sm mt-2">
+                            <span id="headlessui-label-284" className>
+                              <span className="text-xs font-light text-gray-700">
+                                Disallow File Modifications
+                              </span>
                             </span>
-                          </span>
-                          <Switch
-                            enabled={enabled}
-                            setEnabled={setEnabled}
-                            title="Disallow File Modifications"
-                          />
+                            <Switch
+                              enabled={enabled}
+                              setEnabled={setEnabled}
+                              title="Disallow File Modifications"
+                            />
+                          </div>
                         </div>
 
                         <div className=" mt-4">
                           <label className="block text-sm font-light text-gray-700 ">
                             Landing Page Flow
                           </label>
-
-                          <div className="divide-y divide-dashed">
-                            <div className="flow-steps px-2 mt-3">
+                          <div className="px-2 mt-3">
+                            <div className=" p-4 bg-gray-100 rounded-xl mt-3">
                               <label className="block text-sm font-light text-gray-700 mb-2">
                                 Step 1
                               </label>
@@ -320,7 +322,7 @@ export default function Templates() {
                               </div>
                             </div>
 
-                            <div className="flow-steps px-2 mt-3">
+                            <div className="p-4 bg-gray-100 rounded-xl mt-3">
                               <label className="block text-sm font-light text-gray-700 my-2">
                                 Step 2
                               </label>
@@ -350,7 +352,7 @@ export default function Templates() {
                               </div>
                             </div>
 
-                            <div className="flow-steps px-2 mt-3">
+                            <div className="p-4 bg-gray-100 rounded-xl mt-3">
                               <label className="block text-sm font-light text-gray-700 my-2">
                                 Step 3
                               </label>
@@ -371,7 +373,7 @@ export default function Templates() {
                                     type="text"
                                     id="redirect_url"
                                     name="redirect_url"
-                                    className="w-full mt-1 forge-input"
+                                    className="w-full mt-1 forge-input ml-2"
                                   />
                                 </div>
                               </div>
@@ -379,7 +381,7 @@ export default function Templates() {
                           </div>
                         </div>
 
-                        <div className="text-sm mt-2">
+                        <div className="text-sm mt-4">
                           <label className="block text-sm font-light text-gray-700 ">
                             Webhook
                           </label>
@@ -392,21 +394,19 @@ export default function Templates() {
                                 URL
                               </label>
                               <a
-                                className="items-center text-indigo-600 hover:text-indigo-900 flex float-right"
+                                className="items-center text-teal-400 flex float-right"
                                 target="_blank"
                                 href="/webhook-integration/"
                               >
-                                <HiOutlineDocumentText className="h-4 w-4 mr-2" />
+                                <HiOutlineDocumentText className="h-4 w-4 mr-1" />
                                 Doc
                               </a>
-                              <div className="flex items-center">
+                              <div className="flex items-center  mt-1">
                                 <input
                                   disabled
                                   placeholder="Enter your webhook URL"
                                   type="text"
-                                  id="zapier_webhook_url"
-                                  name="zapier_webhook_url"
-                                  className="w-full mt-1 forge-input"
+                                  className="w-full forge-input"
                                 />
                               </div>
                             </div>
@@ -419,68 +419,46 @@ export default function Templates() {
                             Branding
                           </label>
                         </div>
-                        <div>
-                          <label
-                            htmlFor="logo"
-                            className="block text-xs mt-4 pb-2 font-light text-gray-700"
-                          >
-                            Logo (128 x 128, png, svg, jpg)
-                          </label>
-                          <input
-                            id="logo"
-                            className="cbutton-file shadow-none focus:ring-indigo-500 focus:border-indigo-500"
-                            type="file"
-                            accept="image/*"
-                          />
-                        </div>
-                        <div className="flex justify-between items-center text-sm">
-                          <label className="block text-xs mt-4 pb-2 font-light text-gray-700">
-                            Customize Email
-                          </label>
-                          <button
-                            type="button"
-                            className="text-indigo-500 flex cursor-pointer text-xs"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              className="h-4 w-4 mr-1"
-                              viewBox="0 0 20 20"
-                              fill="currentColor"
+                        <div className="px-2 mt-3">
+                          <div>
+                            <label
+                              htmlFor="logo"
+                              className="block text-xs mt-4 pb-2 font-light text-gray-700"
                             >
-                              <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
-                              <path
-                                fillRule="evenodd"
-                                d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
-                                clipRule="evenodd"
-                              />
-                            </svg>
-                            <span>Edit Content</span>
-                          </button>
-                        </div>
+                              Logo (128 x 128, png, svg, jpg)
+                            </label>
+                            <input
+                              id="logo"
+                              className="forge-input w-full py-[5px]"
+                              type="file"
+                              accept="image/*"
+                            />
+                          </div>
+                          <div className="flex justify-between items-center text-sm mt-3">
+                            <label className="block text-xs pb-2 font-light text-gray-700">
+                              Customize Email
+                            </label>
+                            <button
+                              type="button"
+                              className="text-teal-400 flex cursor-pointer"
+                            >
+                              <HiOutlinePencilAlt className="h-4 w-4 mr-1" />
+                              <span>Edit Content</span>
+                            </button>
+                          </div>
 
-                        <div className="flex justify-between items-center text-sm">
-                          <label className="block text-xs mt-4 pb-2 font-light text-gray-700">
-                            Customize Privacy Policy
-                          </label>
-                          <button
-                            type="button"
-                            className="text-indigo-500 flex cursor-pointer text-xs"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              className="h-4 w-4 mr-1"
-                              viewBox="0 0 20 20"
-                              fill="currentColor"
+                          <div className="flex justify-between items-center text-sm">
+                            <label className="block text-xs mt-4 pb-2 font-light text-gray-700">
+                              Customize Privacy Policy
+                            </label>
+                            <button
+                              type="button"
+                              className="text-teal-400 flex cursor-pointer"
                             >
-                              <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
-                              <path
-                                fillRule="evenodd"
-                                d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
-                                clipRule="evenodd"
-                              />
-                            </svg>
-                            <span>Edit Text</span>
-                          </button>
+                              <HiOutlinePencilAlt className="h-4 w-4 mr-1" />
+                              <span>Edit Text</span>
+                            </button>
+                          </div>
                         </div>
                       </div>
                       <div>
@@ -490,18 +468,7 @@ export default function Templates() {
                             href="https://app.instawp.io/subscription/plans"
                           >
                             <span>Upgrade to unlock</span>
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 20 20"
-                              fill="currentColor"
-                              className="h-4 w-4 ml-1 text-gray-700"
-                            >
-                              <path
-                                fillRule="evenodd"
-                                d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                                clipRule="evenodd"
-                              />
-                            </svg>
+                            <HiOutlineLockClosed className="h-4 w-4 ml-1 text-gray-500" />
                           </a>
                         </div>
                         <div className="flex justify-between items-center text-sm mt-2">
@@ -510,22 +477,11 @@ export default function Templates() {
                               Instant Template
                             </span>
                           </span>
-                          <button
-                            modelvalue="false"
-                            id="headlessui-switch-271"
-                            role="switch"
-                            type="button"
-                            tabIndex={0}
-                            aria-checked="false"
-                            disabled
-                            className="bg-gray-200 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none"
-                            aria-labelledby="headlessui-label-270"
-                          >
-                            <span
-                              aria-hidden="true"
-                              className="translate-x-0 pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"
-                            />
-                          </button>
+                          <Switch
+                            enabled={enabled}
+                            setEnabled={setEnabled}
+                            title="Enable Sharing"
+                          />
                         </div>
                       </div>
                     </div>
@@ -535,14 +491,14 @@ export default function Templates() {
               <div className="flex-shrink-0 px-4 py-4 flex justify-end">
                 <button
                   type="button"
-                  className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-light text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  className="forge-btn-secondary"
                 >
                   Cancel
                 </button>
 
                 <button
                   type="button"
-                  className="ml-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-light rounded-md text-white bg-insta-primary hover:bg-insta-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-60"
+                  className="ml-4 forge-btn-primary disabled:opacity-60"
                 >
                   Update
                 </button>

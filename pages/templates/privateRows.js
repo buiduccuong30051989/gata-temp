@@ -50,11 +50,11 @@ export const PrivateRow = ({ openEdit }) => {
       <td className="w-5/12 pr-4">
         <div className="flex items-center">
           <div className="">
-            <div className="flex text-sm font-normal text-gray-900">
+            <div className="flex text-sm font-normal text-gray-700">
               <span>cuong</span>
             </div>
             <div className="flex items-center mt-1">
-              <span className="site_url flex items-center" title="Parent Site">
+              <span className=" flex items-center" title="Parent Site">
                 <HiOutlineGlobe className="h-4 w-4 text-gray-500 mr-1" />
                 <span className="text-gray-500 text-xs">
                   widoyi.us10.instawp.xyz
