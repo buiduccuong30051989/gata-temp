@@ -22,6 +22,8 @@ import Link from "next/link";
 import { Dropdown } from "components/Dropdown";
 import { Menu, Popover, Transition, Combobox } from "@headlessui/react";
 import { IconPhp } from "components/Icons";
+import { alertParams, showAlert } from "components/Alert";
+// import showAlert from "components/Alert/showAlert";
 
 const MORE_ACTIONS = [
   {
@@ -45,6 +47,15 @@ const MoreActions = () => (
 );
 
 export const PrivateRow = ({ openEdit }) => {
+  const handleDeployment = () => {
+    const a = document.getElementById('alert')
+    console.log(a)
+    showAlert({
+      ...alertParams.success,
+      title: "Remove Error",
+    });
+  };
+
   return (
     <tr className="h-12 border-t border-gray-100">
       <td className="w-5/12 pr-4">
@@ -102,7 +113,10 @@ export const PrivateRow = ({ openEdit }) => {
           <Tooltip content="Create New Site">
             <button className="forge-btn-secondary rounded-none -ml-px">
               <span className="icon is-small">
-                <FiGitMerge className="w-5 h-5 text-gray-500" />
+                <FiGitMerge
+                  onClick={handleDeployment}
+                  className="w-5 h-5 text-gray-500"
+                />
               </span>
             </button>
           </Tooltip>

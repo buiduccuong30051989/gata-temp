@@ -12,6 +12,7 @@ export const AuthLayout = ({ children }) => {
           </div>
         </main>
       </div>
+      <div id="alert" />
     </div>
   );
 };
