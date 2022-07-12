@@ -16,22 +16,33 @@ import {
   HiOutlinePlusCircle,
   HiOutlineTrash,
   HiOutlineExclamation,
+  HiOutlineLockClosed,
+  HiOutlineSelector,
 } from "react-icons/hi";
 import { FiGitMerge } from "react-icons/fi";
 import { Tooltip } from "components/Tooltip";
 import Link from "next/link";
 import { Dropdown } from "components/Dropdown";
-import { Menu, Popover, Transition, Combobox } from "@headlessui/react";
+import { Menu, Popover, Transition, Listbox } from "@headlessui/react";
 import { IconPhp } from "components/Icons";
 import { alertParams, showAlert } from "components/Alert";
 import { useRouter } from "next/router";
 import { ModalCreateTemplate } from "./modalCreateTemplate";
 import { ModalPhpConfiguration } from "./modalPhpConfiguration";
 
+const filterOptions = [
+  { name: "Select Frequency" },
+  { name: "4 hours" },
+  { name: "8 hours" },
+  { name: "12 hours" },
+  { name: "Once in a day" },
+];
+
 export const PrivateRow = ({ openEdit }) => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenConfig, setIsOpenConfig] = useState(false);
+  const [selected, setSelected] = useState(filterOptions[0]);
 
   const closeModal = () => {
     setIsOpen(false);
@@ -109,11 +120,112 @@ export const PrivateRow = ({ openEdit }) => {
                   widoyi.us10.instawp.xyz
                 </span>
               </span>
-              <Tooltip content="Sync Changes from Parent Site">
-                <button className="ml-2 cursor-pointer">
-                  <HiOutlineRefresh className="h-4 w-4 text-gray-500 mr-1" />
-                </button>
-              </Tooltip>
+
+              <Popover className="relative">
+                <Tooltip content="Sync Changes from Parent Site">
+                  <Popover.Button>
+                    <HiOutlineRefresh className="h-4 w-4 ml-2 cursor-pointer text-gray-500" />
+                  </Popover.Button>
+                </Tooltip>
+                <Transition
+                  as={Fragment}
+                  enter="transition ease-out duration-200"
+                  enterFrom="opacity-0 translate-y-1"
+                  enterTo="opacity-100 translate-y-0"
+                  leave="transition ease-in duration-150"
+                  leaveFrom="opacity-100 translate-y-0"
+                  leaveTo="opacity-0 translate-y-1"
+                >
+                  <Popover.Panel className="forge-dropdown left-0 origin-top-left w-72 top-full z-[1] py-3 px-4">
+                    <div className="mb-3">
+                      <a
+                        className="font-light text-xs text-gray-700 text-left pb-1 flex "
+                        href="subscription/plans"
+                      >
+                        <span>Upgrade to unlock</span>
+                        <HiOutlineLockClosed className="h-4 w-4 ml-1 text-gray-500" />
+                      </a>
+                    </div>
+
+                    <div className="flex items-center mb-3">
+                      <input
+                        id="sync_changes"
+                        type="checkbox"
+                        className="forge-checkbox mr-2"
+                      />
+                      <label for="sync_changes" className="text-gray-500 cursor-pointer select-none">
+                        Automatically Sync Changes
+                      </label>
+                    </div>
+
+                    <div className="flex items-center justify-between mb-6">
+                      <label className="mr-4 text-gray-700">Frequency: </label>
+                      <Listbox value={selected} onChange={setSelected}>
+                        <div className="relative">
+                          <Listbox.Button className="flex items-center justify-between px-3 py-2 w-40 text-gray-900 text-sm bg-white border border-gray-200 rounded-lg">
+                            <span className="flex items-center truncate">
+                              <span className="truncate">{selected.name}</span>
+                            </span>
+                            <span className="flex flex-shrink-0 items-center">
+                              <HiOutlineSelector className="w-4 h-4 text-gray-500" />
+                            </span>
+                          </Listbox.Button>
+                          <Transition
+                            as={Fragment}
+                            enter="transition ease-out duration-200"
+                            enterFrom="opacity-0 translate-y-1"
+                            enterTo="opacity-100 translate-y-0"
+                            leave="transition ease-in duration-150"
+                            leaveFrom="opacity-100 translate-y-0"
+                            leaveTo="opacity-0 translate-y-1"
+                          >
+                            <Listbox.Options className="forge-dropdown w-40">
+                              {filterOptions.map((option, optionIdx) => (
+                                <Listbox.Option
+                                  key={optionIdx}
+                                  className={({ active }) =>
+                                    `forge-dropdown-item text-gray-900 ${
+                                      active && "bg-gray-100"
+                                    }`
+                                  }
+                                  value={option}
+                                >
+                                  {({ selected }) => (
+                                    <>
+                                      <span
+                                        className={`${
+                                          selected ? "bg-gray-100" : ""
+                                        }`}
+                                      >
+                                        {option.name}
+                                      </span>
+                                    </>
+                                  )}
+                                </Listbox.Option>
+                              ))}
+                            </Listbox.Options>
+                          </Transition>
+                        </div>
+                      </Listbox>
+                    </div>
+
+                    <div className="flex space-x-4">
+                      <button
+                        type="button"
+                        className="forge-btn-secondary bg-gray-100 w-full"
+                      >
+                        Save & Sync
+                      </button>
+                      <button
+                        type="submit"
+                        className="forge-btn-primary w-full"
+                      >
+                        Sync Now
+                      </button>
+                    </div>
+                  </Popover.Panel>
+                </Transition>
+              </Popover>
             </div>
           </div>
         </div>
