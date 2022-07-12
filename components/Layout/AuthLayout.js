@@ -1,4 +1,5 @@
 import { Navigation } from "../Navigation";
+import { ToastContainer, Slide } from "react-toastify";
 
 export const AuthLayout = ({ children }) => {
   return (
@@ -13,6 +14,17 @@ export const AuthLayout = ({ children }) => {
         </main>
       </div>
       <div id="alert" />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        pauseOnHover
+        transition={Slide}
+      />
     </div>
   );
 };

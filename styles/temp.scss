@@ -1,3 +1,5 @@
+@import "react-toastify/dist/ReactToastify.min.css";
+
 .min-w-screen-xl {
   min-width: 1280px;
 }
@@ -225,4 +227,48 @@ select {
 
 .overlay-showmore {
   @apply inset-x-0 bottom-0 flex justify-center bg-gradient-to-t from-white pt-32 pb-8 pointer-events-none  absolute;
+}
+
+.Toastify__toast--success {
+  .Toastify__toast-icon {
+    @apply inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-success-500 bg-success-100 rounded-lg;
+
+    svg {
+      @apply w-5 h-5 text-success-400;
+    }
+  }
+}
+
+.Toastify__toast--warning {
+  .Toastify__toast-icon {
+    @apply inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-warning-500 bg-warning-100 rounded-lg;
+
+    svg {
+      @apply w-5 h-5 text-warning-400;
+    }
+  }
+}
+
+.Toastify__toast--info {
+  .Toastify__toast-icon {
+    @apply inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-info-500 bg-info-100 rounded-lg;
+
+    svg {
+      @apply w-5 h-5 text-info-400;
+    }
+  }
+}
+
+.Toastify__toast--error {
+  .Toastify__toast-icon {
+    @apply inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-danger-500 bg-danger-100 rounded-lg;
+
+    svg {
+      @apply w-5 h-5 text-danger-400;
+    }
+  }
+}
+
+.Toastify__toast {
+  @apply flex items-center w-full max-w-xs mb-4 text-gray-500 bg-white rounded-lg shadow;
 }

@@ -1,6 +1,7 @@
 // import STYLEGUIDES from "constant/styleguides.json";
 
 import Link from "next/link";
+import { ToastContainer, Slide } from "react-toastify";
 
 export default function StyleGuidesPage({ children }) {
   const SCHEMAS = [
@@ -15,8 +16,8 @@ export default function StyleGuidesPage({ children }) {
     "light",
     "dark",
   ];
-  const ELEMENTS = ["Buttons", "Icons", "Tags", "Badges", "Chip", "Toats"];
-  const COMPONENTS = ["Cards", "Alert"];
+  const ELEMENTS = ["Buttons", "Icons", "Tags", "Badges", "Chip"];
+  const COMPONENTS = ["Cards", "Alert", "Toats"];
   const FORMS = ["Forms"];
 
   return (
@@ -325,6 +326,17 @@ export default function StyleGuidesPage({ children }) {
 
       <div className="b-styleguides-content">{children}</div>
       <div id="alert" />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        pauseOnHover
+        transition={Slide}
+      />
     </div>
   );
 }

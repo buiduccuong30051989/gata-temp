@@ -1,27 +1,38 @@
 import StyleGuidesPage from ".";
 const SCHEMAS = ["success", "info", "warning", "danger", "normal"];
-import { showAlert, alertParams } from "components/Alert";
+// import { toast } from "react-toastify";
+import {
+  toatsSuccess,
+  toatsDanger,
+  toatsInfo,
+  toatsWarning,
+} from "components/Toats";
 
-export default function Alert() {
-  const handleShowAlert = (type) => {
-    if (type !== "danger") {
-      showAlert({
-        ...alertParams[type],
-        title: "Ullamco est deserunt enim laborum",
-        description:
-          "Ullamco est deserunt enim laborum aliqua proident et eiusmod magna pariatur.",
-        cancelText: "Cancel",
-        okText: "Apply Changes"
-      });
-    } else {
-      showAlert({
-        ...alertParams.danger(),
-        title: "Ullamco est deserunt enim laborum",
-        description:
-          "Ullamco est deserunt enim laborum aliqua proident et eiusmod magna pariatur.",
-        cancelText: "Cancel",
-        okText: "Apply Changes"
-      });
+export default function Toats() {
+  const handleShowToats = (type) => {
+    switch (type) {
+      case "success":
+        toatsSuccess({
+          content: "Success notify toat!",
+        });
+        break;
+      case "info":
+        toatsInfo({
+          content: "Information notify toat!",
+        });
+        break;
+      case "warning":
+        toatsWarning({
+          content: "Warning notify toat!",
+        });
+        break;
+      case "danger":
+        toatsDanger({
+          content: "Danger notify toat!",
+        });
+        break;
+      default:
+        break;
     }
   };
 
@@ -40,10 +51,10 @@ export default function Alert() {
                 {SCHEMAS.map((item) => (
                   <div key={item} className="buttons-item">
                     <button
-                      onClick={() => handleShowAlert(item)}
+                      onClick={() => handleShowToats(item)}
                       type="button"
                       className={`button bg-${item}-400`}
-                    >{`alert-${item}`}</button>
+                    >{`toats-${item}`}</button>
                   </div>
                 ))}
               </div>
@@ -55,6 +66,6 @@ export default function Alert() {
   );
 }
 
-Alert.getLayout = function getLayout(page) {
+Toats.getLayout = function getLayout(page) {
   return <StyleGuidesPage>{page}</StyleGuidesPage>;
 };

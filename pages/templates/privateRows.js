@@ -29,6 +29,7 @@ import { alertParams, showAlert } from "components/Alert";
 import { useRouter } from "next/router";
 import { ModalCreateTemplate } from "./modalCreateTemplate";
 import { ModalPhpConfiguration } from "./modalPhpConfiguration";
+import { toast } from "react-toastify";
 
 const filterOptions = [
   { name: "Select Frequency" },
@@ -43,6 +44,8 @@ export const PrivateRow = ({ openEdit }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenConfig, setIsOpenConfig] = useState(false);
   const [selected, setSelected] = useState(filterOptions[0]);
+
+  const notify = () => toast.success("Wow so easy !");
 
   const closeModal = () => {
     setIsOpen(false);
@@ -61,14 +64,15 @@ export const PrivateRow = ({ openEdit }) => {
   }
 
   const handleDeployment = () => {
-    showAlert({
-      ...alertParams.info,
-      title: "Select Deployments",
-      description: "Please add a new repository in the ‘Deployments’ tab",
-      cancelText: "cancel",
-      okText: "Open Deployment",
-      onOk: () => router.push("/deployment"),
-    });
+    notify();
+    // showAlert({
+    //   ...alertParams.info,
+    //   title: "Select Deployments",
+    //   description: "Please add a new repository in the ‘Deployments’ tab",
+    //   cancelText: "cancel",
+    //   okText: "Open Deployment",
+    //   onOk: () => router.push("/deployment"),
+    // });
   };
 
   const handleDeleteTemplate = () => {
@@ -153,7 +157,10 @@ export const PrivateRow = ({ openEdit }) => {
                         type="checkbox"
                         className="forge-checkbox mr-2"
                       />
-                      <label for="sync_changes" className="text-gray-500 cursor-pointer select-none">
+                      <label
+                        for="sync_changes"
+                        className="text-gray-500 cursor-pointer select-none"
+                      >
                         Automatically Sync Changes
                       </label>
                     </div>
