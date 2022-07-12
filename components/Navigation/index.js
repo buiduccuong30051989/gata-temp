@@ -149,7 +149,7 @@ export const Navigation = () => {
         <div className="flex col-span-4 col-end-7 col-start-3 items-center justify-center w-full">
           {navMain.map((item) => (
             <Link key={item.title} href={item.path}>
-              <a className="flex items-center justify-center ml-5 px-3 h-10 text-gray-800 hover:text-teal-400 text-sm font-normal rounded-lg">
+              <a className="flex items-center justify-center ml-5 px-3 h-10 text-gray-800 hover:text-primary-400 text-sm font-normal rounded-lg">
                 {item.icon}
                 <span>{item.title}</span>
               </a>

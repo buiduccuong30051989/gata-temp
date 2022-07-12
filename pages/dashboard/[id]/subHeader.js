@@ -44,10 +44,10 @@ export const SubHeader = () => (
           <span className="text-gray-400">App</span>
         </span>
         <span className="flex items-center">
-          <span className="text-uppercase inline-flex items-center px-2.5 py-1 text-sm rounded-full bg-teal-400 bg-opacity-10 text-gray-900">
+          <span className="text-uppercase inline-flex items-center px-2.5 py-1 text-sm rounded-full bg-primary-400 bg-opacity-10 text-gray-900">
             <span className="relative flex mr-1.5 w-2.5 h-2.5">
               {/**/}
-              <span className="relative inline-flex w-2.5 h-2.5 rounded-full bg-teal-400" />
+              <span className="relative inline-flex w-2.5 h-2.5 rounded-full bg-primary-400" />
             </span>
             Connected
           </span>
@@ -59,7 +59,7 @@ export const SubHeader = () => (
     </div>
     <div className="flex justify-between mt-10">
       <div className="flex items-center">
-        <HiOutlineServer className="text-teal-400 mr-5 w-7 h-7" />
+        <HiOutlineServer className="text-primary-400 mr-5 w-7 h-7" />
         <h1 className="forge-h2 inline-block mr-5 max-w-2xl truncate">
           TESTSERVER
         </h1>

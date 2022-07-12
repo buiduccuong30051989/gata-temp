@@ -45,10 +45,10 @@ export default function Templates() {
                 <Tab
                   className={({ selected }) =>
                     classNames(
-                      "w-full rounded-lg py-2.5 text-sm leading-5 font-light text-gray-700 flex items-center justify-center",
+                      "w-full rounded-lg py-2.5 text-sm leading-5 font-light  flex items-center justify-center",
                       selected
-                        ? "bg-active-link shadow text-teal-400"
-                        : "hover:bg-white/[0.35]"
+                        ? "bg-active-link shadow text-primary-400"
+                        : "hover:bg-white/[0.35] text-gray-700"
                     )
                   }
                 >
@@ -58,10 +58,10 @@ export default function Templates() {
                 <Tab
                   className={({ selected }) =>
                     classNames(
-                      "w-full rounded-lg py-2.5 text-sm leading-5 font-light text-gray-700 flex items-center justify-center",
+                      "w-full rounded-lg py-2.5 text-sm leading-5 font-light flex items-center justify-center",
                       selected
-                        ? "bg-active-link shadow text-teal-400"
-                        : "hover:bg-white/[0.35]"
+                        ? "bg-active-link shadow text-primary-400"
+                        : "hover:bg-white/[0.35] text-gray-700"
                     )
                   }
                 >
@@ -118,7 +118,7 @@ export default function Templates() {
         >
           <div className=" bg-white shadow-xl">
             <form className="w-screen h-screen max-w-md divide-y divide-gray-200 flex flex-col">
-              <div className="py-6 px-4 bg-teal-400 flex-shrink-0">
+              <div className="py-6 px-4 bg-primary-400 flex-shrink-0">
                 <div className="flex items-center justify-between">
                   <h2 className="text-lg font-light text-white">
                     Edit Template
@@ -394,7 +394,7 @@ export default function Templates() {
                                 URL
                               </label>
                               <a
-                                className="items-center text-teal-400 flex float-right"
+                                className="items-center text-primary-400 flex float-right"
                                 target="_blank"
                                 href="/webhook-integration/"
                               >
@@ -440,7 +440,7 @@ export default function Templates() {
                             </label>
                             <button
                               type="button"
-                              className="text-teal-400 flex cursor-pointer"
+                              className="text-primary-400 flex cursor-pointer"
                             >
                               <HiOutlinePencilAlt className="h-4 w-4 mr-1" />
                               <span>Edit Content</span>
@@ -453,7 +453,7 @@ export default function Templates() {
                             </label>
                             <button
                               type="button"
-                              className="text-teal-400 flex cursor-pointer"
+                              className="text-primary-400 flex cursor-pointer"
                             >
                               <HiOutlinePencilAlt className="h-4 w-4 mr-1" />
                               <span>Edit Text</span>
@@ -489,10 +489,7 @@ export default function Templates() {
                 </div>
               </div>
               <div className="flex-shrink-0 px-4 py-4 flex justify-end">
-                <button
-                  type="button"
-                  className="forge-btn-secondary"
-                >
+                <button type="button" className="forge-btn-secondary">
                   Cancel
                 </button>
 

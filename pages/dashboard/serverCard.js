@@ -17,7 +17,7 @@ export const ServerCard = ({ type = VIEW_TYPE.GRID }) => {
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
-                className="text-teal-400 w-6"
+                className="text-primary-400 w-6"
               >
                 <path
                   strokeLinecap="round"
@@ -29,7 +29,7 @@ export const ServerCard = ({ type = VIEW_TYPE.GRID }) => {
             </div>
             <div className="truncate">
               <a
-                className="text-teal-400 text-sm font-normal tracking-normal truncate"
+                className="text-primary-400 text-sm font-normal tracking-normal truncate"
                 title="TESTSERVER"
                 href="/servers/570738"
               >
@@ -98,9 +98,9 @@ export const ServerCard = ({ type = VIEW_TYPE.GRID }) => {
                   Connecting
                 </span>
               ) : (
-                <span className="text-uppercase inline-flex items-center px-2.5 py-1.5 text-xs rounded-full bg-teal-400 bg-opacity-10 text-gray-900">
+                <span className="text-uppercase inline-flex items-center px-2.5 py-1.5 text-xs rounded-full bg-primary-400 bg-opacity-10 text-gray-900">
                   <span className="relative flex mr-1.5 w-2.5 h-2.5">
-                    <span className="relative inline-flex w-2.5 h-2.5 rounded-full bg-teal-400" />
+                    <span className="relative inline-flex w-2.5 h-2.5 rounded-full bg-primary-400" />
                   </span>
                   Connected
                 </span>
@@ -165,7 +165,7 @@ export const ServerCard = ({ type = VIEW_TYPE.GRID }) => {
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
-                className="text-teal-400 w-6"
+                className="text-primary-400 w-6"
               >
                 <path
                   strokeLinecap="round"
@@ -177,7 +177,7 @@ export const ServerCard = ({ type = VIEW_TYPE.GRID }) => {
             </div>
             <div className="w-72 truncate">
               <a
-                className="text-teal-400 text-sm font-bold tracking-normal"
+                className="text-primary-400 text-sm font-bold tracking-normal"
                 title="TESTSERVER"
                 href="/servers/570738"
               >
@@ -249,9 +249,9 @@ export const ServerCard = ({ type = VIEW_TYPE.GRID }) => {
                   Connecting
                 </span>
               ) : (
-                <span className="text-uppercase inline-flex items-center px-2.5 py-1.5 text-xs rounded-full bg-teal-400 bg-opacity-10 text-gray-900">
+                <span className="text-uppercase inline-flex items-center px-2.5 py-1.5 text-xs rounded-full bg-primary-400 bg-opacity-10 text-gray-900">
                   <span className="relative flex mr-1.5 w-2.5 h-2.5">
-                    <span className="relative inline-flex w-2.5 h-2.5 rounded-full bg-teal-400" />
+                    <span className="relative inline-flex w-2.5 h-2.5 rounded-full bg-primary-400" />
                   </span>
                   Connected
                 </span>

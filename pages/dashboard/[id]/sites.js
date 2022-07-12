@@ -178,7 +178,7 @@ const Sites = () => {
                 <td className="pr-4 px-3 py-4 max-w-xs">
                   <div className="flex items-center">
                     <a
-                      className="text-teal-400 truncate"
+                      className="text-primary-400 truncate"
                       href="/servers/570738/sites/1682253"
                     >
                       {/**/} default
@@ -224,7 +224,7 @@ const Sites = () => {
                 <td className="pr-4 px-3 py-4 max-w-xs">
                   <div className="flex items-center">
                     <a
-                      className="text-teal-400 truncate"
+                      className="text-primary-400 truncate"
                       href="/servers/570738/sites/1682256"
                     >
                       {/**/} test.com

@@ -15,6 +15,7 @@ import {
   HiOutlinePencilAlt,
   HiOutlinePlusCircle,
   HiOutlineTrash,
+  HiOutlineExclamation,
 } from "react-icons/hi";
 import { FiGitMerge } from "react-icons/fi";
 import { Tooltip } from "components/Tooltip";
@@ -23,38 +24,75 @@ import { Dropdown } from "components/Dropdown";
 import { Menu, Popover, Transition, Combobox } from "@headlessui/react";
 import { IconPhp } from "components/Icons";
 import { alertParams, showAlert } from "components/Alert";
-// import showAlert from "components/Alert/showAlert";
-
-const MORE_ACTIONS = [
-  {
-    title: "PHP Configuration",
-    icon: <IconPhp className="icon w-4 h-4 mr-2" />,
-  },
-  { title: "Delete", icon: <HiOutlineTrash className="icon w-4 h-4 mr-2" /> },
-];
-
-const MoreActions = () => (
-  <div>
-    {MORE_ACTIONS.map((item) => (
-      <Menu.Item key={item.title}>
-        <button className="forge-dropdown-item font-light w-full">
-          {item.icon}
-          {item.title}
-        </button>
-      </Menu.Item>
-    ))}
-  </div>
-);
+import { useRouter } from "next/router";
+import { ModalCreateTemplate } from "./modalCreateTemplate";
+import { ModalPhpConfiguration } from "./modalPhpConfiguration";
 
 export const PrivateRow = ({ openEdit }) => {
+  const router = useRouter();
+  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenConfig, setIsOpenConfig] = useState(false);
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  const closeModalConfig = () => {
+    setIsOpenConfig(false);
+  };
+
+  function openModalConfig() {
+    setIsOpenConfig(true);
+  }
+
   const handleDeployment = () => {
-    const a = document.getElementById('alert')
-    console.log(a)
     showAlert({
-      ...alertParams.success,
-      title: "Remove Error",
+      ...alertParams.info,
+      title: "Select Deployments",
+      description: "Please add a new repository in the ‘Deployments’ tab",
+      cancelText: "cancel",
+      okText: "Open Deployment",
+      onOk: () => router.push("/deployment"),
     });
   };
+
+  const handleDeleteTemplate = () => {
+    showAlert({
+      ...alertParams.danger(),
+      title: "Remove Template",
+      description: "Are you sure you want to remove this backup template?",
+      cancelText: "cancel",
+      okText: "Delete",
+      okBtnClass: "forge-btn-primary bg-red-600",
+    });
+  };
+
+  const MoreActions = () => (
+    <div>
+      <Menu.Item>
+        <button
+          onClick={openModalConfig}
+          className="forge-dropdown-item font-light w-full"
+        >
+          <IconPhp className="icon w-4 h-4 mr-2" />
+          PHP Configuration
+        </button>
+      </Menu.Item>
+      <Menu.Item>
+        <button
+          onClick={handleDeleteTemplate}
+          className="forge-dropdown-item font-light w-full"
+        >
+          <HiOutlineTrash className="icon w-4 h-4 mr-2" />
+          Delete
+        </button>
+      </Menu.Item>
+    </div>
+  );
 
   return (
     <tr className="h-12 border-t border-gray-100">
@@ -103,14 +141,17 @@ export const PrivateRow = ({ openEdit }) => {
               </span>
             </button>
           </Tooltip>
-          <Tooltip content="Enable Deployment">
-            <button className="forge-btn-secondary rounded-none -ml-px">
+          <Tooltip content="Create New Site">
+            <button
+              onClick={openModal}
+              className="forge-btn-secondary rounded-none -ml-px"
+            >
               <span className="icon is-small">
                 <HiOutlinePlusCircle className="w-5 h-5 text-gray-500" />
               </span>
             </button>
           </Tooltip>
-          <Tooltip content="Create New Site">
+          <Tooltip content="Enable Deployment">
             <button className="forge-btn-secondary rounded-none -ml-px">
               <span className="icon is-small">
                 <FiGitMerge
@@ -136,6 +177,11 @@ export const PrivateRow = ({ openEdit }) => {
           />
         </div>
       </td>
+      <ModalCreateTemplate isOpen={isOpen} closeModal={closeModal} />
+      <ModalPhpConfiguration
+        isOpen={isOpenConfig}
+        closeModal={closeModalConfig}
+      />
     </tr>
   );
 };

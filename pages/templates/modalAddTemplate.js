@@ -136,7 +136,7 @@ export const ModalAddTempate = ({ isOpen, closeModal }) => {
                 onClick={() => setPrivateTemplate(true)}
                 className={`w-full rounded-lg py-2.5 text-sm leading-5 font-normal text-gray-700 flex items-center justify-center ${
                   privateTemplate
-                    ? "bg-active-link shadow text-teal-400"
+                    ? "bg-active-link shadow text-primary-400"
                     : "hover:bg-white/[0.35]"
                 }`}
               >
@@ -147,7 +147,7 @@ export const ModalAddTempate = ({ isOpen, closeModal }) => {
                 onClick={() => setPrivateTemplate(false)}
                 className={`w-full rounded-lg py-2.5 text-sm leading-5 font-normal text-gray-700 flex items-center justify-center ${
                   !privateTemplate
-                    ? "bg-active-link shadow text-teal-400"
+                    ? "bg-active-link shadow text-primary-400"
                     : "hover:bg-white/[0.35]"
                 }`}
               >

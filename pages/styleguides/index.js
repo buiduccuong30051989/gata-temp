@@ -16,7 +16,7 @@ export default function StyleGuidesPage({ children }) {
     "dark",
   ];
   const ELEMENTS = ["Buttons", "Icons", "Tags", "Badges", "Chip", "Toats"];
-  const COMPONENTS = ["Cards"];
+  const COMPONENTS = ["Cards", "Alert"];
   const FORMS = ["Forms"];
 
   return (
@@ -300,9 +300,9 @@ export default function StyleGuidesPage({ children }) {
             <ul className="nav-list">
               {COMPONENTS.map((item, index) => (
                 <li key={index}>
-                  <a href="#" className="nav-list-link">
-                    {item}
-                  </a>
+                  <Link href={`/styleguides/${item.toLowerCase()}`}>
+                    <a className="nav-list-link">{item}</a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -324,6 +324,7 @@ export default function StyleGuidesPage({ children }) {
       </div>
 
       <div className="b-styleguides-content">{children}</div>
+      <div id="alert" />
     </div>
   );
 }

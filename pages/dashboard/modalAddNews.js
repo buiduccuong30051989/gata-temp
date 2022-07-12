@@ -62,7 +62,7 @@ export const ModalAddNews = ({ isOpen, closeModal }) => {
               classNames(
                 "w-full rounded-lg py-2.5 text-sm leading-5 font-normal text-gray-700 flex items-center justify-center",
                 selected
-                  ? "bg-active-link shadow text-teal-400"
+                  ? "bg-active-link shadow text-primary-400"
                   : "hover:bg-white/[0.35]"
               )
             }
@@ -75,7 +75,7 @@ export const ModalAddNews = ({ isOpen, closeModal }) => {
               classNames(
                 "w-full rounded-lg py-2.5 text-sm leading-5 font-normal text-gray-700 flex items-center justify-center",
                 selected
-                  ? "bg-active-link shadow text-teal-400"
+                  ? "bg-active-link shadow text-primary-400"
                   : "hover:bg-white/[0.35]"
               )
             }
@@ -153,7 +153,7 @@ export const ModalAddNews = ({ isOpen, closeModal }) => {
                           {({ checked }) => (
                             <div
                               className={`text-sm rounded-lg w-full items-center relative shadow-sm px-5 py-2 flex cursor-pointer ${
-                                checked ? "bg-teal-50" : "bg-gray-100"
+                                checked ? "bg-primary-50" : "bg-gray-100"
                               }`}
                             >
                               <div>
@@ -162,7 +162,7 @@ export const ModalAddNews = ({ isOpen, closeModal }) => {
                                 ) && (
                                   <HiOutlineClock
                                     className={`w-5 h-5 ${
-                                      checked ? "text-teal-400" : ""
+                                      checked ? "text-primary-400" : ""
                                     }`}
                                   />
                                 )}
@@ -172,7 +172,7 @@ export const ModalAddNews = ({ isOpen, closeModal }) => {
                                 ) && (
                                   <HiOutlineFlag
                                     className={`w-5 h-5 ${
-                                      checked ? "text-teal-400" : ""
+                                      checked ? "text-primary-400" : ""
                                     }`}
                                   />
                                 )}
@@ -180,7 +180,7 @@ export const ModalAddNews = ({ isOpen, closeModal }) => {
                               <div className="text-left pl-3">
                                 <span
                                   className={`block my-0.5 text-sm font-normal ${
-                                    checked ? "text-teal-400" : ""
+                                    checked ? "text-primary-400" : ""
                                   }`}
                                 >
                                   {item.title}
@@ -213,13 +213,13 @@ export const ModalAddNews = ({ isOpen, closeModal }) => {
                       {({ checked }) => (
                         <div
                           className={`flex items-center py-2 px-4 cursor-pointer  ${
-                            checked ? "bg-teal-50" : "hover:bg-gray-100"
+                            checked ? "bg-primary-50" : "hover:bg-gray-100"
                           }`}
                         >
                           <div className="flex items-center justify-center rounded-full">
                             <label
                               className={`inline-flex flex-shirk-0 w-12 h-12 justify-center text-lg font-normal rounded-full items-center text-white uppercase ${
-                                checked ? "bg-teal-400" : "bg-gray-500/50"
+                                checked ? "bg-primary-400" : "bg-gray-500/50"
                               }`}
                             >
                               {Boolean(checked) ? (
@@ -234,7 +234,7 @@ export const ModalAddNews = ({ isOpen, closeModal }) => {
                           <div className="inline-block pl-3 pr-20">
                             <h4
                               className={`font-normal ${
-                                checked ? "text-teal-400" : "text-gray-700"
+                                checked ? "text-primary-400" : "text-gray-700"
                               }`}
                             >
                               duc

@@ -32,7 +32,7 @@ export const Modal = ({ isOpen, closeModal, modalTitle, children, panelClassName
                 {Boolean(modalTitle) && (
                   <Dialog.Title
                     as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900 px-4 py-3"
+                    className="text-lg font-normal leading-6 text-gray-900 px-4 py-3"
                   >
                     {modalTitle}
                   </Dialog.Title>
