@@ -15,7 +15,7 @@ const Sites = () => {
         <Disclosure>
           <div className="flex items-center justify-between">
             <h5 className="text-lg font-normal">New Site</h5>
-            <Disclosure.Button className="forge-btn-secondary px-2 py-1">
+            <Disclosure.Button className="wphub-btn-secondary px-2 py-1">
               <HiOutlineChevronDown className="w-5 h-5 text-gray-400 group-hover:text-gray-500 transform duration-300 rotate-90" />
             </Disclosure.Button>
           </div>
@@ -45,7 +45,7 @@ const Sites = () => {
                     production site. If you need to host additional domains or
                     sub-domains, you may add them here. <br />
                     <br />
-                    When using Website Isolation, Forge will automatically
+                    When using Website Isolation, wphub will automatically
                     create an isolated PHP-FPM process for the given site.{" "}
                   </p>
                 </div>
@@ -56,7 +56,7 @@ const Sites = () => {
                 <div className="flex flex-col mt-1">
                   <input
                     type="text"
-                    className="forge-input"
+                    className="wphub-input"
                     placeholder="domain.com"
                     autoComplete="off"
                     autoCorrect="off"
@@ -68,7 +68,7 @@ const Sites = () => {
                 <div className="flex flex-col mt-1">
                   <input
                     type="text"
-                    className="forge-input"
+                    className="wphub-input"
                     placeholder="second-domain.com,third-domain.com"
                   />
                 </div>
@@ -77,7 +77,7 @@ const Sites = () => {
               <div className="flex flex-col mt-4">
                 <label>Project Type</label>
                 <div className="flex flex-col mt-1">
-                  <select className="forge-input" name="type">
+                  <select className="wphub-input" name="type">
                     <option value="php">General PHP / Laravel</option>
                     <option value="octane">Laravel Octane</option>
                     <option value="html">Static HTML</option>
@@ -92,13 +92,13 @@ const Sites = () => {
               <div className="flex flex-col mt-4">
                 <label>Web Directory</label>
                 <div className="flex flex-col mt-1">
-                  <input type="text" className="forge-input" />
+                  <input type="text" className="wphub-input" />
                 </div>
               </div>
               <div className="flex flex-col mt-4">
                 <label>PHP Version</label>
                 <div className="flex flex-col mt-1">
-                  <select className="forge-input">
+                  <select className="wphub-input">
                     <option value="php81">PHP 8.1</option>
                   </select>
                 </div>
@@ -107,20 +107,20 @@ const Sites = () => {
               {/**/}
               <div className="flex flex-col mt-4">
                 <label className="flex items-center">
-                  <input type="checkbox" className="forge-checkbox" />
+                  <input type="checkbox" className="wphub-checkbox" />
                   <span className="pl-2">Allow Wildcard Sub-Domains</span>
                 </label>
               </div>
               <div className="flex flex-col mt-4">
                 <label className="flex items-center">
-                  <input type="checkbox" className="forge-checkbox" />
+                  <input type="checkbox" className="wphub-checkbox" />
                   <span className="pl-2">Use Website Isolation</span>
                 </label>
               </div>
               {/**/}
               <div className="flex flex-col mt-4">
                 <label>
-                  <input type="checkbox" className="forge-checkbox" />
+                  <input type="checkbox" className="wphub-checkbox" />
                   <span className="pl-2">Create Database</span>
                 </label>
               </div>
@@ -129,7 +129,7 @@ const Sites = () => {
             <div>
               <form className="flex justify-end mt-4">
                 <button
-                  className="cursor-pointer forge-btn-primary"
+                  className="cursor-pointer wphub-btn-primary"
                   type="submit"
                 >
                   <span className="flex items-center justify-between">

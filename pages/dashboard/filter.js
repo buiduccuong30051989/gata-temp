@@ -57,12 +57,12 @@ export const Filter = () => {
                 leaveFrom="opacity-100 translate-y-0"
                 leaveTo="opacity-0 translate-y-1"
               >
-                <Listbox.Options className="forge-dropdown w-40">
+                <Listbox.Options className="wphub-dropdown w-40">
                   {filterOptions.map((option, optionIdx) => (
                     <Listbox.Option
                       key={optionIdx}
                       className={({ active }) =>
-                        `forge-dropdown-item text-gray-900 ${
+                        `wphub-dropdown-item text-gray-900 ${
                           active && "bg-gray-100"
                         }`
                       }
@@ -87,7 +87,7 @@ export const Filter = () => {
         <div>
           <button
             type="button"
-            className="forge-btn-secondary"
+            className="wphub-btn-secondary"
             onClick={openModal}
           >
             <IconAddServer className="mr-2 w-5 h-5 text-gray-600" />

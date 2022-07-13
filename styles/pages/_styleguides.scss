@@ -1,5 +1,5 @@
 .p-styleguides {
-  @apply container mx-auto flex px-8;
+  @apply container mx-auto flex px-8 font-git;
 }
 
 .b-styleguides {
@@ -51,7 +51,7 @@
 
           &-title {
             @apply border-b border-slate-100 pb-2 font-mono text-xs leading-5 text-slate-500;
-            @apply dark:border-slate-200/10;
+            @apply dark:border-slate-200/10 font-mono;
           }
         }
       }
@@ -78,7 +78,7 @@
         @apply dark:bg-slate-900/50 h-full overflow-hidden flex w-full flex-col;
 
         &-inner {
-          @apply relative bg-white/40 p-6 font-mono text-xs overflow-y-auto;
+          @apply relative bg-white/40 p-6 text-xs overflow-y-auto;
           @apply dark:bg-transparent h-full w-full;
           @extend .customized-scrollbar;
         }

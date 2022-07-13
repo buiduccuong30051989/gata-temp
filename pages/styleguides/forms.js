@@ -18,7 +18,7 @@ export default function Forms() {
                 <div className="flex flex-col mt-1">
                   <input
                     type="text"
-                    className="forge-input"
+                    className="wphub-input"
                     placeholder="domain.com"
                     autoComplete="off"
                     autoCorrect="off"
@@ -29,7 +29,7 @@ export default function Forms() {
               <div className="flex flex-col mt-4">
                 <label>Options Select</label>
                 <div className="flex flex-col mt-1">
-                  <select className="forge-input" name="type">
+                  <select className="wphub-input" name="type">
                     <option value="php">General PHP / Laravel</option>
                     <option value="octane">Laravel Octane</option>
                     <option value="html">Static HTML</option>
@@ -44,9 +44,9 @@ export default function Forms() {
                 <label>Inline Input & Button</label>
                 <div className="flex flex-col mt-1">
                   <div className="flex w-full">
-                    <input type="text" className="forge-input mr-1 w-full" />
+                    <input type="text" className="wphub-input mr-1 w-full" />
                     <div className="flex justify-center">
-                      <button type="button" className="forge-btn-secondary">
+                      <button type="button" className="wphub-btn-secondary">
                         <HiCog className="w-4 h-4 text-gray-700" />
                       </button>
                     </div>
@@ -58,9 +58,9 @@ export default function Forms() {
                 <label>TextArea</label>
                 <div className="flex flex-col mt-1">
                   <textarea
-                    className="forge-input"
+                    className="wphub-input"
                     rows={10}
-                    placeholder="ssh-rsa AAAAB3NzaC1yc2EA... testforge@tests-macbook-pro.local"
+                    placeholder="ssh-rsa AAAAB3NzaC1yc2EA... testwphub@tests-macbook-pro.local"
                     defaultValue={""}
                   />
                 </div>
@@ -68,14 +68,14 @@ export default function Forms() {
 
               <div className="flex flex-col mt-4">
                 <label className="flex items-center">
-                  <input type="checkbox" className="forge-checkbox" />
+                  <input type="checkbox" className="wphub-checkbox" />
                   <span className="pl-2">Checkbox</span>
                 </label>
               </div>
 
               <div className="flex flex-col mt-4">
                 <label className="flex items-center">
-                  <input type="radio" className="forge-radio" />
+                  <input type="radio" className="wphub-radio" />
                   <span className="pl-2">Radio</span>
                 </label>
               </div>

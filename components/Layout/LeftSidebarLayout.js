@@ -20,7 +20,7 @@ export const LeftSidebarLayout = ({
           <nav className="pr-2 w-1/6 space-y-2">
             {nav.map((item) => (
               <Link key={item.title} href={`${asPath}/${item.path}`}>
-                <a className="forge-tab-item">
+                <a className="wphub-tab-item">
                   {item.icon}
                   {item.title}
                 </a>

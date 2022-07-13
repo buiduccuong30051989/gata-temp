@@ -45,7 +45,7 @@ const MoreActions = () => (
     {MORE_ACTIONS.map((item) => (
       <Menu.Item key={item.title}>
         <Link href={item.path}>
-          <a className="forge-dropdown-item">{item.title}</a>
+          <a className="wphub-dropdown-item">{item.title}</a>
         </Link>
       </Menu.Item>
     ))}
@@ -68,7 +68,7 @@ export const EventRow = () => {
   return (
     <tr className="h-12 border-t border-gray-100">
       <td className="pr-4">
-        <input type="checkbox" className="forge-checkbox" />
+        <input type="checkbox" className="wphub-checkbox" />
       </td>
       <td className="pr-4">
         <span className="flex items-center text-gray-500">
@@ -138,7 +138,7 @@ export const EventRow = () => {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel className="forge-dropdown right-0 origin-top-right w-56 top-full z-[1]">
+              <Popover.Panel className="wphub-dropdown right-0 origin-top-right w-56 top-full z-[1]">
                 <Combobox
                   multiple
                   value={selectedPerson}
@@ -165,7 +165,7 @@ export const EventRow = () => {
                     <Combobox.Options static>
                       {filteredPeople.map((person) => (
                         <Combobox.Option
-                          className="forge-dropdown-item filter-option"
+                          className="wphub-dropdown-item filter-option"
                           key={person.id}
                           value={person.name}
                         >
@@ -185,21 +185,21 @@ export const EventRow = () => {
       <td className="pl-4">
         <div className="flex justify-end">
           <Tooltip content="Auto Login">
-            <button className="forge-btn-secondary rounded-none rounded-l-lg">
+            <button className="wphub-btn-secondary rounded-none rounded-l-lg">
               <span className="icon is-small">
                 <HiOutlineLogout className="w-5 h-5 text-gray-500" />
               </span>
             </button>
           </Tooltip>
           <Tooltip content="Reserve">
-            <button className="forge-btn-secondary rounded-none -ml-px">
+            <button className="wphub-btn-secondary rounded-none -ml-px">
               <span className="icon is-small">
                 <HiOutlineFlag className="w-5 h-5 text-gray-500" />
               </span>
             </button>
           </Tooltip>
           <Tooltip content="Save Template">
-            <button className="forge-btn-secondary rounded-none -ml-px">
+            <button className="wphub-btn-secondary rounded-none -ml-px">
               <span className="icon is-small">
                 <HiOutlineTemplate className="w-5 h-5 text-gray-500" />
               </span>
@@ -207,7 +207,7 @@ export const EventRow = () => {
           </Tooltip>
           <Dropdown
             btnClass="icon is-small"
-            menuClass="relative forge-btn-secondary rounded-none rounded-r-lg -ml-px"
+            menuClass="relative wphub-btn-secondary rounded-none rounded-r-lg -ml-px"
             arrow={false}
             dropdownClass="right-0 origin-top-right w-40 top-full z-[1]"
             btnChildren={

@@ -134,12 +134,12 @@ export const ServerCard = ({ type = VIEW_TYPE.GRID }) => {
                   leaveFrom="opacity-100 translate-y-0"
                   leaveTo="opacity-0 translate-y-1"
                 >
-                  <Menu.Items className="forge-dropdown right-0 w-40 origin-top-right p-0">
+                  <Menu.Items className="wphub-dropdown right-0 w-40 origin-top-right p-0">
                     <div className="px-1 py-1 ">
                       <Menu.Item>
                         <button
                           onClick={() => setLoading((prev) => !prev)}
-                          className="forge-dropdown-item text-gray-900 w-full"
+                          className="wphub-dropdown-item text-gray-900 w-full"
                         >
                           Refresh Status
                         </button>
@@ -285,12 +285,12 @@ export const ServerCard = ({ type = VIEW_TYPE.GRID }) => {
                   leaveFrom="opacity-100 translate-y-0"
                   leaveTo="opacity-0 translate-y-1"
                 >
-                  <Menu.Items className="forge-dropdown right-0 w-40 origin-top-right p-0">
+                  <Menu.Items className="wphub-dropdown right-0 w-40 origin-top-right p-0">
                     <div className="px-1 py-1 ">
                       <Menu.Item>
                         <button
                           onClick={() => setLoading((prev) => !prev)}
-                          className="forge-dropdown-item text-gray-900 w-full"
+                          className="wphub-dropdown-item text-gray-900 w-full"
                         >
                           Refresh Status
                         </button>

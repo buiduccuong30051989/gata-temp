@@ -29,7 +29,7 @@ export const Dropdown = ({
         leaveFrom="opacity-100 translate-y-0"
         leaveTo="opacity-0 translate-y-1"
       >
-        <Menu.Items className={`forge-dropdown  ${dropdownClass}`}>
+        <Menu.Items className={`wphub-dropdown  ${dropdownClass}`}>
           <div>{dropdownChildren}</div>
         </Menu.Items>
       </Transition>

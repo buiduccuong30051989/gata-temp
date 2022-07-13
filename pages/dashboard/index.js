@@ -10,7 +10,7 @@ export default function Dashboard() {
       <div>
         <div>
           <div className="flex justify-between w-full">
-            <h2 className="forge-h2">Sites</h2>
+            <h2 className="wphub-h2">Sites</h2>
           </div>
 
           <Filter />

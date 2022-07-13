@@ -54,7 +54,7 @@ export const ModalCreateTemplate = ({ isOpen, closeModal }) => {
               id="site_name"
               placeholder="Keep blank for instant random site."
               autoComplete="site-name"
-              className="forge-input mt-1 block w-full pr-20"
+              className="wphub-input mt-1 block w-full pr-20"
               value={generateWord}
             />
             <button
@@ -123,12 +123,12 @@ export const ModalCreateTemplate = ({ isOpen, closeModal }) => {
       <div className="py-4 px-4 flex space-x-4">
         <button
           type="button"
-          className="forge-btn-secondary bg-gray-100 w-full"
+          className="wphub-btn-secondary bg-gray-100 w-full"
           onClick={() => closeModal()}
         >
           Cancel
         </button>
-        <button type="submit" className="forge-btn-primary w-full">
+        <button type="submit" className="wphub-btn-primary w-full">
           Create Site
         </button>
       </div>

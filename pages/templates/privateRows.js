@@ -1,27 +1,17 @@
 import { useState, Fragment } from "react";
 import {
-  HiOutlineExternalLink,
-  HiOutlineClock,
-  HiOutlineX,
-  HiOutlineLogout,
-  HiOutlineFlag,
-  HiOutlineTemplate,
   HiOutlineDotsVertical,
-  HiOutlineSearch,
-  HiOutlineCheck,
   HiOutlineGlobe,
   HiOutlineRefresh,
   HiOutlineLightningBolt,
   HiOutlinePencilAlt,
   HiOutlinePlusCircle,
   HiOutlineTrash,
-  HiOutlineExclamation,
   HiOutlineLockClosed,
   HiOutlineSelector,
 } from "react-icons/hi";
 import { FiGitMerge } from "react-icons/fi";
 import { Tooltip } from "components/Tooltip";
-import Link from "next/link";
 import { Dropdown } from "components/Dropdown";
 import { Menu, Popover, Transition, Listbox } from "@headlessui/react";
 import { IconPhp } from "components/Icons";
@@ -29,7 +19,6 @@ import { alertParams, showAlert } from "components/Alert";
 import { useRouter } from "next/router";
 import { ModalCreateTemplate } from "./modalCreateTemplate";
 import { ModalPhpConfiguration } from "./modalPhpConfiguration";
-import { toast } from "react-toastify";
 
 const filterOptions = [
   { name: "Select Frequency" },
@@ -44,8 +33,6 @@ export const PrivateRow = ({ openEdit }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenConfig, setIsOpenConfig] = useState(false);
   const [selected, setSelected] = useState(filterOptions[0]);
-
-  const notify = () => toast.success("Wow so easy !");
 
   const closeModal = () => {
     setIsOpen(false);
@@ -64,15 +51,14 @@ export const PrivateRow = ({ openEdit }) => {
   }
 
   const handleDeployment = () => {
-    notify();
-    // showAlert({
-    //   ...alertParams.info,
-    //   title: "Select Deployments",
-    //   description: "Please add a new repository in the ‘Deployments’ tab",
-    //   cancelText: "cancel",
-    //   okText: "Open Deployment",
-    //   onOk: () => router.push("/deployment"),
-    // });
+    showAlert({
+      ...alertParams.info,
+      title: "Select Deployments",
+      description: "Please add a new repository in the ‘Deployments’ tab",
+      cancelText: "cancel",
+      okText: "Open Deployment",
+      onOk: () => router.push("/deployment"),
+    });
   };
 
   const handleDeleteTemplate = () => {
@@ -82,7 +68,7 @@ export const PrivateRow = ({ openEdit }) => {
       description: "Are you sure you want to remove this backup template?",
       cancelText: "cancel",
       okText: "Delete",
-      okBtnClass: "forge-btn-primary bg-red-600",
+      okBtnClass: "wphub-btn-primary bg-red-600",
     });
   };
 
@@ -91,7 +77,7 @@ export const PrivateRow = ({ openEdit }) => {
       <Menu.Item>
         <button
           onClick={openModalConfig}
-          className="forge-dropdown-item font-light w-full"
+          className="wphub-dropdown-item font-light w-full"
         >
           <IconPhp className="icon w-4 h-4 mr-2" />
           PHP Configuration
@@ -100,7 +86,7 @@ export const PrivateRow = ({ openEdit }) => {
       <Menu.Item>
         <button
           onClick={handleDeleteTemplate}
-          className="forge-dropdown-item font-light w-full"
+          className="wphub-dropdown-item font-light w-full"
         >
           <HiOutlineTrash className="icon w-4 h-4 mr-2" />
           Delete
@@ -140,7 +126,7 @@ export const PrivateRow = ({ openEdit }) => {
                   leaveFrom="opacity-100 translate-y-0"
                   leaveTo="opacity-0 translate-y-1"
                 >
-                  <Popover.Panel className="forge-dropdown left-0 origin-top-left w-72 top-full z-[1] py-3 px-4">
+                  <Popover.Panel className="wphub-dropdown left-0 origin-top-left w-72 top-full z-[1] py-3 px-4">
                     <div className="mb-3">
                       <a
                         className="font-light text-xs text-gray-700 text-left pb-1 flex "
@@ -155,7 +141,7 @@ export const PrivateRow = ({ openEdit }) => {
                       <input
                         id="sync_changes"
                         type="checkbox"
-                        className="forge-checkbox mr-2"
+                        className="wphub-checkbox mr-2"
                       />
                       <label
                         for="sync_changes"
@@ -186,12 +172,12 @@ export const PrivateRow = ({ openEdit }) => {
                             leaveFrom="opacity-100 translate-y-0"
                             leaveTo="opacity-0 translate-y-1"
                           >
-                            <Listbox.Options className="forge-dropdown w-40">
+                            <Listbox.Options className="wphub-dropdown w-40">
                               {filterOptions.map((option, optionIdx) => (
                                 <Listbox.Option
                                   key={optionIdx}
                                   className={({ active }) =>
-                                    `forge-dropdown-item text-gray-900 ${
+                                    `wphub-dropdown-item text-gray-900 ${
                                       active && "bg-gray-100"
                                     }`
                                   }
@@ -219,13 +205,13 @@ export const PrivateRow = ({ openEdit }) => {
                     <div className="flex space-x-4">
                       <button
                         type="button"
-                        className="forge-btn-secondary bg-gray-100 w-full"
+                        className="wphub-btn-secondary bg-gray-100 w-full"
                       >
                         Save & Sync
                       </button>
                       <button
                         type="submit"
-                        className="forge-btn-primary w-full"
+                        className="wphub-btn-primary w-full"
                       >
                         Sync Now
                       </button>
@@ -251,7 +237,7 @@ export const PrivateRow = ({ openEdit }) => {
       <td className="w-3/12 pr-4">
         <div className="flex justify-end">
           <Tooltip content="Edit">
-            <button className="forge-btn-secondary rounded-none rounded-l-lg">
+            <button className="wphub-btn-secondary rounded-none rounded-l-lg">
               <span className="icon is-small">
                 <HiOutlinePencilAlt
                   onClick={() => openEdit(true)}
@@ -263,7 +249,7 @@ export const PrivateRow = ({ openEdit }) => {
           <Tooltip content="Create New Site">
             <button
               onClick={openModal}
-              className="forge-btn-secondary rounded-none -ml-px"
+              className="wphub-btn-secondary rounded-none -ml-px"
             >
               <span className="icon is-small">
                 <HiOutlinePlusCircle className="w-5 h-5 text-gray-500" />
@@ -271,7 +257,7 @@ export const PrivateRow = ({ openEdit }) => {
             </button>
           </Tooltip>
           <Tooltip content="Enable Deployment">
-            <button className="forge-btn-secondary rounded-none -ml-px">
+            <button className="wphub-btn-secondary rounded-none -ml-px">
               <span className="icon is-small">
                 <FiGitMerge
                   onClick={handleDeployment}
@@ -282,7 +268,7 @@ export const PrivateRow = ({ openEdit }) => {
           </Tooltip>
           <Dropdown
             btnClass="icon is-small"
-            menuClass="relative forge-btn-secondary rounded-none rounded-r-lg -ml-px"
+            menuClass="relative wphub-btn-secondary rounded-none rounded-r-lg -ml-px"
             arrow={false}
             dropdownClass="right-0 origin-top-right w-48 top-full z-[1]"
             btnChildren={

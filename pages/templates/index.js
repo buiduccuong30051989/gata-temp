@@ -36,7 +36,7 @@ export default function Templates() {
       <div>
         <div>
           <div className="flex justify-between w-full">
-            <h2 className="forge-h2">Templates</h2>
+            <h2 className="wphub-h2">Templates</h2>
           </div>
 
           <Tab.Group>
@@ -71,7 +71,7 @@ export default function Templates() {
               </div>
               <button
                 type="button"
-                className="forge-btn-secondary absolute top-0 right-0"
+                className="wphub-btn-secondary absolute top-0 right-0"
                 onClick={openModal}
               >
                 <HiOutlineTemplate className="mr-2 w-5 h-5 text-gray-600" />
@@ -148,7 +148,7 @@ export default function Templates() {
                               type="text"
                               autoComplete="off"
                               id="template-name"
-                              className="forge-input w-full"
+                              className="wphub-input w-full"
                             />
                           </div>
                         </div>
@@ -163,7 +163,7 @@ export default function Templates() {
                           </div>
                           <div className="mt-1">
                             <textarea
-                              className="forge-input w-full"
+                              className="wphub-input w-full"
                               rows={3}
                               cols={100}
                               id="description"
@@ -191,7 +191,7 @@ export default function Templates() {
                         <input
                           type="text"
                           readOnly
-                          className="forge-input w-full"
+                          className="wphub-input w-full"
                         />
                         <div className="flex justify-center  text-sm pt-2">
                           <button
@@ -244,7 +244,7 @@ export default function Templates() {
                               disabled
                               id="site_life_time"
                               name="site_life_time"
-                              className="mt-1 pl-3 pr-10 py-2 forge-input"
+                              className="mt-1 pl-3 pr-10 py-2 wphub-input"
                             >
                               <option value={4}>4 Hours</option>
                             </select>
@@ -373,7 +373,7 @@ export default function Templates() {
                                     type="text"
                                     id="redirect_url"
                                     name="redirect_url"
-                                    className="w-full mt-1 forge-input ml-2"
+                                    className="w-full mt-1 wphub-input ml-2"
                                   />
                                 </div>
                               </div>
@@ -406,7 +406,7 @@ export default function Templates() {
                                   disabled
                                   placeholder="Enter your webhook URL"
                                   type="text"
-                                  className="w-full forge-input"
+                                  className="w-full wphub-input"
                                 />
                               </div>
                             </div>
@@ -429,7 +429,7 @@ export default function Templates() {
                             </label>
                             <input
                               id="logo"
-                              className="forge-input w-full py-[5px]"
+                              className="wphub-input w-full py-[5px]"
                               type="file"
                               accept="image/*"
                             />
@@ -489,13 +489,13 @@ export default function Templates() {
                 </div>
               </div>
               <div className="flex-shrink-0 px-4 py-4 flex justify-end">
-                <button type="button" className="forge-btn-secondary">
+                <button type="button" className="wphub-btn-secondary">
                   Cancel
                 </button>
 
                 <button
                   type="button"
-                  className="ml-4 forge-btn-primary disabled:opacity-60"
+                  className="ml-4 wphub-btn-primary disabled:opacity-60"
                 >
                   Update
                 </button>

@@ -60,7 +60,7 @@ export const SubHeader = () => (
     <div className="flex justify-between mt-10">
       <div className="flex items-center">
         <HiOutlineServer className="text-primary-400 mr-5 w-7 h-7" />
-        <h1 className="forge-h2 inline-block mr-5 max-w-2xl truncate">
+        <h1 className="wphub-h2 inline-block mr-5 max-w-2xl truncate">
           TESTSERVER
         </h1>
       </div>
@@ -69,7 +69,7 @@ export const SubHeader = () => (
           <span className="z-20 mr-3">
             <Menu as="div" className="relative inline-block text-left">
               <div>
-                <Menu.Button className="forge-btn-secondary shadow-sm">
+                <Menu.Button className="wphub-btn-secondary shadow-sm">
                   <span className="flex items-center font-normal truncate">
                     <VscDebugRestart className="mr-2 w-5 h-5 text-blue-400" />
                     Restart
@@ -88,38 +88,38 @@ export const SubHeader = () => (
                 leaveFrom="opacity-100 translate-y-0"
                 leaveTo="opacity-0 translate-y-1"
               >
-                <Menu.Items className="forge-dropdown w-52 origin-top-left">
+                <Menu.Items className="wphub-dropdown w-52 origin-top-left">
                   <div className="px-1 py-1 ">
                     <Menu.Item>
-                      <span className="forge-dropdown-item text-gray-900">
+                      <span className="wphub-dropdown-item text-gray-900">
                         Restart Server
                       </span>
                     </Menu.Item>
                     <Menu.Item>
-                      <span className="forge-dropdown-item text-gray-900">
+                      <span className="wphub-dropdown-item text-gray-900">
                         Restart Nginx
                       </span>
                     </Menu.Item>
                     <Menu.Item>
-                      <span className="forge-dropdown-item text-gray-900">
+                      <span className="wphub-dropdown-item text-gray-900">
                         {" "}
                         Restart MySQL
                       </span>
                     </Menu.Item>
                     {/**/}
                     <Menu.Item>
-                      <span className="forge-dropdown-item text-gray-900">
+                      <span className="wphub-dropdown-item text-gray-900">
                         Restart Redis
                       </span>
                     </Menu.Item>
                     <Menu.Item>
-                      <span className="forge-dropdown-item text-gray-900">
+                      <span className="wphub-dropdown-item text-gray-900">
                         Restart Supervisor
                       </span>
                     </Menu.Item>
                     <div className="mb-3 pb-2 border-b" />
                     <Menu.Item>
-                      <span className="forge-dropdown-item text-gray-900">
+                      <span className="wphub-dropdown-item text-gray-900">
                         Restart PHP 8.1
                       </span>
                     </Menu.Item>
@@ -131,7 +131,7 @@ export const SubHeader = () => (
           <span className="relative z-20">
             <Menu as="div" className="relative inline-block text-left">
               <div>
-                <Menu.Button className="forge-btn-secondary shadow-sm">
+                <Menu.Button className="wphub-btn-secondary shadow-sm">
                   <span className="flex items-center font-normal truncate">
                     <HiOutlineStop className="mr-2 w-5 h-5 text-red-400" />
                     Stop
@@ -150,15 +150,15 @@ export const SubHeader = () => (
                 leaveFrom="opacity-100 translate-y-0"
                 leaveTo="opacity-0 translate-y-1"
               >
-                <Menu.Items className="forge-dropdown right-0 w-52 origin-top-right">
+                <Menu.Items className="wphub-dropdown right-0 w-52 origin-top-right">
                   <div className="px-1 py-1 ">
                     <Menu.Item>
-                      <span className="forge-dropdown-item text-gray-900">
+                      <span className="wphub-dropdown-item text-gray-900">
                         Stop Nginx
                       </span>
                     </Menu.Item>
                     <Menu.Item>
-                      <span className="forge-dropdown-item text-gray-900">
+                      <span className="wphub-dropdown-item text-gray-900">
                         Stop MySQL
                       </span>
                     </Menu.Item>

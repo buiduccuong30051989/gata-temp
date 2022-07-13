@@ -1,6 +1,5 @@
 import StyleGuidesPage from ".";
-const SCHEMAS = ["success", "info", "warning", "danger", "normal"];
-// import { toast } from "react-toastify";
+const SCHEMAS = ["success", "info", "warning", "danger"];
 import {
   toatsSuccess,
   toatsDanger,
@@ -40,13 +39,13 @@ export default function Toats() {
     <div className="styleguides-block">
       <div className="layer-x" />
       <div className="layer-y" />
-      <div className="layer-top">Alert</div>
+      <div className="layer-top">Toats</div>
       <div className="layer-content">
         <div className="layer-content-inner">
           <div className="layer-bg" />
           <div className="styleguides-group">
             <div className="styleguides-group-item">
-              <p className="styleguides-group-item-title">Alert Types</p>
+              <p className="styleguides-group-item-title">Toats Types</p>
               <div className="styleguides-buttons-list">
                 {SCHEMAS.map((item) => (
                   <div key={item} className="buttons-item">

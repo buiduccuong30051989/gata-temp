@@ -68,7 +68,7 @@ export const ModalPhpConfiguration = ({ isOpen, closeModal }) => {
                 autoComplete="off"
                 type="number"
                 id={item.title}
-                className="forge-input pr-2 w-full"
+                className="wphub-input pr-2 w-full"
                 tabIndex={index}
                 defaultValue={item.defaultValue}
               />
@@ -79,12 +79,12 @@ export const ModalPhpConfiguration = ({ isOpen, closeModal }) => {
       <div className="py-4 px-4 flex space-x-4">
         <button
           type="button"
-          className="forge-btn-secondary bg-gray-100 w-full"
+          className="wphub-btn-secondary bg-gray-100 w-full"
           onClick={() => closeModal()}
         >
           Cancel
         </button>
-        <button type="submit" className="forge-btn-primary w-full">
+        <button type="submit" className="wphub-btn-primary w-full">
           Update
         </button>
       </div>

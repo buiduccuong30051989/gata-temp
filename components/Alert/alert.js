@@ -19,7 +19,7 @@ export const Alert = (props) => {
     onOk = () => {},
     loading,
     btnOkProps = {},
-    okBtnClass = "forge-btn-primary",
+    okBtnClass = "wphub-btn-primary",
     ...rest
   } = props;
 
@@ -94,7 +94,7 @@ export const Alert = (props) => {
                 <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse gap-4">
                   {cancelText && (
                     <button
-                      className="forge-btn-secondary"
+                      className="wphub-btn-secondary"
                       onClick={handleClose}
                       style={{ minWidth: "100px" }}
                     >

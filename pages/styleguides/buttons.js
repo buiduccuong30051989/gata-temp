@@ -27,13 +27,13 @@ export default function Buttons() {
               <p className="styleguides-group-item-title">Buttons Theme Type</p>
               <div className="styleguides-buttons-list">
                 <div className="buttons-item">
-                  <button type="button" className="forge-btn-primary">
-                    Button Forge Primary
+                  <button type="button" className="wphub-btn-primary">
+                    Button wphub Primary
                   </button>
                 </div>
                 <div className="buttons-item">
-                  <button type="button" className="forge-btn-secondary">
-                    Button Forge Secondary
+                  <button type="button" className="wphub-btn-secondary">
+                    Button wphub Secondary
                   </button>
                 </div>
               </div>

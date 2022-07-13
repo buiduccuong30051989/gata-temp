@@ -97,12 +97,12 @@ const MyAccount = () => {
       {accountNav.map((item) => (
         <Menu.Item key={item.title}>
           <Link href={item.path}>
-            <a className="forge-dropdown-item">{item.title}</a>
+            <a className="wphub-dropdown-item">{item.title}</a>
           </Link>
         </Menu.Item>
       ))}
       <hr className="mx-3 my-1"></hr>
-      <button className="forge-dropdown-item mb-0 w-full" type="button">
+      <button className="wphub-dropdown-item mb-0 w-full" type="button">
         Logout
       </button>
     </>
@@ -180,10 +180,10 @@ export const Navigation = () => {
                   height={30}
                   width={30}
                   className="rounded-full"
-                  alt="Test Forge's profile picture"
+                  alt="Test wphub's profile picture"
                 />
                 <span className="pl-2 text-left text-gray-800 text-sm font-normal">
-                  Test Forge
+                  Test wphub
                 </span>
               </>
             }

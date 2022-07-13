@@ -30,7 +30,7 @@ export const ModalAddTempate = ({ isOpen, closeModal }) => {
                   <input
                     id={`site_${item}`}
                     type="checkbox"
-                    className="forge-checkbox"
+                    className="wphub-checkbox"
                   />
                 </td>
                 <td className="pr-4 py-2">
@@ -67,7 +67,7 @@ export const ModalAddTempate = ({ isOpen, closeModal }) => {
       <div className="py-4 px-4 flex space-x-4">
         <button
           type="button"
-          className="forge-btn-secondary bg-gray-100 w-full"
+          className="wphub-btn-secondary bg-gray-100 w-full"
           onClick={() => closeModal()}
         >
           Cancel
@@ -75,7 +75,7 @@ export const ModalAddTempate = ({ isOpen, closeModal }) => {
         <button
           onClick={() => setStep(2)}
           type="submit"
-          className="forge-btn-primary w-full"
+          className="wphub-btn-primary w-full"
         >
           Next
         </button>
@@ -99,7 +99,7 @@ export const ModalAddTempate = ({ isOpen, closeModal }) => {
               id="template_name"
               placeholder="Template Name"
               autoComplete="template-name"
-              className="forge-input mt-1 block w-full "
+              className="wphub-input mt-1 block w-full "
               onChange={() => {}}
             />
           </div>
@@ -116,7 +116,7 @@ export const ModalAddTempate = ({ isOpen, closeModal }) => {
             <textarea
               id="template_desc"
               placeholder="Template Description"
-              className="forge-input mt-1 block w-full "
+              className="wphub-input mt-1 block w-full "
               onChange={() => {}}
               rows={4}
             />
@@ -195,12 +195,12 @@ export const ModalAddTempate = ({ isOpen, closeModal }) => {
       <div className="py-4 px-4 flex space-x-4">
         <button
           type="button"
-          className="forge-btn-secondary bg-gray-100 w-full"
+          className="wphub-btn-secondary bg-gray-100 w-full"
           onClick={() => setStep(1)}
         >
           Back
         </button>
-        <button type="submit" className="forge-btn-primary w-full">
+        <button type="submit" className="wphub-btn-primary w-full">
           Save
         </button>
       </div>
