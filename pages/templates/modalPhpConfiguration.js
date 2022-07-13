@@ -1,51 +1,9 @@
 import { useState } from "react";
 import { Modal } from "components/Modal";
 import randomWords from "random-words";
+import { phpConfig } from "constant/data";
 
 export const ModalPhpConfiguration = ({ isOpen, closeModal }) => {
-  const phpConfig = [
-    {
-      label: "max_execution_time",
-      unit: "seconds",
-      defaultValue: 30,
-    },
-    {
-      label: "max_input_time",
-      unit: "seconds",
-      defaultValue: 30,
-    },
-    {
-      label: "max_input_vars",
-      unit: "seconds",
-      defaultValue: 30,
-    },
-    {
-      label: "memory_limit",
-      unit: "mb",
-      defaultValue: 30,
-    },
-    {
-      label: "allow_url_fopen",
-      unit: "",
-      defaultValue: 30,
-    },
-    {
-      label: "post_max_size",
-      unit: "mb",
-      defaultValue: 30,
-    },
-    {
-      label: "upload_max_filesize",
-      unit: "mb",
-      defaultValue: 30,
-    },
-    {
-      label: "session.gc_maxlifetime",
-      unit: "seconds",
-      defaultValue: 30,
-    },
-  ];
-
   return (
     <Modal
       isOpen={isOpen}
