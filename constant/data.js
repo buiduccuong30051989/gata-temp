@@ -170,3 +170,12 @@ export const listPhpVersion = [
     value: "8.1",
   },
 ];
+
+export const fakerConfig = [
+  "Posts",
+  "Pages",
+  "Tags",
+  "Categories",
+  "Attachments",
+  "Authors",
+];
