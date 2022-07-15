@@ -22,8 +22,15 @@ import {
 } from "react-icons/hi";
 import { Tooltip } from "components/Tooltip";
 import { classNames } from "utils/helper";
-import { listWpVersion, listPhpVersion, phpConfig, fakerConfig } from "constant/data";
+import {
+  listWpVersion,
+  listPhpVersion,
+  phpConfig,
+  fakerConfig,
+} from "constant/data";
 import { Badge } from "components/Badge";
+import { alertParams, showAlert } from "components/Alert";
+import { toatsSuccess } from "components/Toats";
 
 const tabConfig = [
   {
@@ -80,6 +87,22 @@ export default function Configurations() {
 
   function openModal() {
     setIsOpen(true);
+  }
+
+  const handleDeleteConfiguration = () => {
+    showAlert({
+      ...alertParams.danger(),
+      title: "Are you sure you want to delete this Configuration?",
+      okText: "Delete",
+      okBtnClass: "wphub-btn-primary bg-danger-400",
+      cancelText: 'Cancel'
+    });
+  };
+
+  const handleSaveAsNewConfiguration = () => {
+    toatsSuccess({
+      content: "Data Saved!"
+    })
   }
 
   const TabGeneral = () => (
@@ -181,7 +204,7 @@ export default function Configurations() {
 
   const TabWordpress = () => (
     <>
-      <div className="grid grid-cols-2 gap-8">
+      <div className="grid grid-cols-2 gap-4">
         {["WP_DEBUG", "WP_AUTO_UPDATE_CORE", "AUTOMATIC_UPDATER_DISABLED"].map(
           (item) => (
             <div className="flex items-center">
@@ -194,7 +217,7 @@ export default function Configurations() {
         )}
       </div>
 
-      <div className="grid grid-cols-2 gap-8 mt-3">
+      <div className="grid grid-cols-2 gap-4 mt-8">
         <div>
           <h3 className="text-gray-700">Multi Site Installation</h3>
           <p className="text-gray-500">
@@ -207,77 +230,105 @@ export default function Configurations() {
         </div>
       </div>
 
-      <div className="mt-3">
-        <label className="text-gray-700">Pre-Install Plugins</label>
-        <Popover className="relative">
-          <Popover.Button className="w-full">
-            <div className="wphub-input flex gap-4 h-[38px] w-full">
-              {selectedPerson.map((item) => (
-                <div className="border border-gray-100 inline-flex">
-                  {item.name}
-                </div>
-              ))}
-            </div>
-          </Popover.Button>
-          <Transition
-            as={Fragment}
-            enter="transition ease-out duration-200"
-            enterFrom="opacity-0 translate-y-1"
-            enterTo="opacity-100 translate-y-0"
-            leave="transition ease-in duration-150"
-            leaveFrom="opacity-100 translate-y-0"
-            leaveTo="opacity-0 translate-y-1"
-          >
-            <Popover.Panel className="wphub-dropdown right-0 origin-top-right w-56 top-full z-[1]">
-              <Combobox
-                multiple
-                value={selectedPerson}
-                onChange={setSelectedPerson}
-              >
-                <div className="relative">
-                  <div className="relative flex items-center text-gray-400 focus-within:text-gray-500">
-                    <span className="absolute inset-0 flex items-center pointer-events-none select-none">
-                      <HiOutlineSearch className="ml-4 h-4" />
-                    </span>
-                    <Combobox.Input
-                      onChange={(event) => setQuery(event.target.value)}
-                      type="text"
-                      placeholder="Search"
-                      className="pl-10 pr-12 w-full h-10 focus:text-black text-sm bg-gray-100 focus:bg-gray-50 border border-gray-100 focus:border-teal-400 rounded-lg focus:outline-none appearance-none focus:ring-0"
-                    />
-                    <div className="absolute right-0 flex items-center pointer-events-none select-none">
-                      <span className="mr-4">/</span>
+      {["Plugins", "Themes"].map((item) => (
+        <div key={item} className="mt-8">
+          <label className="text-gray-700">Pre-Install {item}</label>
+          <Popover className="relative flex mt-1">
+            <Popover.Button className="w-full">
+              <div className="wphub-input flex flex-wrap gap-2 min-h-[38px] w-full relative">
+                {selectedPerson.map((item) => (
+                  <Badge title={item.name} color="primary" />
+                ))}
+                <HiOutlineSelector className="w-5 h-5 text-gray-400 absolute right-2 top-2" />
+              </div>
+            </Popover.Button>
+            <Transition
+              as={Fragment}
+              enter="transition ease-out duration-200"
+              enterFrom="opacity-0 translate-y-1"
+              enterTo="opacity-100 translate-y-0"
+              leave="transition ease-in duration-150"
+              leaveFrom="opacity-100 translate-y-0"
+              leaveTo="opacity-0 translate-y-1"
+            >
+              <Popover.Panel className="wphub-dropdown right-0 origin-top-right w-full top-full z-[1]">
+                <Combobox
+                  multiple
+                  value={selectedPerson}
+                  onChange={setSelectedPerson}
+                >
+                  <div className="relative">
+                    <div className="relative flex items-center text-gray-400 focus-within:text-gray-500">
+                      <span className="absolute inset-0 flex items-center pointer-events-none select-none">
+                        <HiOutlineSearch className="ml-4 h-4" />
+                      </span>
+                      <Combobox.Input
+                        onChange={(event) => setQuery(event.target.value)}
+                        type="text"
+                        placeholder="Search"
+                        className="pl-10 pr-12 w-full h-10 focus:text-black text-sm bg-gray-100 focus:bg-gray-50 border border-gray-100 focus:border-teal-400 rounded-lg focus:outline-none appearance-none focus:ring-0"
+                      />
+                      <div className="absolute right-0 flex items-center pointer-events-none select-none">
+                        <span className="mr-4">/</span>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="customized-scrollbar h-[200px] overflow-y-auto py-2 ">
-                  {/* {query.length > 0 && (
-                    <Combobox.Option value={{ id: null, name: query }}>
-                      Create "{query}"
-                    </Combobox.Option>
-                  )} */}
-                  <Combobox.Options static>
-                    {filteredPeople.map((person) => (
-                      <Combobox.Option
-                        className="wphub-dropdown-item filter-option"
-                        key={person.id}
-                        value={person}
-                      >
-                        {person.name}
-                        <HiOutlineCheck className="icon w-4 h-4 absolute right-2" />
+                  <div className="customized-scrollbar h-[200px] overflow-y-auto py-2 ">
+                    {query.length > 0 && (
+                      <Combobox.Option value={{ id: null, name: query }}>
+                        Create "{query}"
                       </Combobox.Option>
-                    ))}
-                  </Combobox.Options>
-                </div>
-              </Combobox>
-              <div className="overlay-showmore pt-20"></div>
-            </Popover.Panel>
-          </Transition>
-        </Popover>
-        <span className="text-gray-300 text-xs mt-1">
-          Plugin slugs from wp.org repo
-        </span>
+                    )}
+                    <Combobox.Options static>
+                      {filteredPeople.map((person) => (
+                        <Combobox.Option
+                          className="wphub-dropdown-item filter-option"
+                          key={person.id}
+                          value={person}
+                        >
+                          {person.name}
+                          <HiOutlineCheck className="icon w-4 h-4 absolute right-2" />
+                        </Combobox.Option>
+                      ))}
+                    </Combobox.Options>
+                  </div>
+                  <div className="px-4  text-gray-500 pt-2 border-t border-gray-200">
+                    Add {item} slug from wp.org
+                  </div>
+                </Combobox>
+              </Popover.Panel>
+            </Transition>
+          </Popover>
+          <span className="text-gray-500 text-xs mt-1">
+            {item} slugs from wp.org repo
+          </span>
+        </div>
+      ))}
+
+      <div className="mt-8">
+        <label className="text-gray-700">URL for themes or plugin</label>
+        <div className="grid grid-cols-2 gap-4 mt-1">
+          <input type="text" className="wphub-input" />
+          <div className="flex items-center gap-4">
+            {["Themes", "Plugins"].map((item) => (
+              <div className="flex items-center">
+                <input
+                  id={item}
+                  name="type_link"
+                  type="radio"
+                  className="wphub-checkbox mr-2"
+                />
+                <label for={item} className="text-gray-500">
+                  {item}
+                </label>
+              </div>
+            ))}
+            <button>
+              <HiOutlinePlusCircle className="w-6 h-6 text-primary-400" />
+            </button>
+          </div>
+        </div>
       </div>
     </>
   );
@@ -438,7 +489,10 @@ export default function Configurations() {
                       </Popover>
                     )}
                     <button className=" ml-3 text-gray-500">
-                      <HiOutlineTrash className="h-4 w-4" />
+                      <HiOutlineTrash
+                        onClick={handleDeleteConfiguration}
+                        className="h-4 w-4"
+                      />
                     </button>
                   </div>
 
@@ -476,11 +530,11 @@ export default function Configurations() {
                   ))}
                 </div>
                 <div className=" inline-flex space-x-4 ">
-                  <button className="wphub-btn-secondary">
+                  <button onClick={handleSaveAsNewConfiguration} className="wphub-btn-secondary">
                     <HiOutlineCog className="w-4 h-4 mr-2" />
                     Save As New
                   </button>
-                  <button className="wphub-btn-primary">
+                  <button onClick={handleSaveAsNewConfiguration} className="wphub-btn-primary">
                     <HiOutlineCog className="w-4 h-4 mr-2" />
                     Save
                   </button>
@@ -642,161 +696,37 @@ export default function Configurations() {
                 </Tab.Panel>
               </Tab.Panels>
             </Tab.Group>
-            {/* <div className="bg-white ml-3 pb-14 rounded">
-              <div className="w-full px-8 pt-6 pb-4 border-b">
-
-                  <div className="relative inline-block xl:max-w-5xl">
-                    <div>
-                      <button
-                        type="button"
-                        className="flex float-left mr-3 items-center justify-center px-3 py-2 mt-3 space-x-3 text-gray-600 transition-colors duration-200 transform border rounded-md md:mt-0 focus:border-teal-500 focus:ring focus:ring-primary focus:ring-opacity-40 dark:text-gray-200 dark:border-gray-200 dark:focus:border-teal-500 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          className="h-6 w-5"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M17 16v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-7a2 2 0 012-2h2m3-4H9a2 2 0 00-2 2v7a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-1m-1 4l-3 3m0 0l-3-3m3 3V3"
-                          />
-                        </svg>
-                        <span>Save As New</span>
-                      </button>
-                      <button
-                        type="button"
-                        className="flex bg-insta-primary text-white items-center border border-transparent justify-center px-4 py-2 mt-4 space-x-3 transition-colors duration-200 transform rounded-md md:mt-0 focus:border-teal-500 focus:ring focus:ring-primary focus:ring-opacity-40 focus:outline-none"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          className="h-6 w-5"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"
-                          />
-                        </svg>
-                        <span>Save</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div id="general_config">
-                <div className="w-full px-8 flex">
-                  <div className="lg:w-5/6 md:w-1/2">
-                    <div className="relative flex items-start">
-                      <div className="w-full pt-4 pr-4 flex">
-                        <label
-                          htmlFor="wp_version"
-                          className="c-min-width float-left text-base text-gray-700 text-left pb-1 pt-3 pr-5"
-                        >
-                          Wordress Version
-                        </label>
-                        <div className="w-48">
-                          <div className="mt-1 relative">
-                            <button
-                              id="headlessui-listbox-button-147"
-                              type="button"
-                              aria-haspopup="true"
-                              aria-expanded="false"
-                              className="relative w-full bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-primary-900 focus:border-primary-900 sm:text-sm h-11"
-                            >
-                              <span className="w-full inline-flex truncate">
-                                <span className="truncate">6.0</span>
-                                <span className=" inline-flex items-center px-2.5 ml-2 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-700 ">
-                                  {" "}
-                                  Recommended{" "}
-                                </span>
-                              </span>
-                              <span className=" absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none ">
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  viewBox="0 0 20 20"
-                                  fill="currentColor"
-                                  className="h-5 w-5 text-gray-400"
-                                >
-                                  <path
-                                    fillRule="evenodd"
-                                    d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-                                    clipRule="evenodd"
-                                  />
-                                </svg>
-                              </span>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="w-full px-8 flex">
-                  <div className="lg:w-5/6 md:w-1/2">
-                    <div className="relative flex items-start">
-                      <div className="w-full pt-4 pr-4 flex">
-                        <label
-                          htmlFor="wp_version"
-                          className="c-min-width float-left text-base text-gray-700 text-left pb-1 pt-3 pr-5"
-                        >
-                          PHP Version
-                        </label>
-                        <div className="w-48">
-                          <div className="relative">
-                            <button
-                              id="headlessui-listbox-button-149"
-                              type="button"
-                              aria-haspopup="true"
-                              aria-expanded="false"
-                              className="relative w-full bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-primary-900 focus:border-primary-900 sm:text-sm h-11"
-                            >
-                              <span className="w-full inline-flex truncate">
-                                <span className="truncate">8.1</span>
-                              </span>
-                              <span className=" absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none ">
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  viewBox="0 0 20 20"
-                                  fill="currentColor"
-                                  className="h-5 w-5 text-gray-400"
-                                >
-                                  <path
-                                    fillRule="evenodd"
-                                    d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-                                    clipRule="evenodd"
-                                  />
-                                </svg>
-                              </span>
-                            </button>
-                          </div>
-                        </div>
-                        <div className="ml-2 text-xs flex items-center">
-                          <span className=" inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-700 ">
-                            {" "}
-                            Recommended Version: 7.4
-                          </span>
-                        </div>
-                        <button className="text-xs ml-1">
-                          [<span className="underline">Set</span>]
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> */}
           </div>
         </section>
       </div>
+      <Modal
+        isOpen={isOpen}
+        closeModal={closeModal}
+        modalTitle="Add New Configuration"
+      >
+        <div className="my-3">
+          <label className="block" for="configuration">
+            Configuration Name
+          </label>
+          <input
+            id="configuration"
+            type="text"
+            className="wphub-input mt-1 w-full"
+          />
+        </div>
+        <div className="py-4 flex space-x-4">
+          <button
+            type="button"
+            className="wphub-btn-secondary bg-gray-100 w-full"
+            onClick={() => closeModal()}
+          >
+            Cancel
+          </button>
+          <button type="submit" className="wphub-btn-primary w-full">
+            Add Configuration
+          </button>
+        </div>
+      </Modal>
     </AuthLayout>
   );
 }

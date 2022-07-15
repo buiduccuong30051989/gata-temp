@@ -15,6 +15,7 @@ import { Tooltip } from "components/Tooltip";
 import Link from "next/link";
 import { Dropdown } from "components/Dropdown";
 import { Menu, Popover, Transition, Combobox } from "@headlessui/react";
+import { alertParams, showAlert } from "components/Alert";
 
 const MORE_ACTIONS = [
   { title: "View Creds", path: "/" },
@@ -57,6 +58,17 @@ export const EventRow = () => {
 
   const [selectedPerson, setSelectedPerson] = useState([]);
   const [query, setQuery] = useState("");
+
+  const handleReserve = () => {
+    showAlert({
+      ...alertParams.info,
+      title: "Reserve Site",
+      description:
+        'Your website chair.us11.instawp.xyz has been marked as "reserved" and it will NOT be deleted automatically".',
+      okText: "Confirm",
+      cancelText: "Cancel",
+    });
+  };
 
   const filteredPeople =
     query === ""
@@ -192,7 +204,10 @@ export const EventRow = () => {
             </button>
           </Tooltip>
           <Tooltip content="Reserve">
-            <button className="wphub-btn-secondary rounded-none -ml-px">
+            <button
+              onClick={handleReserve}
+              className="wphub-btn-secondary rounded-none -ml-px"
+            >
               <span className="icon is-small">
                 <HiOutlineFlag className="w-5 h-5 text-gray-500" />
               </span>

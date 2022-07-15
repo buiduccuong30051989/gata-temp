@@ -203,7 +203,7 @@ export const ModalAddNews = ({ isOpen, closeModal }) => {
           </Tab.Panel>
           <Tab.Panel>
             <div className=" py-3">
-              <div className="customized-scrollbar h-[255px] overflow-y-auto">
+              <div className="customized-scrollbar h-[402px] overflow-y-auto">
                 <RadioGroup value={template} onChange={setTemplate}>
                   {"cuongbeodepzaihocgioi".split("").map((item, index) => (
                     <RadioGroup.Option
