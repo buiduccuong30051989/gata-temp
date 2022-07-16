@@ -1,12 +1,13 @@
 import { AuthLayout } from "components/Layout";
 import Link from "next/link";
 import { navUser } from "router";
+import { SubHeader } from "pages/dashboard/[id]/subHeader";
 
-export const LeftSidebarLayout = ({ children, pageClassName }) => {
-
+export const LeftSidebarLayout = ({ SubHeader, children, pageClassName }) => {
   return (
     <AuthLayout>
       <div className={pageClassName}>
+        <SubHeader />
         <div className="flex mt-12">
           <nav className="pr-2 w-1/6 space-y-2">
             {navUser.map((item) => (

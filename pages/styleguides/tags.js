@@ -1,16 +1,30 @@
 import StyleGuidesPage from ".";
-import STYLEGUIDES from "constant/styleguides.json";
+import { Tag } from "components/Tag";
+import { BASE_SCHEMA } from "constant/common";
 const SCHEMAS = [
-  "primary",
-  "secondary",
-  "info",
-  "success",
-  "warning",
-  "danger",
-  "white",
-  "black",
-  "light",
-  "dark",
+  ...BASE_SCHEMA,
+  "slate",
+  "gray",
+  "zinc",
+  "neutral",
+  "stone",
+  "red",
+  "orange",
+  "amber",
+  "yellow",
+  "lime",
+  "green",
+  "emerald",
+  "teal",
+  "cyan",
+  "sky",
+  "blue",
+  "indigo",
+  "violet",
+  "purple",
+  "fuchsia",
+  "pink",
+  "rose",
 ];
 
 export default function Tags() {
@@ -24,15 +38,15 @@ export default function Tags() {
           <div className="layer-bg" />
           <div className="styleguides-group">
             <div className="styleguides-group-item">
-              <p className="styleguides-group-item-title">Tags Colors</p>
+              <p className="styleguides-group-item-title">Tag Types</p>
               <div className="styleguides-buttons-list">
                 {SCHEMAS.map((item) => (
-                  <div key={item} className="buttons-item">
-                    <span
-                      type="button"
-                      className={`ct-tag is-${item}`}
-                    >{`tag-${item}`}</span>
-                  </div>
+                  <Tag
+                    key={item}
+                    className="buttons-item"
+                    content={`tag-${item}`}
+                    type={item}
+                  ></Tag>
                 ))}
               </div>
             </div>

@@ -7,8 +7,8 @@ export const RecentEvents = () => {
         <h5 className="text-lg font-normal">All sites</h5>
       </div>
       <div className="py-2">
-        <table className="w-full text-left">
-          <thead className="text-gray-500">
+        <table className="w-full text-left text-sm text-gray-500">
+          <thead>
             <tr className="h-10">
               <th />
               <th className="pr-4 font-light">NAME </th>

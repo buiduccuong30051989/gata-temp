@@ -1,4 +1,4 @@
-import { useState, Fragment } from "react";
+import { useState, Fragment, useMemo } from "react";
 import {
   HiOutlineExternalLink,
   HiOutlineClock,
@@ -16,6 +16,8 @@ import Link from "next/link";
 import { Dropdown } from "components/Dropdown";
 import { Menu, Popover, Transition, Combobox } from "@headlessui/react";
 import { alertParams, showAlert } from "components/Alert";
+import { Tag } from "components/Tag";
+import { BASE_SCHEMA } from "constant/common";
 
 const MORE_ACTIONS = [
   { title: "View Creds", path: "/" },
@@ -55,9 +57,17 @@ const MoreActions = () => (
 
 export const EventRow = () => {
   const [showMore, setShowMore] = useState(false);
-
   const [selectedPerson, setSelectedPerson] = useState([]);
   const [query, setQuery] = useState("");
+  const [listTag, setListTag] = useState(BASE_SCHEMA);
+
+  const listTagRender = useMemo(() => {
+    return [listTag[0], listTag[1]];
+  }, [listTag]);
+
+  const listTagShowMore = useMemo(() => {
+    return listTag.slice(2);
+  }, [listTag]);
 
   const handleReserve = () => {
     showAlert({
@@ -83,63 +93,48 @@ export const EventRow = () => {
         <input type="checkbox" className="wphub-checkbox" />
       </td>
       <td className="pr-4">
-        <span className="flex items-center text-gray-500">
+        <span className="flex items-center ">
           www.google.com.vn
           <a href="#">
-            <HiOutlineExternalLink className="w-4 h-4 ml-2 text-brands-info" />
+            <HiOutlineExternalLink className="w-4 h-4 ml-2 text-info-400" />
           </a>
         </span>
       </td>
       <td className="pr-4">
         <span className="flex items-center">
-          <HiOutlineClock className="icon w-4 h-4 mr-2 text-gray-500" />6 day,
-          23 hours, 59 mins
+          <HiOutlineClock className="icon mr-2" />6 day, 23 hours, 59 mins
         </span>
       </td>
-      <td className="pr-4 text-gray-500 text-xs">108.93 MB</td>
+      <td className="pr-4 ">108.93 MB</td>
       <td className="pr-4">
         <div className="flex items-center gap-2">
           <div className="grid grid-cols-1 py-2 gap-2">
-            <div className="grid grid-cols-2 gap-2">
-              <div className="ct-tag pl-4 pr-2 is-warning">
-                Tag 02
-                <button>
-                  <HiOutlineX className="w-3 h-3 ml-1 icon" />
-                </button>
-              </div>
-              <div className="ct-tag pl-4 pr-2 is-dark">
-                Tag 03
-                <button>
-                  <HiOutlineX className="w-3 h-3 ml-1 icon" />
-                </button>
-              </div>
+            <div className="flex flex-wrap gap-2 w-[170px]">
+              {listTagRender.map((item) => (
+                <Tag key={item} content={item} type={item} />
+              ))}
+              {showMore && (
+                <>
+                  {listTagShowMore.map((item) => (
+                    <Tag key={item} content={item} type={item} />
+                  ))}
+                </>
+              )}
             </div>
-            {Boolean(showMore) && (
-              <div className="grid grid-cols-2 gap-2">
-                <div className="ct-tag pl-4 pr-2 is-warning">
-                  Tag 02
-                  <button>
-                    <HiOutlineX className="w-3 h-3 ml-1 icon" />
-                  </button>
-                </div>
-                <div className="ct-tag pl-4 pr-2 is-dark">
-                  Tag 03
-                  <button>
-                    <HiOutlineX className="w-3 h-3 ml-1 icon" />
-                  </button>
-                </div>
-              </div>
-            )}
           </div>
-          <button
-            onClick={() => setShowMore((prev) => !prev)}
-            className="ct-tag is-light w-[84px]"
-          >
-            {showMore ? "Show less" : "+4 more"}
-          </button>
-          <Popover className="relative">
-            <Popover.Button>
-              <HiOutlinePlusCircle className="icon w-4 h-4 text-gray-500" />
+
+          {!showMore && (
+            <button
+              onClick={() => setShowMore((prev) => !prev)}
+              className="text-xs"
+            >
+              +{listTagShowMore.length} more
+            </button>
+          )}
+
+          <Popover className="relative leading-none">
+            <Popover.Button className="h-[16px]">
+              <HiOutlinePlusCircle className="icon" />
             </Popover.Button>
             <Transition
               as={Fragment}
@@ -164,6 +159,7 @@ export const EventRow = () => {
                       <Combobox.Input
                         onChange={(event) => setQuery(event.target.value)}
                         type="text"
+                        maxLength={10}
                         placeholder="Search"
                         className="pl-10 pr-12 w-full h-10 focus:text-black text-sm bg-gray-100 focus:bg-gray-50 border border-gray-100 focus:border-teal-400 rounded-lg focus:outline-none appearance-none focus:ring-0"
                       />
