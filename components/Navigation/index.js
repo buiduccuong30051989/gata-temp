@@ -2,35 +2,13 @@ import Link from "next/link";
 import { Menu } from "@headlessui/react";
 import Image from "next/image";
 import { navMain } from "router";
-import { HiOutlineSearch, HiOutlineChartSquareBar, HiOutlineSpeakerphone } from "react-icons/hi";
+import {
+  HiOutlineSearch,
+  HiOutlineChartSquareBar,
+  HiOutlineSpeakerphone,
+} from "react-icons/hi";
 import { Dropdown } from "components/Dropdown";
-
-const accountNav = [
-  {
-    title: "Profile",
-    path: "/profile",
-  },
-  {
-    title: "Plans",
-    path: "/plans",
-  },
-  {
-    title: "Payment Card",
-    path: "/card",
-  },
-  {
-    title: "Invoices",
-    path: "/invoices",
-  },
-  {
-    title: "API Tokens",
-    path: "/api",
-  },
-  {
-    title: "Notifications",
-    path: "/notifications",
-  },
-];
+import { navUser } from "router";
 
 const MY_PLAN_MOCK_DATA = [
   {
@@ -94,7 +72,7 @@ const MyPlan = () => (
 const MyAccount = () => {
   return (
     <>
-      {accountNav.map((item) => (
+      {navUser.map((item) => (
         <Menu.Item key={item.title}>
           <Link href={item.path}>
             <a className="wphub-dropdown-item">{item.title}</a>

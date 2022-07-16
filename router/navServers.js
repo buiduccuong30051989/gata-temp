@@ -17,7 +17,12 @@ import {
   HiOutlinePuzzle,
   HiOutlineLockClosed,
   HiOutlineCog,
+  HiOutlineUserCircle,
+  HiOutlineCreditCard,
+  HiOutlineCalculator,
 } from "react-icons/hi";
+import { TbApi } from "react-icons/tb";
+import { BiNotification } from "react-icons/Bi";
 import { BsFillTreeFill } from "react-icons/bs";
 import { BiDirections } from "react-icons/bi";
 import { IconPhp } from "components/icons";
@@ -150,5 +155,38 @@ export const sitesServer = [
     title: "Meta",
     icon: <HiOutlineTag />,
     path: "sites",
+  },
+];
+
+export const navUser = [
+  {
+    title: "Profile",
+    path: "/user/profile",
+    icon: <HiOutlineUserCircle />,
+  },
+  {
+    title: "Plans",
+    path: "/user/plans",
+    icon: <HiOutlineClipboardList />,
+  },
+  {
+    title: "Payment Card",
+    path: "/user/card",
+    icon: <HiOutlineCreditCard />,
+  },
+  {
+    title: "Invoices",
+    path: "/user/invoices",
+    icon: <HiOutlineCalculator />,
+  },
+  {
+    title: "API Tokens",
+    path: "/user/api",
+    icon: <TbApi />,
+  },
+  {
+    title: "Notifications",
+    path: "/user//notifications",
+    icon: <BiNotification />,
   },
 ];

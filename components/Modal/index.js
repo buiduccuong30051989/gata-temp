@@ -1,7 +1,13 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 
-export const Modal = ({ isOpen, closeModal, modalTitle, children, panelClassName = "w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all" }) => {
+export const Modal = ({
+  isOpen,
+  closeModal,
+  modalTitle,
+  children,
+  panelClassName = "w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all",
+}) => {
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-20" onClose={closeModal}>
@@ -17,7 +23,7 @@ export const Modal = ({ isOpen, closeModal, modalTitle, children, panelClassName
           <div className="fixed inset-0 bg-black bg-opacity-25" />
         </Transition.Child>
 
-        <div className="fixed inset-0 overflow-y-auto">
+        <div className="fixed inset-0 overflow-y-auto customized-scrollbar">
           <div className="flex min-h-full items-center justify-center p-4 text-center">
             <Transition.Child
               as={Fragment}

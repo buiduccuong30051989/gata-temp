@@ -53,6 +53,7 @@ module.exports = {
       fontFamily: {
         git: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
         rupik: '"Rubik", "sans-serif"',
+        inter: '"Inter", sans-serif',
       },
     },
   },
