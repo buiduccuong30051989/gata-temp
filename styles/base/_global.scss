@@ -1,3 +1,5 @@
 body {
-  @apply font-inter font-light text-sm;
+  @apply font-rupik font-normal text-sm;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
 }

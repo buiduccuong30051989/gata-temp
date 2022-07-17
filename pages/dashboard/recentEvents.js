@@ -11,10 +11,10 @@ export const RecentEvents = () => {
           <thead>
             <tr className="h-10">
               <th />
-              <th className="pr-4 font-light">NAME </th>
-              <th className="pr-4 font-light">TIME TO EXPIRE </th>
-              <th className="pr-4 font-light">DISK USAGE </th>
-              <th className="pr-4 font-light"> TAGS</th>
+              <th className="pr-4 font-normal">NAME </th>
+              <th className="pr-4 font-normal">TIME TO EXPIRE </th>
+              <th className="pr-4 font-normal">DISK USAGE </th>
+              <th className="pr-4 font-normal"> TAGS</th>
               <th />
             </tr>
           </thead>

@@ -22,9 +22,7 @@ import {
   HiOutlineCalculator,
 } from "react-icons/hi";
 import { TbApi } from "react-icons/tb";
-import { BiNotification } from "react-icons/Bi";
-import { BsFillTreeFill } from "react-icons/bs";
-import { BiDirections } from "react-icons/bi";
+import { BiNotification, BsFillTreeFill, BiDirections } from "react-icons/Bi";
 import { IconPhp } from "components/icons";
 
 export const navServer = [
