@@ -1,7 +1,36 @@
+import { useState } from "react";
 import StyleGuidesPage from ".";
 import { HiCog } from "react-icons/hi";
+import {
+  TextField,
+  TextArea,
+  Select,
+  Checkbox,
+  Radio,
+  HlRadio,
+} from "components";
+
+const options = [
+  {
+    label: "General PHP / Laravel",
+    value: "php",
+  },
+  {
+    label: "Laravel Octane",
+    value: "octane",
+  },
+  {
+    label: "Static HTML",
+    value: "html",
+  },
+];
 
 export default function Forms() {
+  const [value, setValue] = useState("");
+  const [checked, setChecked] = useState(false);
+  console.log({ value });
+  console.log({ checked });
+
   return (
     <div className="styleguides-block">
       <div className="layer-x" />
@@ -14,30 +43,80 @@ export default function Forms() {
             <div className="styleguides-group-item">
               <p className="styleguides-group-item-title">Form Elements</p>
               <div className="flex flex-col mt-4">
-                <label>Text Input</label>
-                <div className="flex flex-col mt-1">
-                  <input
-                    type="text"
-                    className="wphub-input"
-                    placeholder="domain.com"
-                    autoComplete="off"
-                    autoCorrect="off"
-                  />
-                </div>
+                <TextField
+                  label="Simple Text Input"
+                  placeholder="Placeholder..."
+                  helperText="Helper text also error text!"
+                  onChange={setValue}
+                />
               </div>
 
               <div className="flex flex-col mt-4">
-                <label>Options Select</label>
-                <div className="flex flex-col mt-1">
-                  <select className="wphub-input" name="type">
-                    <option value="php">General PHP / Laravel</option>
-                    <option value="octane">Laravel Octane</option>
-                    <option value="html">Static HTML</option>
-                    <option value="symfony">Symfony &lt; 4.0</option>
-                    <option value="symfony_dev">Symfony (Dev) &lt; 4.0</option>
-                    <option value="symfony_four">Symfony &gt;= 4.0</option>
-                  </select>
-                </div>
+                <TextArea
+                  label="Simple TextArea "
+                  placeholder="Placeholder..."
+                  helperText="Helper text also error text!"
+                  onChange={setValue}
+                />
+              </div>
+
+              <div className="flex flex-col mt-4">
+                <Select
+                  label="Simple TextArea "
+                  placeholder="Placeholder..."
+                  helperText="Helper text also error text!"
+                  options={options}
+                  onChange={setValue}
+                />
+              </div>
+
+              <div className="flex flex-col mt-4">
+                <Checkbox
+                  onChange={() => setChecked((prev) => !prev)}
+                  label="Checkbox label"
+                  checked={checked}
+                />
+              </div>
+
+              <div className="flex flex-col mt-4">
+                <Radio label="Single radio label" checked={checked} onChange={() => setChecked((prev) => !prev)} />
+              </div>
+
+              <div className="flex flex-col mt-4">
+                <HlRadio
+                  onChange={setValue}
+                  label="Group radio headless ui - INLINE"
+                  options={options}
+                  value={value}
+                  className="inline"
+                />
+              </div>
+
+              <div className="flex flex-col mt-4">
+                <HlRadio
+                  onChange={setValue}
+                  label="Group radio headless ui - BLOCK"
+                  options={options}
+                  value={value}
+                />
+              </div>
+
+              <div className="flex flex-col mt-4">
+                <TextField
+                  label="Error Form Element"
+                  error
+                  placeholder="Placeholder..."
+                  helperText="Helper text also error text!"
+                />
+              </div>
+
+              <div className="flex flex-col mt-4">
+                <TextField
+                  label="Disabled Form Element"
+                  disabled
+                  placeholder="Placeholder..."
+                  helperText="Helper text also error text!"
+                />
               </div>
 
               <div className="flex flex-col mt-4">
@@ -52,32 +131,6 @@ export default function Forms() {
                     </div>
                   </div>
                 </div>
-              </div>
-
-              <div className="flex flex-col mt-4">
-                <label>TextArea</label>
-                <div className="flex flex-col mt-1">
-                  <textarea
-                    className="wphub-input"
-                    rows={10}
-                    placeholder="ssh-rsa AAAAB3NzaC1yc2EA... testwphub@tests-macbook-pro.local"
-                    defaultValue={""}
-                  />
-                </div>
-              </div>
-
-              <div className="flex flex-col mt-4">
-                <label className="flex items-center">
-                  <input type="checkbox" className="wphub-checkbox" />
-                  <span className="pl-2">Checkbox</span>
-                </label>
-              </div>
-
-              <div className="flex flex-col mt-4">
-                <label className="flex items-center">
-                  <input type="radio" className="wphub-radio" />
-                  <span className="pl-2">Radio</span>
-                </label>
               </div>
             </div>
           </div>

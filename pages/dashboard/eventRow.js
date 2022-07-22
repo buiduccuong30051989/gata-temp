@@ -90,15 +90,15 @@ export const EventRow = () => {
   return (
     <tr className="h-12 border-t border-gray-100">
       <td className="pr-4">
-        <input type="checkbox" className="wphub-checkbox" />
-      </td>
-      <td className="pr-4">
-        <span className="flex items-center ">
-          www.google.com.vn
-          <a href="#">
-            <HiOutlineExternalLink className="w-4 h-4 ml-2 text-info-400" />
-          </a>
-        </span>
+        <div className="flex items-center">
+          <input type="checkbox" className="wphub-checkbox mr-4" />
+          <span className="flex items-center ">
+            www.google.com.vn
+            <a href="#">
+              <HiOutlineExternalLink className="w-4 h-4 ml-2 text-info-400" />
+            </a>
+          </span>
+        </div>
       </td>
       <td className="pr-4">
         <span className="flex items-center">
