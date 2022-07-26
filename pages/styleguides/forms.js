@@ -8,6 +8,8 @@ import {
   Checkbox,
   Radio,
   HlRadio,
+  Switch,
+  HlSelect,
 } from "components";
 
 const options = [
@@ -62,11 +64,20 @@ export default function Forms() {
 
               <div className="flex flex-col mt-4">
                 <Select
-                  label="Simple TextArea "
+                  label="Simple Select "
                   placeholder="Placeholder..."
                   helperText="Helper text also error text!"
                   options={options}
                   onChange={setValue}
+                />
+              </div>
+
+              <div className="flex flex-col mt-4">
+                <HlSelect
+                  label="Headless ui select"
+                  options={options}
+                  onChange={setValue}
+                  value={value}
                 />
               </div>
 
@@ -79,7 +90,15 @@ export default function Forms() {
               </div>
 
               <div className="flex flex-col mt-4">
-                <Radio label="Single radio label" checked={checked} onChange={() => setChecked((prev) => !prev)} />
+                <Radio
+                  label="Single radio label"
+                  checked={checked}
+                  onChange={() => setChecked((prev) => !prev)}
+                />
+              </div>
+
+              <div className="flex mt-4">
+                <Switch enabled={checked} setEnabled={setChecked} />
               </div>
 
               <div className="flex flex-col mt-4">
@@ -119,7 +138,7 @@ export default function Forms() {
                 />
               </div>
 
-              <div className="flex flex-col mt-4">
+              <div className="form-control mt-4">
                 <label>Inline Input & Button</label>
                 <div className="flex flex-col mt-1">
                   <div className="flex w-full">
