@@ -41,20 +41,6 @@ $button-static-background-color: $scheme-main-ter !default;
 $button-static-border-color: $border !default;
 
 $button-colors: $colors !default;
-$button-responsive-sizes: (
-  'mobile': (
-    'small': $size-small * 0.75,
-    'normal': $size-small * 0.875,
-    'medium': $size-small,
-    'large': $size-normal,
-  ),
-  'tablet-only': (
-    'small': $size-small * 0.875,
-    'normal': $size-small,
-    'medium': $size-normal,
-    'large': $size-medium,
-  ),
-) !default;
 
 // The button sizes use mixins so they can be used at different breakpoints
 @mixin button-small {
@@ -115,17 +101,17 @@ $button-responsive-sizes: (
 
     &:first-child:not(:last-child) {
       @include ltr-property(
-        'margin',
+        "margin",
         calc(#{-0.5 * $button-padding-horizontal} - #{$button-border-width}),
         false
       );
-      @include ltr-property('margin', $button-padding-horizontal * 0.25);
+      @include ltr-property("margin", $button-padding-horizontal * 0.25);
     }
 
     &:last-child:not(:first-child) {
-      @include ltr-property('margin', $button-padding-horizontal * 0.25, false);
+      @include ltr-property("margin", $button-padding-horizontal * 0.25, false);
       @include ltr-property(
-        'margin',
+        "margin",
         calc(#{-0.5 * $button-padding-horizontal} - #{$button-border-width})
       );
     }
@@ -205,189 +191,240 @@ $button-responsive-sizes: (
     }
   }
 
-  @each $name, $pair in $button-colors {
-    $color: nth($pair, 1);
-    $color-invert: nth($pair, 2);
+  // @each $name, $pair in $button-colors {
+  //   $color: nth($pair, 1);
+  //   $color-invert: nth($pair, 2);
+
+  //   &.is-#{$name} {
+  //     background-color: $color;
+  //     border-color: transparent;
+  //     color: $color-invert;
+
+  //     &:hover,
+  //     &.is-hovered {
+  //       background-color: bulmaDarken($color, 2.5%);
+  //       border-color: transparent;
+  //       color: $color-invert;
+  //     }
+
+  //     &:focus,
+  //     &.is-focused {
+  //       border-color: transparent;
+  //       color: $color-invert;
+
+  //       &:not(:active) {
+  //         box-shadow: $button-focus-box-shadow-size bulmaRgba($color, 0.25);
+  //       }
+  //     }
+
+  //     &:active,
+  //     &.is-active {
+  //       background-color: bulmaDarken($color, 5%);
+  //       border-color: transparent;
+  //       color: $color-invert;
+  //     }
+
+  //     &[disabled],
+  //     fieldset[disabled] & {
+  //       background-color: $color;
+  //       border-color: $color;
+  //       box-shadow: none;
+  //     }
+
+  //     &.is-inverted {
+  //       background-color: $color-invert;
+  //       color: $color;
+
+  //       &:hover,
+  //       &.is-hovered {
+  //         background-color: bulmaDarken($color-invert, 5%);
+  //       }
+
+  //       &[disabled],
+  //       fieldset[disabled] & {
+  //         background-color: $color-invert;
+  //         border-color: transparent;
+  //         box-shadow: none;
+  //         color: $color;
+  //       }
+  //     }
+
+  //     &.is-loading {
+  //       &::after {
+  //         border-color: transparent
+  //           transparent
+  //           $color-invert
+  //           $color-invert !important;
+  //       }
+  //     }
+
+  //     &.is-outlined {
+  //       background-color: transparent;
+  //       border-color: $color;
+  //       color: $color;
+
+  //       &:hover,
+  //       &.is-hovered,
+  //       &:focus,
+  //       &.is-focused {
+  //         background-color: $color;
+  //         border-color: $color;
+  //         color: $color-invert;
+  //       }
+
+  //       &.is-loading {
+  //         &::after {
+  //           border-color: transparent transparent $color $color !important;
+  //         }
+
+  //         &:hover,
+  //         &.is-hovered,
+  //         &:focus,
+  //         &.is-focused {
+  //           &::after {
+  //             border-color: transparent
+  //               transparent
+  //               $color-invert
+  //               $color-invert !important;
+  //           }
+  //         }
+  //       }
+
+  //       &[disabled],
+  //       fieldset[disabled] & {
+  //         background-color: transparent;
+  //         border-color: $color;
+  //         box-shadow: none;
+  //         color: $color;
+  //       }
+  //     }
+
+  //     &.is-inverted.is-outlined {
+  //       background-color: transparent;
+  //       border-color: $color-invert;
+  //       color: $color-invert;
+
+  //       &:hover,
+  //       &.is-hovered,
+  //       &:focus,
+  //       &.is-focused {
+  //         background-color: $color-invert;
+  //         color: $color;
+  //       }
+
+  //       &.is-loading {
+  //         &:hover,
+  //         &.is-hovered,
+  //         &:focus,
+  //         &.is-focused {
+  //           &::after {
+  //             border-color: transparent transparent $color $color !important;
+  //           }
+  //         }
+  //       }
+
+  //       &[disabled],
+  //       fieldset[disabled] & {
+  //         background-color: transparent;
+  //         border-color: $color-invert;
+  //         box-shadow: none;
+  //         color: $color-invert;
+  //       }
+  //     }
+
+  //     // If light and dark colors are provided
+  //     @if length($pair) >= 4 {
+  //       $color-light: nth($pair, 3);
+  //       $color-dark: nth($pair, 4);
+
+  //       &.is-light {
+  //         background-color: $color-light;
+  //         color: $color-dark;
+
+  //         &:hover,
+  //         &.is-hovered {
+  //           background-color: bulmaDarken($color-light, 2.5%);
+  //           border-color: transparent;
+  //           color: $color-dark;
+  //         }
+
+  //         &:active,
+  //         &.is-active {
+  //           background-color: bulmaDarken($color-light, 5%);
+  //           border-color: transparent;
+  //           color: $color-dark;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+
+  @each $name, $pair in $primaryColors {
+    $bgColor: nth($pair, 2);
+    $bgColorHover: nth($pair, 3);
+    $bgColorActive: nth($pair, 4);
+    $textColor: nth($pair, 5);
 
     &.is-#{$name} {
-      background-color: $color;
-      border-color: transparent;
-      color: $color-invert;
+      background-image: $bgColor;
+      color: $colors-white;
+      box-shadow: $boxShadow-inset-1;
 
       &:hover,
-      &.is-hovered {
-        background-color: bulmaDarken($color, 2.5%);
-        border-color: transparent;
-        color: $color-invert;
-      }
-
+      &.is-hovered,
       &:focus,
       &.is-focused {
-        border-color: transparent;
-        color: $color-invert;
-
-        &:not(:active) {
-          box-shadow: $button-focus-box-shadow-size bulmaRgba($color, 0.25);
-        }
+        background-image: $bgColorHover;
       }
 
       &:active,
       &.is-active {
-        background-color: bulmaDarken($color, 5%);
-        border-color: transparent;
-        color: $color-invert;
-      }
-
-      &[disabled],
-      fieldset[disabled] & {
-        background-color: $color;
-        border-color: $color;
-        box-shadow: none;
-      }
-
-      &.is-inverted {
-        background-color: $color-invert;
-        color: $color;
-
-        &:hover,
-        &.is-hovered {
-          background-color: bulmaDarken($color-invert, 5%);
-        }
-
-        &[disabled],
-        fieldset[disabled] & {
-          background-color: $color-invert;
-          border-color: transparent;
-          box-shadow: none;
-          color: $color;
-        }
-      }
-
-      &.is-loading {
-        &::after {
-          border-color: transparent
-            transparent
-            $color-invert
-            $color-invert !important;
-        }
-      }
-
-      &.is-outlined {
-        background-color: transparent;
-        border-color: $color;
-        color: $color;
-
-        &:hover,
-        &.is-hovered,
-        &:focus,
-        &.is-focused {
-          background-color: $color;
-          border-color: $color;
-          color: $color-invert;
-        }
-
-        &.is-loading {
-          &::after {
-            border-color: transparent transparent $color $color !important;
-          }
-
-          &:hover,
-          &.is-hovered,
-          &:focus,
-          &.is-focused {
-            &::after {
-              border-color: transparent
-                transparent
-                $color-invert
-                $color-invert !important;
-            }
-          }
-        }
-
-        &[disabled],
-        fieldset[disabled] & {
-          background-color: transparent;
-          border-color: $color;
-          box-shadow: none;
-          color: $color;
-        }
-      }
-
-      &.is-inverted.is-outlined {
-        background-color: transparent;
-        border-color: $color-invert;
-        color: $color-invert;
-
-        &:hover,
-        &.is-hovered,
-        &:focus,
-        &.is-focused {
-          background-color: $color-invert;
-          color: $color;
-        }
-
-        &.is-loading {
-          &:hover,
-          &.is-hovered,
-          &:focus,
-          &.is-focused {
-            &::after {
-              border-color: transparent transparent $color $color !important;
-            }
-          }
-        }
-
-        &[disabled],
-        fieldset[disabled] & {
-          background-color: transparent;
-          border-color: $color-invert;
-          box-shadow: none;
-          color: $color-invert;
-        }
-      }
-
-      // If light and dark colors are provided
-      @if length($pair) >= 4 {
-        $color-light: nth($pair, 3);
-        $color-dark: nth($pair, 4);
-
-        &.is-light {
-          background-color: $color-light;
-          color: $color-dark;
-
-          &:hover,
-          &.is-hovered {
-            background-color: bulmaDarken($color-light, 2.5%);
-            border-color: transparent;
-            color: $color-dark;
-          }
-
-          &:active,
-          &.is-active {
-            background-color: bulmaDarken($color-light, 5%);
-            border-color: transparent;
-            color: $color-dark;
-          }
-        }
+        background-image: $bgColorActive;
+        box-shadow: $boxShadow-inset-200;
       }
     }
-  }
 
-  // Sizes
-  &.is-small {
-    @include button-small;
-  }
+    &.is-regular {
+      background: $colors-light-gradient-100;
+      color: $textColor;
+      box-shadow: $boxShadow-inset-2;
 
-  &.is-normal {
-    @include button-normal;
-  }
+      &:hover,
+      &.is-hovered,
+      &:focus,
+      &.is-focused {
+        background: $colors-light-gradient-200;
+      }
 
-  &.is-medium {
-    @include button-medium;
-  }
+      &:active,
+      &.is-active {
+        background: $colors-aqua-50;
+        box-shadow: $boxShadow-inset-200;
+      }
+    }
 
-  &.is-large {
-    @include button-large;
+    &.is-minimal {
+      background-color: transparent;
+      color: $textColor;
+      background-image: unset;
+      box-shadow: unset;
+
+      &:hover,
+      &.is-hovered,
+      &:focus,
+      &.is-focused {
+        background-color: $colors-light-100;
+        background-image: unset;
+        box-shadow: unset;
+      }
+
+      &:active,
+      &.is-active {
+        background: $colors-aqua-50;
+        background-image: unset;
+        box-shadow: unset;
+      }
+    }
   }
 
   // Modifiers
@@ -442,7 +479,7 @@ $button-responsive-sizes: (
     margin-bottom: 0.5rem;
 
     &:not(:last-child):not(.is-fullwidth) {
-      @include ltr-property('margin', 0.5rem);
+      @include ltr-property("margin", 0.5rem);
     }
   }
 
@@ -484,11 +521,11 @@ $button-responsive-sizes: (
         border-bottom-right-radius: 0;
         border-top-right-radius: 0;
 
-        @include ltr-property('margin', -1px);
+        @include ltr-property("margin", -1px);
       }
 
       &:last-child {
-        @include ltr-property('margin', 0);
+        @include ltr-property("margin", 0);
       }
 
       &:hover,
@@ -533,23 +570,6 @@ $button-responsive-sizes: (
       .button:not(.is-fullwidth) {
         margin-left: 0.25rem;
         margin-right: 0.25rem;
-      }
-    }
-  }
-}
-
-@each $bp-name, $bp-sizes in $button-responsive-sizes {
-  @include breakpoint($bp-name) {
-    @each $size, $value in $bp-sizes {
-      @if $size != 'normal' {
-        .button.is-responsive.is-#{$size} {
-          font-size: $value;
-        }
-      } @else {
-        .button.is-responsive,
-        .button.is-responsive.is-normal {
-          font-size: $value;
-        }
       }
     }
   }

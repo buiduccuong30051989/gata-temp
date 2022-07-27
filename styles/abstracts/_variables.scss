@@ -8,7 +8,7 @@ $grey-darker: $colors-gray-800 !default;
 $grey-dark: hsl(0, 0%, 29%) !default;
 $grey: hsl(0, 0%, 48%) !default;
 $grey-light: hsl(0, 0%, 71%) !default;
-$grey-lighter: $colors-brands-secondary !default;
+$grey-lighter: hsl(0, 0%, 71%) !default;
 $grey-lightest: hsl(0, 0%, 93%) !default;
 
 $white-ter: $colors-gray-100 !default;
@@ -16,13 +16,13 @@ $white-bis: hsl(0, 0%, 98%) !default;
 $white: $colors-white !default;
 
 $orange: hsl(14, 100%, 53%) !default;
-$yellow: $colors-brands-warning !default;
-$green: $colors-brands-success !default;
-$turquoise: $colors-brands-primary !default;
-$cyan: $colors-brands-info !default;
+$yellow: $colors-yellow-400 !default;
+$green: $colors-green-400 !default;
+$turquoise: $colors-green-400 !default;
+$cyan: $colors-info-400 !default;
 $blue: hsl(229, 53%, 53%) !default;
 $purple: hsl(271, 100%, 71%) !default;
-$red: $colors-brands-danger !default;
+$red: $colors-danger-400 !default;
 
 // Typography
 

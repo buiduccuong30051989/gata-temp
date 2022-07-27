@@ -144,3 +144,45 @@ $colors: mergeColorMaps(
   ),
   $custom-colors
 ) !default;
+
+$primaryColors: mergeColorMaps(
+  (
+    // 'white': (
+    //   $white,
+    //   $black,
+    // ),
+    // 'light': (
+    //   $light,
+    //   $light-invert,
+    // ),
+    'info': (
+      $info,
+      $colors-info-gradient-400,
+      $colors-info-gradient-500,
+      $colors-info-gradient-900,
+      $colors-info-900,
+    ),
+    'success': (
+      $success,
+      $colors-success-gradient-400,
+      $colors-success-gradient-500,
+      $colors-success-gradient-900,
+      $colors-success-900,
+    ),
+    'warning': (
+      $warning,
+      $colors-warning-gradient-400,
+      $colors-warning-gradient-500,
+      $colors-warning-gradient-900,
+      $colors-warning-900,
+    ),
+    'danger': (
+      $danger,
+      $colors-danger-gradient-400,
+      $colors-danger-gradient-500,
+      $colors-danger-gradient-900,
+      $colors-danger-900,
+    ),
+  ),
+  $custom-colors
+) !default;
