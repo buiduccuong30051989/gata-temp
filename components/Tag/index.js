@@ -1,13 +1,12 @@
 import { HiOutlineX } from "react-icons/hi";
-import styles from "./styles.module.scss";
 
-export const Tag = ({ type, content, close = true, textColor = "white" }) => {
+export const Tag = ({ className, type, content, close = false }) => {
   return (
-    <div className={`${styles.tag} bg-${type}-400 text-${textColor}`}>
+    <div className={`tag is-${type} ${className}`}>
       <span>{content}</span>
       {close && (
         <button>
-          <HiOutlineX className={styles.tagIcon} />
+          <HiOutlineX />
         </button>
       )}
     </div>

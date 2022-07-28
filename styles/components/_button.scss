@@ -6,7 +6,7 @@ $button-border-color: $border !default;
 $button-border-width: $control-border-width !default;
 
 $button-padding-vertical: calc(0.5em - #{$button-border-width}) !default;
-$button-padding-horizontal: 17px !default;
+$button-padding-horizontal: 16px !default;
 
 $button-hover-color: $link-hover !default;
 $button-hover-border-color: $link-hover-border !default;
@@ -91,12 +91,10 @@ $button-colors: $colors !default;
   }
 
   .icon {
-    &,
-    &.is-small,
-    &.is-medium,
-    &.is-large {
-      height: 1.5em;
-      width: 1.5em;
+    & {
+      height: 16px;
+      width: 16px;
+      color: inherit;
     }
 
     &:first-child:not(:last-child) {
@@ -124,18 +122,21 @@ $button-colors: $colors !default;
         #{-0.5 * $button-padding-horizontal} - #{$button-border-width}
       );
     }
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   // States
   &:hover,
   &.is-hovered {
-    border-color: $button-hover-border-color;
     color: $button-hover-color;
   }
 
   &:focus,
   &.is-focused {
-    border-color: $button-focus-border-color;
     color: $button-focus-color;
 
     &:not(:active) {
@@ -382,47 +383,47 @@ $button-colors: $colors !default;
         background-image: $bgColorActive;
         box-shadow: $boxShadow-inset-200;
       }
-    }
 
-    &.is-regular {
-      background: $colors-light-gradient-100;
-      color: $textColor;
-      box-shadow: $boxShadow-inset-2;
+      &.is-regular {
+        background: $colors-light-gradient-100;
+        color: $textColor;
+        box-shadow: $boxShadow-inset-2;
 
-      &:hover,
-      &.is-hovered,
-      &:focus,
-      &.is-focused {
-        background: $colors-light-gradient-200;
+        &:hover,
+        &.is-hovered,
+        &:focus,
+        &.is-focused {
+          background: $colors-light-gradient-200;
+        }
+
+        &:active,
+        &.is-active {
+          background: $colors-aqua-50;
+          box-shadow: $boxShadow-inset-200;
+        }
       }
 
-      &:active,
-      &.is-active {
-        background: $colors-aqua-50;
-        box-shadow: $boxShadow-inset-200;
-      }
-    }
-
-    &.is-minimal {
-      background-color: transparent;
-      color: $textColor;
-      background-image: unset;
-      box-shadow: unset;
-
-      &:hover,
-      &.is-hovered,
-      &:focus,
-      &.is-focused {
-        background-color: $colors-light-100;
+      &.is-minimal {
+        background-color: transparent;
+        color: $textColor;
         background-image: unset;
         box-shadow: unset;
-      }
 
-      &:active,
-      &.is-active {
-        background: $colors-aqua-50;
-        background-image: unset;
-        box-shadow: unset;
+        &:hover,
+        &.is-hovered,
+        &:focus,
+        &.is-focused {
+          background-color: $colors-light-100;
+          background-image: unset;
+          box-shadow: unset;
+        }
+
+        &:active,
+        &.is-active {
+          background: $colors-aqua-50;
+          background-image: unset;
+          box-shadow: unset;
+        }
       }
     }
   }

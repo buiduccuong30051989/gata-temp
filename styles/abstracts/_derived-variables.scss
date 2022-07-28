@@ -83,59 +83,59 @@ $custom-colors: null !default;
 
 $colors: mergeColorMaps(
   (
-    'white': (
+    "white": (
       $white,
       $black,
     ),
-    'black': (
+    "black": (
       $black,
       $white,
     ),
-    'light': (
+    "light": (
       $light,
       $light-invert,
     ),
-    'dark': (
+    "dark": (
       $dark,
       $dark-invert,
     ),
-    'primary': (
+    "primary": (
       $primary,
       $primary-invert,
       $primary-light,
       $primary-dark,
     ),
-    'secondary': (
+    "secondary": (
       $secondary,
       $secondary-invert,
       $secondary-light,
       $secondary-dark,
     ),
-    'link': (
+    "link": (
       $link,
       $link-invert,
       $link-light,
       $link-dark,
     ),
-    'info': (
+    "info": (
       $info,
       $info-invert,
       $info-light,
       $info-dark,
     ),
-    'success': (
+    "success": (
       $success,
       $success-invert,
       $success-light,
       $success-dark,
     ),
-    'warning': (
+    "warning": (
       $warning,
       $warning-invert,
       $warning-light,
       $warning-dark,
     ),
-    'danger': (
+    "danger": (
       $danger,
       $danger-invert,
       $danger-light,
@@ -147,41 +147,87 @@ $colors: mergeColorMaps(
 
 $primaryColors: mergeColorMaps(
   (
-    // 'white': (
-    //   $white,
-    //   $black,
-    // ),
-    // 'light': (
-    //   $light,
-    //   $light-invert,
-    // ),
-    'info': (
+    "info": (
       $info,
       $colors-info-gradient-400,
       $colors-info-gradient-500,
       $colors-info-gradient-900,
       $colors-info-900,
     ),
-    'success': (
+    "success": (
       $success,
       $colors-success-gradient-400,
       $colors-success-gradient-500,
       $colors-success-gradient-900,
       $colors-success-900,
     ),
-    'warning': (
+    "warning": (
       $warning,
       $colors-warning-gradient-400,
       $colors-warning-gradient-500,
       $colors-warning-gradient-900,
       $colors-warning-900,
     ),
-    'danger': (
+    "danger": (
       $danger,
       $colors-danger-gradient-400,
       $colors-danger-gradient-500,
       $colors-danger-gradient-900,
       $colors-danger-900,
+    ),
+  ),
+  $custom-colors
+) !default;
+
+$fullColors: mergeColorMaps(
+  (
+    "info": (
+      $colors-info-400,
+      $colors-white,
+      $colors-info-100,
+      $colors-info-900,
+    ),
+    "success": (
+      $colors-success-400,
+      $colors-white,
+      $colors-success-100,
+      $colors-success-900,
+    ),
+    "warning": (
+      $colors-warning-400,
+      $colors-white,
+      $colors-warning-100,
+      $colors-warning-900,
+    ),
+    "danger": (
+      $colors-danger-400,
+      $colors-white,
+      $colors-danger-100,
+      $colors-danger-900,
+    ),
+    "yellow": (
+      $colors-yellow-400,
+      $colors-black,
+      $colors-yellow-100,
+      $colors-yellow-900,
+    ),
+    "teal": (
+      $colors-teal-400,
+      $colors-white,
+      $colors-teal-100,
+      $colors-teal-900,
+    ),
+    "purple": (
+      $colors-purple-400,
+      $colors-white,
+      $colors-purple-100,
+      $colors-purple-900,
+    ),
+    "slate": (
+      $colors-slate-900,
+      $colors-white,
+      $colors-slate-200,
+      $colors-slate-700,
     ),
   ),
   $custom-colors

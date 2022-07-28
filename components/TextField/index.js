@@ -1,3 +1,5 @@
+import { HiOutlineInformationCircle } from "react-icons/hi";
+
 export const TextField = (props) => {
   const {
     label = "",
@@ -29,9 +31,9 @@ export const TextField = (props) => {
 
   return (
     <div className={getClassNameContainer()}>
-      {label && <label for={getId()}>{label}</label>}
+      {label && <label htmlFor={getId()}>{label}</label>}
       <input
-        className={`wphub-input ${inputClassName}`}
+        className={`input ${inputClassName}`}
         id={getId()}
         type={type}
         disabled={disabled}
@@ -39,7 +41,12 @@ export const TextField = (props) => {
         {...rest}
       />
       {helperText && (
-        <p className={`helper-text ${error ? "error" : ""}`}>{helperText}</p>
+        <p className={`helper-text flex items-center ${error ? "error" : ""}`}>
+          {
+            error && <HiOutlineInformationCircle className="w-4 h-4 mr-2" />
+          }
+          {helperText}
+        </p>
       )}
     </div>
   );

@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import 'temp';
 // 1. Vendor
 // ------------
 @import 'vendor/all';
@@ -25,3 +24,4 @@
 // 5. Pages
 // -------------
 @import 'pages/all';
+@import 'temp';

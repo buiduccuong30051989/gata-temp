@@ -23,7 +23,7 @@ export const Checkbox = (props) => {
       <label className="flex items-center">
         <input
           type="checkbox"
-          className={`wphub-checkbox ${inputClassName}`}
+          className={`gata-checkbox ${inputClassName}`}
           disabled={disabled}
           checked={checked}
           onChange={onChange}

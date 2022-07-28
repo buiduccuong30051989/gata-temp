@@ -1,0 +1,125 @@
+$select-colors: $form-colors !default;
+
+.select {
+  display: inline-block;
+  max-width: 100%;
+  position: relative;
+  vertical-align: top;
+  
+
+  &:not(.is-multiple) {
+    height: $input-height;
+  }
+
+  &:not(.is-multiple):not(.is-loading) {
+    &::after {
+      @extend %arrow;
+      z-index: 4;
+      right: 1.125em;
+    }
+  }
+
+  &.is-rounded {
+    select {
+      border-radius: $radius-rounded;
+      box-shadow: none;
+    }
+  }
+
+  select {
+    @extend %input;
+    background: $colors-light-gradient-100;
+    box-shadow: none;
+    width: 100%;
+
+    cursor: pointer;
+    display: block;
+    font-size: 1em;
+    max-width: 100%;
+    outline: none;
+
+    &::-ms-expand {
+      display: none;
+    }
+
+    &[disabled]:hover,
+    fieldset[disabled] &:hover {
+      border-color: $input-disabled-border-color;
+    }
+
+    &:not([multiple]) {
+      @include ltr-property("padding", 2.5em);
+    }
+
+    &[multiple] {
+      height: auto;
+      padding: 0;
+
+      option {
+        padding: 0.5em 1em;
+      }
+    }
+  }
+
+  // States
+  &:not(.is-multiple):not(.is-loading):hover {
+    &::after {
+      border-color: $input-hover-color;
+    }
+  }
+
+  // Colors
+  @each $name, $pair in $select-colors {
+    $color: nth($pair, 1);
+
+    &.is-#{$name} {
+      &:not(:hover)::after {
+        border-color: #ccc;
+      }
+
+      select {
+        &:hover,
+        &.is-hovered { 
+        }
+
+        &:focus,
+        &.is-focused,
+        &:active,
+        &.is-active {
+          // box-shadow: $input-focus-box-shadow-size bulmaRgba($color, 0.25);
+        }
+      }
+    }
+  }
+
+  
+  // Modifiers
+  &.is-disabled {
+    &::after {
+      border-color: $input-disabled-color !important;
+      opacity: 0.5;
+    }
+  }
+
+  &.is-fullwidth {
+    width: 100%;
+
+    select {
+      width: 100%;
+    }
+  }
+
+  &.is-loading {
+    &::after {
+      @extend %loader;
+
+      margin-top: 0;
+      position: absolute;
+
+      @include ltr-position(0.625em);
+
+      top: 0.625em;
+      transform: none;
+    }
+  }
+}

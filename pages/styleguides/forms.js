@@ -11,6 +11,7 @@ import {
   Switch,
   HlSelect,
 } from "components";
+import { BASE_SCHEMA } from "constant/common";
 
 const options = [
   {
@@ -44,12 +45,40 @@ export default function Forms() {
           <div className="styleguides-group">
             <div className="styleguides-group-item">
               <p className="styleguides-group-item-title">Form Elements</p>
+
+              <div className="flex flex-col mt-4">
+                <div className="file has-name is-right">
+                  <label className="file-label">
+                    <input className="file-input" type="file" name="resume" />
+                    <span className="file-cta">
+                      <span className="file-icon">
+                        <HiCog />
+                      </span>
+                      <span className="file-label">Select file</span>
+                    </span>
+                    <span className="file-name">
+                      Select a file to upload
+                    </span>
+                  </label>
+                </div>
+              </div>
+
               <div className="flex flex-col mt-4">
                 <TextField
                   label="Simple Text Input"
                   placeholder="Placeholder..."
                   helperText="Helper text also error text!"
                   onChange={setValue}
+                />
+              </div>
+
+              <div className="flex flex-col mt-4">
+                <TextField
+                  label="Simple Text Input"
+                  placeholder="Placeholder..."
+                  helperText="Helper text also error text!"
+                  onChange={setValue}
+                  error
                 />
               </div>
 

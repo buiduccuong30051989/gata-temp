@@ -1,8 +1,8 @@
-$control-radius: $borderRadius-lg !default;
+$control-radius: 3px;
 
-$control-border-width: 1px !default;
+$control-border-width: 0px !default;
 
-$control-height: #{calc(38/14)}em !default;
+$control-height: 32px !default;
 $control-line-height: 1.5 !default;
 
 $control-padding-vertical: calc(0.5em - #{$control-border-width}) !default;
@@ -10,11 +10,11 @@ $control-padding-horizontal: calc(0.75em - #{$control-border-width}) !default;
 
 %control {
   align-items: center;
-  border: $control-border-width solid transparent;
+  border: 0;
   border-radius: $control-radius;
   box-shadow: none;
   display: inline-flex;
-  font-size: $size-normal;
+  font-size: $size-small;
   height: $control-height;
   justify-content: flex-start;
   line-height: $control-line-height;

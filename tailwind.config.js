@@ -30,11 +30,11 @@ module.exports = {
         ...colors.sky,
         900: "#084B8A",
         400: "#1070CA",
-        100: "#084B8A",
+        100: "#DBEAF7",
         50: "#F6F9FD",
         "gradient-400": "linear-gradient(360deg, #116AB8 0%, #0788DE 100%)",
         "gradient-500":
-          "llinear-gradient(0deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)), linear-gradient(360deg, #116AB8 0%, #0788DE 100%)",
+          "linear-gradient(0deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)), linear-gradient(360deg, #116AB8 0%, #0788DE 100%)",
         "gradient-900": "linear-gradient(360deg, #1663A7 0.22%, #0F5A8C 100%)",
       },
       warning: {

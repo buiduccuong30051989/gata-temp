@@ -1,18 +1,6 @@
 import StyleGuidesPage from ".";
-import STYLEGUIDES from "constant/styleguides.json";
-const SCHEMAS = [
-  "primary",
-  "secondary",
-  "info",
-  "success",
-  "warning",
-  "danger",
-  "white",
-  "black",
-  "light",
-  "dark",
-];
-
+import { BASE_SCHEMA } from "constant/common";
+import { HiOutlineArchive } from "react-icons/hi";
 export default function Buttons() {
   return (
     <div className="styleguides-block">
@@ -24,28 +12,78 @@ export default function Buttons() {
           <div className="layer-bg" />
           <div className="styleguides-group">
             <div className="styleguides-group-item">
-              <p className="styleguides-group-item-title">Buttons Theme Type</p>
+              <p className="styleguides-group-item-title">Buttons</p>
+              
               <div className="styleguides-buttons-list">
-                <div className="buttons-item">
-                  <button type="button" className="wphub-btn-primary">
-                    Button wphub Primary
-                  </button>
-                </div>
-                <div className="buttons-item">
-                  <button type="button" className="wphub-btn-secondary">
-                    Button wphub Secondary
-                  </button>
-                </div>
+                {BASE_SCHEMA.map((item) => (
+                  <div key={item} className="buttons-item">
+                    <button
+                      type="button"
+                      className={`button is-${item} is-regular `}
+                    >
+                      <span className="icon">
+                        <HiOutlineArchive />
+                      </span>
+                    </button>
+                  </div>
+                ))}
               </div>
-            </div>
-            <div className="styleguides-group-item">
-              <p className="styleguides-group-item-title">Buttons Colors</p>
               <div className="styleguides-buttons-list">
-                {SCHEMAS.map((item) => (
+                {BASE_SCHEMA.map((item) => (
+                  <div key={item} className="buttons-item">
+                    <button
+                      type="button"
+                      className={`button is-${item} is-regular `}
+                    >
+                      <span className="icon">
+                        <HiOutlineArchive />
+                      </span>
+                      <span>Button with icon</span>
+                    </button>
+                  </div>
+                ))}
+              </div>
+              <div className="styleguides-buttons-list">
+                {BASE_SCHEMA.map((item) => (
+                  <div key={item} className="buttons-item">
+                    <button
+                      type="button"
+                      className={`button is-${item} is-regular `}
+                    >
+                      <span>Button with icon</span>
+                      <span className="icon">
+                        <HiOutlineArchive />
+                      </span>
+                    </button>
+                  </div>
+                ))}
+              </div>
+              <div className="styleguides-buttons-list">
+                {BASE_SCHEMA.map((item) => (
                   <div key={item} className="buttons-item">
                     <button
                       type="button"
                       className={`button is-${item}`}
+                    >{`button-${item}`}</button>
+                  </div>
+                ))}
+              </div>
+              <div className="styleguides-buttons-list">
+                {BASE_SCHEMA.map((item) => (
+                  <div key={item} className="buttons-item">
+                    <button
+                      type="button"
+                      className={`button is-${item} is-regular`}
+                    >{`button-${item}`}</button>
+                  </div>
+                ))}
+              </div>
+              <div className="styleguides-buttons-list">
+                {BASE_SCHEMA.map((item) => (
+                  <div key={item} className="buttons-item">
+                    <button
+                      type="button"
+                      className={`button is-${item} is-minimal`}
                     >{`button-${item}`}</button>
                   </div>
                 ))}

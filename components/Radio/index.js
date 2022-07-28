@@ -17,14 +17,12 @@ export const Radio = (props) => {
     } ${disabled ? "disabled" : ""}`;
   };
 
-  console.log({checked})
-
   return (
     <div className={getClassNameContainer()}>
       <label className="flex items-center">
         <input
           type="radio"
-          className={`wphub-radio ${inputClassName}`}
+          className={`gata-radio ${inputClassName}`}
           disabled={disabled}
           checked={checked}
           {...rest}

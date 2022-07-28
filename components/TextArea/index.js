@@ -29,9 +29,9 @@ export const TextArea = (props) => {
 
   return (
     <div className={getClassNameContainer()}>
-      {label && <label for={getId()}>{label}</label>}
+      {label && <label htmlFor={getId()}>{label}</label>}
       <textarea
-        className={`wphub-input ${inputClassName}`}
+        className={`textarea ${inputClassName}`}
         id={getId()}
         disabled={disabled}
         rows={rows}

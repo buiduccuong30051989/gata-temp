@@ -1,31 +1,7 @@
 import StyleGuidesPage from ".";
 import { Tag } from "components/Tag";
 import { BASE_SCHEMA } from "constant/common";
-const SCHEMAS = [
-  ...BASE_SCHEMA,
-  "slate",
-  "gray",
-  "zinc",
-  "neutral",
-  "stone",
-  "red",
-  "orange",
-  "amber",
-  "yellow",
-  "lime",
-  "green",
-  "emerald",
-  "teal",
-  "cyan",
-  "sky",
-  "blue",
-  "indigo",
-  "violet",
-  "purple",
-  "fuchsia",
-  "pink",
-  "rose",
-];
+const SCHEMAS = [...BASE_SCHEMA, "yellow", "teal", "purple", "slate"];
 
 export default function Tags() {
   return (
@@ -43,8 +19,30 @@ export default function Tags() {
                 {SCHEMAS.map((item) => (
                   <Tag
                     key={item}
+                    className="is-pill"
+                    content={`${item}`}
+                    type={item}
+                  ></Tag>
+                ))}
+              </div>
+
+              <div className="styleguides-buttons-list">
+                {SCHEMAS.map((item) => (
+                  <Tag
+                    key={item}
                     className="buttons-item"
-                    content={`tag-${item}`}
+                    content={`${item}`}
+                    type={item}
+                  ></Tag>
+                ))}
+              </div>
+
+              <div className="styleguides-buttons-list">
+                {SCHEMAS.map((item) => (
+                  <Tag
+                    key={item}
+                    className="buttons-item is-subtle"
+                    content={`${item}`}
                     type={item}
                   ></Tag>
                 ))}

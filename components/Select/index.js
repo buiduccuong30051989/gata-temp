@@ -14,7 +14,7 @@ export const Select = (props) => {
   } = props;
 
   const getClassNameContainer = () => {
-    return `form-control text-field ${className} ${error ? "error" : ""} ${
+    return `select-field ${className} ${error ? "error" : ""} ${
       success ? "success" : ""
     } ${disabled ? "disabled" : ""}`;
   };
@@ -29,20 +29,26 @@ export const Select = (props) => {
 
   return (
     <div className={getClassNameContainer()}>
-      {label && <label for={getId()}>{label}</label>}
-      <select
-        className={`wphub-input ${inputClassName}`}
-        id={getId()}
-        disabled={disabled}
-        onChange={(e) => onChange(e.target.value)}
-        {...rest}
-      >
-        {options.map((option) => (
-          <option value={option.value} disabled={option.disabled}>
-            {option.label}
-          </option>
-        ))}
-      </select>
+      {label && <label htmlFor={getId()}>{label}</label>}
+      <div className="select w-full">
+        <select
+          className={`${inputClassName}`}
+          id={getId()}
+          disabled={disabled}
+          onChange={(e) => onChange(e.target.value)}
+          {...rest}
+        >
+          {options.map((option) => (
+            <option
+              key={option.value}
+              value={option.value}
+              disabled={option.disabled}
+            >
+              {option.label}
+            </option>
+          ))}
+        </select>
+      </div>
       {helperText && (
         <p className={`helper-text ${error ? "error" : ""}`}>{helperText}</p>
       )}
