@@ -1,35 +1,79 @@
 import { toast } from "react-toastify";
 import {
-  HiOutlineExclamation,
-  HiOutlineCheck,
-  HiOutlineInformationCircle,
-  HiOutlineExclamationCircle,
+  HiExclamation,
+  HiCheckCircle,
+  HiInformationCircle,
+  HiExclamationCircle,
 } from "react-icons/hi";
 
-export const toatsSuccess = ({ content, ...props }) => {
-  toast.success(content, {
+export const toatsSuccess = ({ content, description = "", ...props }) => {
+  let toastConent = null;
+  if (description) {
+    toastConent = (
+      <>
+        <h3>{content}</h3>
+        <p>{description}</p>
+      </>
+    );
+  } else {
+    toastConent = <h3>{content}</h3>;
+  }
+  toast.success(toastConent, {
     ...props,
-    icon: <HiOutlineCheck />,
+    icon: <HiCheckCircle />,
   });
 };
 
-export const toatsInfo = ({ content, ...props }) => {
-  toast.info(content, {
+export const toatsInfo = ({ content, description = "", ...props }) => {
+  let toastConent = null;
+  if (description) {
+    toastConent = (
+      <>
+        <h3>{content}</h3>
+        <p>{description}</p>
+      </>
+    );
+  } else {
+    toastConent = <h3>{content}</h3>;
+  }
+  toast.info(toastConent, {
     ...props,
-    icon: <HiOutlineInformationCircle />,
+    icon: <HiInformationCircle />,
   });
 };
 
-export const toatsWarning = ({ content, ...props }) => {
-  toast.warning(content, {
+export const toatsWarning = ({ content, description = "", ...props }) => {
+  let toastConent = null;
+  if (description) {
+    toastConent = (
+      <>
+        <h3>{content}</h3>
+        <p>{description}</p>
+      </>
+    );
+  } else {
+    toastConent = <h3>{content}</h3>;
+  }
+  toast.warning(toastConent, {
     ...props,
-    icon: <HiOutlineExclamationCircle />,
+    icon: <HiExclamation />,
   });
 };
 
-export const toatsDanger = ({ content, ...props }) => {
-  toast.error(content, {
+export const toatsDanger = ({ content, description = "", ...props }) => {
+  let toastConent = null;
+  if (description) {
+    toastConent = (
+      <>
+        <h3>{content}</h3>
+        <p>{description}</p>
+      </>
+    );
+  } else {
+    toastConent = <h3>{content}</h3>;
+  }
+  toast.error(toastConent, {
     ...props,
-    icon: <HiOutlineExclamation />,
+    icon: <HiExclamationCircle />,
   });
 };

@@ -35,6 +35,42 @@ export default function Toats() {
     }
   };
 
+  const handleShowToatsDescription = (type) => {
+    switch (type) {
+      case "success":
+        toatsSuccess({
+          content: "Success notify toat!",
+          autoClose: 50000,
+          description:
+            "Incididunt labore tempor fugiat cupidatat ex proident culpa anim eiusmod deserunt et.",
+        });
+        break;
+      case "info":
+        toatsInfo({
+          content: "Information notify toat!",
+          description:
+            "Incididunt labore tempor fugiat cupidatat ex proident culpa anim eiusmod deserunt et.",
+        });
+        break;
+      case "warning":
+        toatsWarning({
+          content: "Warning notify toat!",
+          description:
+            "Incididunt labore tempor fugiat cupidatat ex proident culpa anim eiusmod deserunt et.",
+        });
+        break;
+      case "danger":
+        toatsDanger({
+          content: "Danger notify toat!",
+          description:
+            "Incididunt labore tempor fugiat cupidatat ex proident culpa anim eiusmod deserunt et.",
+        });
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <div className="styleguides-block">
       <div className="layer-x" />
@@ -51,6 +87,15 @@ export default function Toats() {
                   <div key={item} className="buttons-item">
                     <button
                       onClick={() => handleShowToats(item)}
+                      type="button"
+                      className={`button bg-${item}-400`}
+                    >{`toats-${item}`}</button>
+                  </div>
+                ))}
+                {SCHEMAS.map((item) => (
+                  <div key={item} className="buttons-item">
+                    <button
+                      onClick={() => handleShowToatsDescription(item)}
                       type="button"
                       className={`button bg-${item}-400`}
                     >{`toats-${item}`}</button>

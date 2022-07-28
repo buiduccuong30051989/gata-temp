@@ -182,11 +182,13 @@ textarea {
 }
 
 [type="radio"]:checked {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 16 16' fill='%23fff' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' r='3'/%3E%3C/svg%3E"), $colors-info-gradient-400;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 16 16' fill='%23fff' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' r='3'/%3E%3C/svg%3E"),
+    $colors-info-gradient-400;
 }
 
 [type="checkbox"]:checked {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 16 16' fill='%23fff' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.207 4.793a1 1 0 0 1 0 1.414l-5 5a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L6.5 9.086l4.293-4.293a1 1 0 0 1 1.414 0z'/%3E%3C/svg%3E"), $colors-info-gradient-400;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 16 16' fill='%23fff' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.207 4.793a1 1 0 0 1 0 1.414l-5 5a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L6.5 9.086l4.293-4.293a1 1 0 0 1 1.414 0z'/%3E%3C/svg%3E"),
+    $colors-info-gradient-400;
 }
 
 [type="checkbox"]:checked,
@@ -230,47 +232,70 @@ textarea {
 }
 
 .Toastify__toast--success {
-  .Toastify__toast-icon {
-    @apply inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-success-500 bg-success-100 rounded-lg;
+  border-left: 3px solid $colors-success-400;
 
-    svg {
-      @apply w-5 h-5 text-success-400;
-    }
+  .Toastify__toast-icon {
+    @apply text-success-400;
   }
 }
 
 .Toastify__toast--warning {
-  .Toastify__toast-icon {
-    @apply inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-warning-500 bg-warning-100 rounded-lg;
+  border-left: 3px solid $colors-warning-400;
 
-    svg {
-      @apply w-5 h-5 text-warning-400;
-    }
+  .Toastify__toast-icon {
+    @apply text-warning-400;
   }
 }
 
 .Toastify__toast--info {
-  .Toastify__toast-icon {
-    @apply inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-info-500 bg-info-100 rounded-lg;
+  border-left: 3px solid $colors-info-400;
 
-    svg {
-      @apply w-5 h-5 text-info-400;
-    }
+  .Toastify__toast-icon {
+    @apply text-info-400;
   }
 }
 
 .Toastify__toast--error {
-  .Toastify__toast-icon {
-    @apply inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-danger-500 bg-danger-100 rounded-lg;
+  border-left: 3px solid $colors-danger-400;
 
-    svg {
-      @apply w-5 h-5 text-danger-400;
-    }
+  .Toastify__toast-icon {
+    @apply text-danger-400;
   }
 }
 
 .Toastify__toast {
-  @apply flex items-center w-full max-w-xs mb-4 text-gray-500 bg-white rounded-lg shadow;
+  @apply relative flex items-center w-full max-w-lg  mb-4 text-slate-700 bg-white rounded shadow-200;
+
+  @apply text-sm;
+  min-height: 44px;
+
+  .Toastify__toast-icon {
+    width: 14px;
+    height: 14px;
+    @apply inline-flex items-center justify-center flex-shrink-0  rounded-full;
+    margin-top: 3px;
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
+
+.Toastify__toast-body {
+  @apply items-start;
+
+  h3 {
+    @apply font-medium text-slate-900;
+  }
+
+  p {
+    @apply mt-1;
+  }
+}
+
+.Toastify__close-button {
+  margin-top: 8px;
 }
 
 .icon {

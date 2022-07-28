@@ -16,7 +16,7 @@ export const AuthLayout = ({ children }) => {
       <div id="alert" />
       <ToastContainer
         position="top-right"
-        autoClose={5000}
+        autoClose={50000}
         hideProgressBar={true}
         newestOnTop={false}
         closeOnClick
