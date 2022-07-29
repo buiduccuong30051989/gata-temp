@@ -280,6 +280,36 @@ textarea {
       height: 14px;
     }
   }
+
+  &.toast-inline {
+    &.border-less {
+      @apply border-0 p-0 shadow-none min-h-0;
+    }
+  }
+
+  &.toast-light {
+    @apply shadow-none border-0;
+
+    &.Toastify__toast--success {
+      border-left: 0;
+      @apply bg-success-50;
+    }
+
+    &.Toastify__toast--warning {
+      border-left: 0;
+      @apply bg-warning-50;
+    }
+
+    &.Toastify__toast--info {
+      border-left: 0;
+      @apply bg-info-50;
+    }
+
+    &.Toastify__toast--error {
+      border-left: 0;
+      @apply bg-danger-50;
+    }
+  }
 }
 
 .Toastify__toast-body {
