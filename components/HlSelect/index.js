@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
-import { HiOutlineSelector } from "react-icons/hi";
+import { HiChevronDown, HiCheck } from "react-icons/hi";
 
 export const HlSelect = (props) => {
   const {
@@ -15,6 +15,7 @@ export const HlSelect = (props) => {
     options = [],
     value = "",
     onChange,
+    placeholder = "",
     ...rest
   } = props;
 
@@ -35,14 +36,15 @@ export const HlSelect = (props) => {
       {label && <label for={getId()}>{label}</label>}
       <Listbox value={value} onChange={onChange} {...rest}>
         <div className="relative">
-          <Listbox.Button className="flex  w-52 items-center justify-between px-3 py-2  text-gray-900 text-sm bg-white border border-gray-200 rounded-lg">
+          <Listbox.Button className="button is-regular">
             <span className="flex items-center truncate">
               <span className="truncate">
-                {options.find((option) => option.value === value)?.label}
+                {options.find((option) => option.value === value)?.label ||
+                  placeholder}
               </span>
             </span>
-            <span className="flex flex-shrink-0 items-center">
-              <HiOutlineSelector className="w-4 h-4 text-gray-500" />
+            <span className="flex flex-shrink-0 items-center pl-2">
+              <HiChevronDown className="w-4 h-4 text-gray-500" />
             </span>
           </Listbox.Button>
           <Transition
@@ -55,16 +57,28 @@ export const HlSelect = (props) => {
             leaveTo="opacity-0 translate-y-1"
           >
             <Listbox.Options className="wphub-dropdown w-52 z-20">
-              {options.map((option) => (
+              {options.map((option, idx) => (
                 <Listbox.Option key={option.value} value={option.value}>
                   {({ selected }) => (
-                    <span
-                      className={`wphub-dropdown-item text-gray-700 ${
-                        selected ? "bg-gray-100" : ""
-                      }`}
-                    >
-                      {option.label}
-                    </span>
+                    <div className="relative">
+                      <div
+                        className={`wphub-dropdown-item  ${
+                          selected ? "active" : ""
+                        }`}
+                      >
+                        {option.label}
+                      </div>
+                      {idx !== options.length - 1 && (
+                        <div className="dropdown-divider">
+                          <hr />
+                        </div>
+                      )}
+                      {selected && (
+                        <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-info-900">
+                          <HiCheck className="h-3 w-3" aria-hidden="true" />
+                        </span>
+                      )}
+                    </div>
                   )}
                 </Listbox.Option>
               ))}

@@ -1,0 +1,19 @@
+.gata-dropdown {
+  @apply bg-white shadow-100 absolute origin-top rounded;
+  margin-top: 4px;
+}
+
+.gata-dropdown-item {
+  @apply flex items-center;
+  @apply text-slate-800 relative;
+  padding: 8px;
+  cursor: pointer;
+
+  &:hover {
+    @apply bg-info-50;
+  }
+
+  &.active {
+    @apply text-info-900 bg-info-50;
+  }
+}

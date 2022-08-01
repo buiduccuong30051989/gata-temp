@@ -37,7 +37,7 @@ export const HlMenu = (props) => {
           {options.map((option) => (
             <Menu.Item key={option.label}>
               <Link href={option.path}>
-                <a className="wphub-dropdown-item justify-end">{option.label}</a>
+                <a className="wphub-dropdown-item">{option.label}</a>
               </Link>
             </Menu.Item>
           ))}

@@ -383,47 +383,51 @@ $button-colors: $colors !default;
         background-image: $bgColorActive;
         box-shadow: $boxShadow-inset-200;
       }
+    }
 
-      &.is-regular {
-        background: $colors-light-gradient-100;
-        color: $textColor;
-        box-shadow: $boxShadow-inset-2;
+    &.is-regular {
+      background: $colors-light-gradient-100;
+      color: $colors-slate-900;
+      box-shadow: $boxShadow-inset-2;
 
-        &:hover,
-        &.is-hovered,
-        &:focus,
-        &.is-focused {
-          background: $colors-light-gradient-200;
-        }
-
-        &:active,
-        &.is-active {
-          background: $colors-aqua-50;
-          box-shadow: $boxShadow-inset-200;
-        }
+      &:hover,
+      &.is-hovered,
+      &:focus,
+      &.is-focused {
+        background: $colors-light-gradient-200;
       }
 
-      &.is-minimal {
-        background-color: transparent;
+      &:active,
+      &.is-active {
+        background: $colors-aqua-50;
+        box-shadow: $boxShadow-inset-200;
+      }
+
+      &.is-#{$name} {
         color: $textColor;
+      }
+    }
+
+    &.is-minimal {
+      background-color: transparent;
+      color: $colors-slate-900;
+      background-image: unset;
+      box-shadow: unset;
+
+      &:hover,
+      &.is-hovered,
+      &:focus,
+      &.is-focused {
+        background-color: $colors-light-100;
         background-image: unset;
         box-shadow: unset;
+      }
 
-        &:hover,
-        &.is-hovered,
-        &:focus,
-        &.is-focused {
-          background-color: $colors-light-100;
-          background-image: unset;
-          box-shadow: unset;
-        }
-
-        &:active,
-        &.is-active {
-          background: $colors-aqua-50;
-          background-image: unset;
-          box-shadow: unset;
-        }
+      &:active,
+      &.is-active {
+        background: $colors-aqua-50;
+        background-image: unset;
+        box-shadow: unset;
       }
     }
   }

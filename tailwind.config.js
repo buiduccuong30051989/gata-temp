@@ -109,9 +109,6 @@ module.exports = {
       boxShadow: {
         100: "0px 0px 1px rgba(67, 90, 111, 0.47)",
         200: "0px 0px 1px rgba(67, 90, 111, 0.415)",
-        300: "0px 0px 1px rgba(67, 90, 111, 0.47)",
-        400: "0px 0px 1px rgba(67, 90, 111, 0.47)",
-        500: "0px 0px 1px rgba(67, 90, 111, 0.47)",
         "inset-100": "inset 0px 1px 1px rgba(67, 90, 111, 0.09)", // active regular button
         "inset-200": "inset 0px 1px 2px rgba(67, 90, 111, 0.2)", // form
         "inset-1": "inset 0px -1px 1px rgba(67, 90, 111, 0.2)", // default button

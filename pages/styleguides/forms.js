@@ -107,6 +107,7 @@ export default function Forms() {
                   options={options}
                   onChange={setValue}
                   value={value}
+                  placeholder="Select options"
                 />
               </div>
 

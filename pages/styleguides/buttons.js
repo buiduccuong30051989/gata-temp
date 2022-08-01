@@ -13,7 +13,6 @@ export default function Buttons() {
           <div className="styleguides-group">
             <div className="styleguides-group-item">
               <p className="styleguides-group-item-title">Buttons</p>
-              
               <div className="styleguides-buttons-list">
                 {BASE_SCHEMA.map((item) => (
                   <div key={item} className="buttons-item">
