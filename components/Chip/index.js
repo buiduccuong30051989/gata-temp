@@ -1,10 +1,7 @@
-import styles from "./styles.module.scss";
-export const Chip = ({ type, content }) => {
+export const Chip = ({ type = '', content, classNames }) => {
   return (
-    <span className={`${styles.chip} bg-${type}-400 bg-opacity-10`}>
-      <span className={styles.chipIconWrap}>
-        <span className={`${styles.chipIcon} bg-${type}-400`} />
-      </span>
+    <span className={`chip is-${type} ${classNames}`}>
+      <span className="chip-dot" />
       {content}
     </span>
   );

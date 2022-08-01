@@ -153,6 +153,8 @@ $primaryColors: mergeColorMaps(
       $colors-info-gradient-500,
       $colors-info-gradient-900,
       $colors-info-900,
+      $colors-info-100,
+      $colors-info-400,
     ),
     "success": (
       $success,
@@ -160,6 +162,8 @@ $primaryColors: mergeColorMaps(
       $colors-success-gradient-500,
       $colors-success-gradient-900,
       $colors-success-900,
+      $colors-success-100,
+      $colors-success-400,
     ),
     "warning": (
       $warning,
@@ -167,6 +171,8 @@ $primaryColors: mergeColorMaps(
       $colors-warning-gradient-500,
       $colors-warning-gradient-900,
       $colors-warning-900,
+      $colors-warning-100,
+      $colors-warning-400,
     ),
     "danger": (
       $danger,
@@ -174,6 +180,8 @@ $primaryColors: mergeColorMaps(
       $colors-danger-gradient-500,
       $colors-danger-gradient-900,
       $colors-danger-900,
+      $colors-danger-100,
+      $colors-danger-400,
     ),
   ),
   $custom-colors

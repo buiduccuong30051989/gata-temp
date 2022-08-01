@@ -23,6 +23,16 @@ export default function Chips() {
                   />
                 ))}
               </div>
+              <div className="styleguides-buttons-list mt-4">
+                {SCHEMAS.map((item) => (
+                  <Chip
+                    key={item}
+                    type={item}
+                    content={item}
+                    classNames="is-minimal"
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>

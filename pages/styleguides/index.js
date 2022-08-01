@@ -16,7 +16,7 @@ export default function StyleGuidesPage({ children }) {
     "light",
     "dark",
   ];
-  const ELEMENTS = ["Buttons", "Icons", "Tags", "Badges", "Chips"];
+  const ELEMENTS = ["Buttons", "Icons", "Tags", "Badges", "Chips", "Avatars"];
   const COMPONENTS = ["Cards", "Alert", "Toats", "Feedback", "Menu", "Tabs"];
   const FORMS = ["Forms"];
 
