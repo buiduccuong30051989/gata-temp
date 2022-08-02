@@ -1,5 +1,6 @@
 import StyleGuidesPage from ".";
-import Avatar from "react-avatar";
+// import Avatar from "react-avatar";
+import { ReactAvatar } from "components";
 import { StackAvatars } from "components";
 const NAMES = [
   "Mara Harrington",
@@ -30,7 +31,7 @@ export default function Avatars() {
               <p className="styleguides-group-item-title">Avatar Types</p>
               <div className="styleguides-buttons-list">
                 {NAMES.map((item) => (
-                  <Avatar
+                  <ReactAvatar
                     key={item}
                     name={item}
                     size={32}
@@ -42,7 +43,20 @@ export default function Avatars() {
 
               <div className="styleguides-buttons-list mt-4">
                 {NAMES.map((item) => (
-                  <Avatar
+                  <ReactAvatar
+                    key={item}
+                    name={item}
+                    size={32}
+                    round={3}
+                    initials={2}
+                    type="light"
+                  />
+                ))}
+              </div>
+
+              <div className="styleguides-buttons-list mt-4">
+                {NAMES.map((item) => (
+                  <ReactAvatar
                     key={item}
                     name={item}
                     size={32}

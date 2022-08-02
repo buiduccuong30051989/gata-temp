@@ -15,3 +15,14 @@ export const BASE_COLORS = [
   "#735DD0",
   "#425A70",
 ];
+
+export const BASE_LIGHT_COLORS = [
+  "#D4EEE2",
+  "#DBEAF7",
+  "#FAE3CD",
+  "#FAE2E2",
+  "#FBE6A2",
+  "#D2EEF3",
+  "#EAE7F8",
+  "#F5F6F7",
+];

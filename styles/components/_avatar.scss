@@ -22,3 +22,9 @@
     }
   }
 }
+
+.avatar {
+  &.light {
+    @apply text-slate-800 #{!important};;
+  }
+}

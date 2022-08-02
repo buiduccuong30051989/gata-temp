@@ -1,7 +1,9 @@
 import Avatar from "react-avatar";
+import { BASE_COLORS, BASE_LIGHT_COLORS } from "constant/common";
 
 export const StackAvatars = (props) => {
-  const { names, ...rest } = props;
+  const { names, type = "solid", ...rest } = props;
+  const colors = type === "solid" ? BASE_COLORS : BASE_LIGHT_COLORS;
   let listRenderAvatars = [];
   let hideList = [];
   if (names.length <= 5) {
@@ -14,10 +16,21 @@ export const StackAvatars = (props) => {
   return (
     <div className="stack-avatar rtl">
       {listRenderAvatars.map((item) => (
-        <Avatar className="avatar" {...rest} name={item} key={item} />
+        <Avatar
+          colors={colors}
+          className={`avatar ${type}`}
+          {...rest}
+          name={item}
+          key={item}
+        />
       ))}
       {Boolean(hideList.length) && (
-        <Avatar className="avatar" {...rest} name={`+ ${hideList.length.toString()}`} color="#425A70" />
+        <Avatar
+          className={`avatar avatar-hide ${type}`}
+          {...rest}
+          name={`+ ${hideList.length.toString()}`}
+          color={`${type === 'solid' ? '#425A70' : '#F5F6F7'}`}
+        />
       )}
     </div>
   );

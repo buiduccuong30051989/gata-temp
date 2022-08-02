@@ -8,4 +8,5 @@ export * from "./Switch";
 export * from "./HlSelect";
 export * from "./HlMenu";
 export * from "./Dropdown";
+export * from "./Avatar";
 export * from "./StackAvatars";

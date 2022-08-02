@@ -1,6 +1,6 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useCallback } from "react";
-import { HiOutlineExclamation } from "react-icons/hi";
+import { HiOutlineExclamation, HiOutlineX } from "react-icons/hi";
 
 export const Alert = (props) => {
   const {
@@ -19,7 +19,8 @@ export const Alert = (props) => {
     onOk = () => {},
     loading,
     btnOkProps = {},
-    okBtnClass = "wphub-btn-primary",
+    okBtnClass = "button is-info",
+    cancelBtnClass = "button is-regular text-slate-800",
     ...rest
   } = props;
 
@@ -67,34 +68,31 @@ export const Alert = (props) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl text-left align-middle shadow-xl transition-all">
-                <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                  <div className="sm:flex sm:items-start">
-                    <div
-                      className={`
-                    bg-${type}-100
-                    mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full  sm:mx-0 sm:h-10 sm:w-10`}
+              <Dialog.Panel className="bg-white w-full max-w-md transform overflow-hidden rounded text-left shadow-200 transition-all">
+                <div className="">
+                  <Dialog.Title
+                    as="h3"
+                    className="text-lg font-normal leading-6 text-slate-800 px-4 py-3 border-b border-b-slate-100"
+                  >
+                    {title}
+                    <button
+                      onClick={handleClose}
+                      className="button is-minimal absolute top-2 right-1"
                     >
-                      <span className={`text-${type}-600`}>{icon}</span>
-                    </div>
-                    <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                      <Dialog.Title
-                        as="h3"
-                        className="text-lg font-normal leading-6 text-gray-700"
-                      >
-                        {title}
-                      </Dialog.Title>
-                      <div className="mt-2">
-                        <p className="text-sm text-gray-500">{description}</p>
-                      </div>
-                    </div>
+                      <span className="icon">
+                        <HiOutlineX className="w-4 h-4 text-slate-500" />
+                      </span>
+                    </button>
+                  </Dialog.Title>
+                  <div className="p-4">
+                    <p className="text-sm text-gray-500">{description}</p>
                   </div>
                 </div>
 
-                <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse gap-4">
+                <div className="flex flex-row-reverse px-4 py-3 border-t border-t-slate-100 gap-4">
                   {cancelText && (
                     <button
-                      className="wphub-btn-secondary"
+                      className={cancelBtnClass}
                       onClick={handleClose}
                       style={{ minWidth: "100px" }}
                     >
@@ -103,7 +101,7 @@ export const Alert = (props) => {
                   )}
                   {okText && (
                     <button
-                      className={` ${okBtnClass} ${
+                      className={` button is-${type} ${
                         loading
                           ? "cursor-not-allowed opacity-75"
                           : "cursor-pointer"
