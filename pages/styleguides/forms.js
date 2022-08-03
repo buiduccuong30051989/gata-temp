@@ -11,7 +11,6 @@ import {
   Switch,
   HlSelect,
 } from "components";
-import { BASE_SCHEMA } from "constant/common";
 
 const options = [
   {
@@ -31,8 +30,6 @@ const options = [
 export default function Forms() {
   const [value, setValue] = useState("");
   const [checked, setChecked] = useState(false);
-  console.log({ value });
-  console.log({ checked });
 
   return (
     <div className="styleguides-block">

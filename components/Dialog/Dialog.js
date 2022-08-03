@@ -1,27 +1,23 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useCallback } from "react";
-import { HiOutlineExclamation, HiOutlineX } from "react-icons/hi";
+import { HiOutlineX } from "react-icons/hi";
 
-export const Alert = (props) => {
+export const HlDialog = (props) => {
   const {
-    icon = <HiOutlineExclamation className="w-6 h-6" />,
     title = "",
     isOpen = false,
-    renderContent = "",
-    renderDescription = null,
     closeOnClick = true,
-    cancelText = null,
-    description = "",
-    type = "info",
-    okText = "",
+    cancelText = "Cancel",
+    okText = "Apply Change",
     onClose,
     onCancel = () => {},
     onOk = () => {},
     loading,
     btnOkProps = {},
-    okBtnClass = "button is-info",
+    okBtnClass = "button is-success",
     cancelBtnClass = "button is-regular text-slate-800",
-    ...rest
+    children,
+    hasXClose = true,
   } = props;
 
   const handleClose = useCallback(() => {
@@ -68,26 +64,28 @@ export const Alert = (props) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="bg-white w-full max-w-md transform overflow-hidden rounded text-left shadow-200 transition-all">
-                <div className="">
+              <Dialog.Panel className="bg-white w-full max-w-xl transform overflow-hidden rounded text-left shadow-200 transition-all">
+                {Boolean(hasXClose) && (
+                  <button
+                    onClick={handleClose}
+                    className="button is-minimal absolute top-2 right-1"
+                    tabIndex={-1}
+                  >
+                    <span className="icon">
+                      <HiOutlineX className="w-4 h-4 text-slate-500" />
+                    </span>
+                  </button>
+                )}
+
+                {Boolean(title) && (
                   <Dialog.Title
                     as="h3"
                     className="text-lg font-normal leading-6 text-slate-900 px-4 py-3 border-b border-b-slate-100"
                   >
                     {title}
-                    <button
-                      onClick={handleClose}
-                      className="button is-minimal absolute top-2 right-1"
-                    >
-                      <span className="icon">
-                        <HiOutlineX className="w-4 h-4 text-slate-500" />
-                      </span>
-                    </button>
                   </Dialog.Title>
-                  <div className="p-4">
-                    <p className="text-sm">{description}</p>
-                  </div>
-                </div>
+                )}
+                {children}
 
                 <div className="flex flex-row-reverse px-4 py-3 border-t border-t-slate-100 gap-4">
                   {cancelText && (
@@ -103,7 +101,7 @@ export const Alert = (props) => {
                     <button
                       autoFocus
                       tabIndex={0}
-                      className={` button is-${type} ${
+                      className={`${okBtnClass} ${
                         loading
                           ? "cursor-not-allowed opacity-75"
                           : "cursor-pointer"

@@ -336,7 +336,7 @@ textarea {
 .form-control {
   @apply flex flex-col;
 
-  label {
+  & > label {
     @apply inline-block text-gray-700 mb-1;
   }
 

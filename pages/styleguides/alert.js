@@ -42,7 +42,7 @@ export default function Alert() {
                     <button
                       onClick={() => handleShowAlert(item)}
                       type="button"
-                      className={`button bg-${item}-400`}
+                      className={`button is-${item}`}
                     >{`alert-${item}`}</button>
                   </div>
                 ))}
